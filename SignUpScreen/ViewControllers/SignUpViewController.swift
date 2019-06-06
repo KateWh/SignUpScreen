@@ -16,8 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpScrollView: UIScrollView!
     @IBOutlet weak var scrollBottomConstaint: NSLayoutConstraint!
-    var currentTextField: UITextField?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
@@ -68,13 +67,6 @@ extension SignUpViewController: UITextFieldDelegate {
         textField.leftView = spacerView
     }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("Внутри textFieldShouldBeginEditing")
-        print("textField.tag", textField.tag)
-        currentTextField = textField
-        return true
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
             nextField.becomeFirstResponder()
@@ -103,11 +95,7 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        currentTextField = nil
-    }
-    
+
     func checkLength(_ string: String?, range: (Int,Int)) -> Bool {
         if let string = string {
             switch string.count{
@@ -147,19 +135,9 @@ extension SignUpViewController {
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-        print("Внутри keyboardWillShow")
-        let userInfo = notification.userInfo
-        let keyboardFrameSize = (userInfo? [UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        print("Current text field", currentTextField?.tag)
-        
-        //scrollBottomConstaint = NSLayoutConstraint(
-          //  CGPoint(x: 0, y: keyboardFrameSize.height)
-        guard let currentTextField = currentTextField else { return }
-        print("CURRENT TEXT FIELD minY",currentTextField.frame.minY)
-        print("CURRENT TEXT FIELD maxY",currentTextField.frame.maxY)
-        
-        print("KEYBOARD FRAME SIZE minY",keyboardFrameSize.minY)
-        print("KEYBOARD FRAME SIZE maxY",keyboardFrameSize.maxY)
+        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let conternInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrameSize.height, right: 0)
+        signUpScrollView.contentInset = conternInset
     }
     
     @objc func keyboardWillHide() {
