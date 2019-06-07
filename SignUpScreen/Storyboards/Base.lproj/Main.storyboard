@@ -581,7 +581,11 @@
                         <viewLayoutGuide key="safeArea" id="rKq-pM-a5e"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="05t-De-2Ae" id="smG-wr-BQz"/>
+                        <outlet property="nameTextField" destination="Ubr-ds-Pbf" id="g0M-pM-rHb"/>
+                        <outlet property="passwordTextField" destination="Sro-ED-nqr" id="dSh-2z-S7w"/>
                         <outlet property="secondSignUpScrollView" destination="WPa-AS-bqJ" id="IFp-MT-oxm"/>
+                        <outlet property="usernameTextField" destination="LTU-If-t6d" id="rM4-cF-aXM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilr-AF-eze" userLabel="First Responder" sceneMemberID="firstResponder"/>
