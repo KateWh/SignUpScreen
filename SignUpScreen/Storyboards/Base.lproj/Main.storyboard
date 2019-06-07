@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QKh-6m-zid">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="r4c-FM-dSy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -530,7 +530,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password has to contain at least one number!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5gT-zz-RoY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password has to contain at least one number!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5gT-zz-RoY">
                                         <rect key="frame" x="8" y="318" width="327" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="cFq-05-w1i"/>
@@ -539,6 +539,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWj-ql-Yff">
+                                        <rect key="frame" x="295" y="273" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="KJ4-Fy-vfz"/>
+                                            <constraint firstAttribute="width" constant="30" id="ctJ-4t-TMA"/>
+                                        </constraints>
+                                        <state key="normal" image="closed-eye-30x30"/>
+                                        <connections>
+                                            <action selector="showHidePassword:" destination="r4c-FM-dSy" eventType="touchUpInside" id="Mau-qu-drZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ihd-E7-N0R" firstAttribute="top" secondItem="5gT-zz-RoY" secondAttribute="bottom" constant="8" id="0B2-f1-Adp"/>
@@ -561,7 +572,9 @@
                                     <constraint firstItem="LTU-If-t6d" firstAttribute="top" secondItem="Ubr-ds-Pbf" secondAttribute="bottom" constant="4" id="gvL-l4-bbO"/>
                                     <constraint firstItem="Ubr-ds-Pbf" firstAttribute="leading" secondItem="WPa-AS-bqJ" secondAttribute="leading" constant="8" id="h8q-KX-GNJ"/>
                                     <constraint firstAttribute="trailing" secondItem="5gT-zz-RoY" secondAttribute="trailing" constant="8" id="iGJ-1N-a5H"/>
+                                    <constraint firstItem="EWj-ql-Yff" firstAttribute="leading" secondItem="Sro-ED-nqr" secondAttribute="trailing" constant="-40" id="jyg-8H-cw9"/>
                                     <constraint firstAttribute="trailing" secondItem="Mzb-MY-zbw" secondAttribute="trailing" constant="8" id="o0Z-qh-k9x"/>
+                                    <constraint firstItem="EWj-ql-Yff" firstAttribute="top" secondItem="Sro-ED-nqr" secondAttribute="bottom" constant="-36" id="qgu-gS-2bs"/>
                                     <constraint firstItem="LTU-If-t6d" firstAttribute="leading" secondItem="WPa-AS-bqJ" secondAttribute="leading" constant="8" id="qja-X4-5n5"/>
                                     <constraint firstItem="Sro-ED-nqr" firstAttribute="top" secondItem="05t-De-2Ae" secondAttribute="bottom" constant="4" id="sqK-gC-gTD"/>
                                     <constraint firstAttribute="bottom" secondItem="Ihd-E7-N0R" secondAttribute="bottom" constant="211" id="t6d-YV-3tk"/>
@@ -585,6 +598,7 @@
                         <outlet property="nameTextField" destination="Ubr-ds-Pbf" id="g0M-pM-rHb"/>
                         <outlet property="passwordTextField" destination="Sro-ED-nqr" id="dSh-2z-S7w"/>
                         <outlet property="secondSignUpScrollView" destination="WPa-AS-bqJ" id="IFp-MT-oxm"/>
+                        <outlet property="someQuestionsLabel" destination="Mzb-MY-zbw" id="hDM-No-oHT"/>
                         <outlet property="usernameTextField" destination="LTU-If-t6d" id="rM4-cF-aXM"/>
                     </connections>
                 </viewController>
@@ -592,15 +606,15 @@
             </objects>
             <point key="canvasLocation" x="2095.1999999999998" y="135.38230884557723"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="dcP-QK-cOJ">
             <objects>
-                <viewController id="QKh-6m-zid" sceneMemberID="viewController">
+                <viewController id="QKh-6m-zid" customClass="SignInViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NRc-Fe-NJ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIW-Ry-Cf3">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LIW-Ry-Cf3">
                                 <rect key="frame" x="16" y="40" width="343" height="607"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s81-iJ-ZDV">
@@ -621,12 +635,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Incorrect password. Try again." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-Fa-w67">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Incorrect password. Try again." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Qqy-Fa-w67">
                                         <rect key="frame" x="8" y="226" width="327" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="BZY-OT-b4o"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="RFL-2m-tgF">
+                                        <rect key="frame" x="8" y="374" width="327" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="6Um-E2-eXA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -676,15 +699,17 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot your password?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RFL-2m-tgF">
-                                        <rect key="frame" x="8" y="374" width="327" height="18"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aza-Xk-Ir2">
+                                        <rect key="frame" x="295" y="177" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="6Um-E2-eXA"/>
+                                            <constraint firstAttribute="height" constant="30" id="2rq-ec-ctn"/>
+                                            <constraint firstAttribute="width" constant="30" id="fc3-5J-gpO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" image="closed-eye-30x30"/>
+                                        <connections>
+                                            <action selector="showHidePassword:" destination="QKh-6m-zid" eventType="touchUpInside" id="1Od-jf-ek4"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="KtK-EG-y28" secondAttribute="trailing" constant="8" id="2Qs-VI-AdI"/>
@@ -696,6 +721,7 @@
                                     <constraint firstItem="owu-G0-VlQ" firstAttribute="leading" secondItem="LIW-Ry-Cf3" secondAttribute="leading" constant="8" id="VVb-ie-g9W"/>
                                     <constraint firstAttribute="trailing" secondItem="VDW-hf-PLE" secondAttribute="trailing" constant="8" id="W9b-Bi-HrG"/>
                                     <constraint firstItem="s81-iJ-ZDV" firstAttribute="leading" secondItem="LIW-Ry-Cf3" secondAttribute="leading" constant="8" id="ZYU-4z-aYv"/>
+                                    <constraint firstItem="wzX-o3-WpY" firstAttribute="top" secondItem="Aza-Xk-Ir2" secondAttribute="bottom" constant="-35" id="ZtX-AL-6dF"/>
                                     <constraint firstItem="KtK-EG-y28" firstAttribute="leading" secondItem="LIW-Ry-Cf3" secondAttribute="leading" constant="8" id="amM-cZ-2FO"/>
                                     <constraint firstItem="wzX-o3-WpY" firstAttribute="top" secondItem="VDW-hf-PLE" secondAttribute="bottom" constant="3" id="d4b-SZ-2ym"/>
                                     <constraint firstAttribute="trailing" secondItem="RFL-2m-tgF" secondAttribute="trailing" constant="8" id="e9s-N6-vC6"/>
@@ -704,6 +730,7 @@
                                     <constraint firstItem="Qqy-Fa-w67" firstAttribute="leading" secondItem="LIW-Ry-Cf3" secondAttribute="leading" constant="8" id="hi5-Gi-Myn"/>
                                     <constraint firstAttribute="trailing" secondItem="owu-G0-VlQ" secondAttribute="trailing" constant="8" id="jpH-U0-1RQ"/>
                                     <constraint firstAttribute="trailing" secondItem="s81-iJ-ZDV" secondAttribute="trailing" constant="8" id="mGI-s7-AhH"/>
+                                    <constraint firstItem="Aza-Xk-Ir2" firstAttribute="leading" secondItem="wzX-o3-WpY" secondAttribute="trailing" constant="-40" id="nJ4-Eq-xNT"/>
                                     <constraint firstItem="s81-iJ-ZDV" firstAttribute="top" secondItem="LIW-Ry-Cf3" secondAttribute="top" constant="51" id="tQO-x0-YVr"/>
                                     <constraint firstItem="owu-G0-VlQ" firstAttribute="top" secondItem="s81-iJ-ZDV" secondAttribute="bottom" constant="2" id="vlP-24-N83"/>
                                     <constraint firstAttribute="bottom" secondItem="RFL-2m-tgF" secondAttribute="bottom" constant="215" id="xvG-Ea-h3Q"/>
@@ -723,10 +750,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hat-Hp-MbE"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="VDW-hf-PLE" id="GNs-Sk-0TS"/>
+                        <outlet property="passwordTextField" destination="wzX-o3-WpY" id="Gxd-X7-fzd"/>
+                        <outlet property="someQuestionsLabel" destination="owu-G0-VlQ" id="cdf-b5-HL6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkw-ab-YxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2765.5999999999999" y="134.48275862068968"/>
+            <point key="canvasLocation" x="2948" y="143"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="closed-eye-30x30" width="30" height="30"/>
+    </resources>
 </document>

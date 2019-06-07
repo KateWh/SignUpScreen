@@ -1,5 +1,5 @@
 //
-//  SecondSignUpScreenViewController.swift
+//  SignInViewController.swift
 //  SignUpScreen
 //
 //  Created by ket on 6/7/19.
@@ -8,20 +8,15 @@
 
 import UIKit
 
-class SecondSignUpViewController: UIViewController {
-
-    @IBOutlet weak var nameTextField: UITextField!
+class SignInViewController: UIViewController {
     
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var someQuestionsLabel: UILabel!
-    @IBOutlet weak var secondSignUpScrollView: UIScrollView!
     var eyeButtonIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        secondSignUpScrollView.delegate = self
         settingTextFields()
         setupSomeQuestionsLabel()
     }
@@ -40,33 +35,16 @@ class SecondSignUpViewController: UIViewController {
     
 }
 
-extension SecondSignUpViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x != 0 {
-            scrollView.contentOffset.x = 0
-        }
-    }
-
-}
-
-extension SecondSignUpViewController: UITextFieldDelegate {
+extension SignInViewController: UITextFieldDelegate {
     
     func settingTextFields() {
-        nameTextField.delegate = self
-        nameTextField.tag = 0
-        nameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(nameTextField)
-        usernameTextField.delegate = self
-        usernameTextField.tag = 1
-        usernameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(usernameTextField)
+       
         emailTextField.delegate = self
-        emailTextField.tag = 2
+        emailTextField.tag = 0
         emailTextField.returnKeyType = UIReturnKeyType.next
         setPaddingForTextField(emailTextField)
         passwordTextField.delegate = self
-        passwordTextField.tag = 3
+        passwordTextField.tag = 1
         passwordTextField.returnKeyType = UIReturnKeyType.done
         setPaddingForTextField(passwordTextField)
     }
@@ -99,16 +77,16 @@ extension SecondSignUpViewController: UITextFieldDelegate {
     
 }
 
-extension SecondSignUpViewController {
+extension SignInViewController {
     
     func setupSomeQuestionsLabel() {
-        let mainString = "Already have an account? Sign in"
-        let subStringToColor = "Sign in"
-        
+        let mainString = "Don't have an account? Sign up"
+        let subStringToColor = "Sign up"
+
         let range = (mainString as NSString).range(of: subStringToColor)
         let attributes = NSMutableAttributedString.init(string: mainString)
         attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
         someQuestionsLabel.attributedText = attributes
     }
-
+    
 }
