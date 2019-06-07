@@ -38,7 +38,6 @@ class SignInViewController: UIViewController {
 extension SignInViewController: UITextFieldDelegate {
     
     func settingTextFields() {
-       
         emailTextField.delegate = self
         emailTextField.tag = 0
         emailTextField.returnKeyType = UIReturnKeyType.next
