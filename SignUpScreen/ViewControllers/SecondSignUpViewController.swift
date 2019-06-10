@@ -62,6 +62,7 @@ extension SecondSignUpViewController: UITextFieldDelegate {
         setPaddingForTextField(usernameTextField)
         emailTextField.delegate = self
         emailTextField.tag = 2
+        emailTextField.keyboardType = UIKeyboardType.emailAddress
         emailTextField.returnKeyType = UIReturnKeyType.next
         setPaddingForTextField(emailTextField)
         passwordTextField.delegate = self
