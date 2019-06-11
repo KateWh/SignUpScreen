@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */; };
+		C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */; };
 		C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AE83222AA91FD00FE425F /* SignInViewController.swift */; };
 		C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewController.swift; sourceTree = "<group>"; };
+		C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C61AE83222AA91FD00FE425F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpViewController.swift; sourceTree = "<group>"; };
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,8 @@
 		C6DCC62222A54E5B000FCFC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */,
+				C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */,
 				C61AE83222AA91FD00FE425F /* SignInViewController.swift */,
 				C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */,
 				C69CA38322A4F7BE00895292 /* SignUpViewController.swift */,
@@ -209,7 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
+				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
 				C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */,
 				C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */,
 				C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */,
