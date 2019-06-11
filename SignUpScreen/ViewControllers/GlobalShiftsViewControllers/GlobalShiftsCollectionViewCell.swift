@@ -16,6 +16,7 @@ class GlobalShiftsCollectionViewCell: UICollectionViewCell {
     
     func setTitle(globalShifts: GlobalShifts) {
         globalShiftTitle.text = globalShifts.name
+        
         if globalShifts.isSelected {
             globalShiftTitle.textColor = .orange
             tickButton.isHidden = false
