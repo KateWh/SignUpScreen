@@ -104,7 +104,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
             }
             return cell
         } else if presentationStyle == .companies {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCell", for: indexPath) as! CompaniesCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "companiesCollectionCell", for: indexPath) as! CompaniesCollectionViewCell
             cell.settingCell(company: arrayCompanies[indexPath.row])
             return cell
         } else {
@@ -176,7 +176,8 @@ struct Constants {
     static let fiftyPercent: CGFloat = 0.5
     static let sixtyPercent: CGFloat = 0.6
     static let oneHundredFifteenPercent: CGFloat = 1.15
-    
+    static let topSaveButtonConstraint: CGFloat = 58
+    static let topSendButtonConstraint: CGFloat = 80
 }
 
 enum PresentationStyle {

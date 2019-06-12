@@ -14,10 +14,13 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var someQuestionsLabel: UILabel!
     
+    @IBOutlet weak var topConstraintSendButton: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
         setupSingInText()
+        registerKeyboardNotification()
     }
     
 }
@@ -53,4 +56,30 @@ extension ResetPasswordViewController {
     
 }
 
+extension ResetPasswordViewController {
+    
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let interval = (keyboardFrameSize.minY - 3) - sendButton.frame.maxY
+        if interval < 0 {
+            topConstraintSendButton.constant += interval
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        topConstraintSendButton.constant = Constants.topSendButtonConstraint
+    }
+    
+}
 

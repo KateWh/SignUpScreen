@@ -13,12 +13,15 @@ class NewPasswordViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
+    
     var passwordEyeButtonIsOpen = true
     var repeatPasswordEyeButtonIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
+        registerKeyboardNotification()
         
     }
     
@@ -83,3 +86,31 @@ extension NewPasswordViewController: UITextFieldDelegate {
     }
     
 }
+
+extension NewPasswordViewController {
+    
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        let interval = (keyboardFrameSize.minY - 3) - saveButton.frame.maxY
+        if interval < 0 {
+            topConstraintSaveButton.constant += interval
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        topConstraintSaveButton.constant = Constants.topSaveButtonConstraint
+    }
+    
+}
+
