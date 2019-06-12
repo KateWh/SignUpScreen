@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Zo-v6-EJV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRF-U1-rsL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -510,10 +510,10 @@
             </objects>
             <point key="canvasLocation" x="881" y="207"/>
         </scene>
-        <!--View Controller-->
+        <!--New Password View Controller-->
         <scene sceneID="hhS-s8-ATj">
             <objects>
-                <viewController id="zRF-U1-rsL" sceneMemberID="viewController">
+                <viewController id="zRF-U1-rsL" customClass="NewPasswordViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bdN-FU-ImE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -525,7 +525,7 @@
                                     <constraint firstAttribute="height" constant="42" id="zOk-TQ-UyQ"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -533,6 +533,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QD1-mV-ii3">
+                                <rect key="frame" x="318" y="181" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="6Bd-kg-lgC"/>
+                                    <constraint firstAttribute="height" constant="30" id="f2c-mQ-NlX"/>
+                                </constraints>
+                                <state key="normal" image="opened-eye-30x30"/>
+                                <connections>
+                                    <action selector="hideShowPasswordButton:" destination="zRF-U1-rsL" eventType="touchUpInside" id="Ssh-6f-ezL"/>
+                                </connections>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EBN-rR-O72">
                                 <rect key="frame" x="16" y="221" width="343" height="42"/>
                                 <color key="backgroundColor" red="0.8457062917" green="0.94041450780000002" blue="0.85760706389999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -540,8 +551,8 @@
                                     <constraint firstAttribute="height" constant="42" id="aR6-A0-7B7"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="3"/>
@@ -593,13 +604,26 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc1-Sp-Agv">
+                                <rect key="frame" x="318" y="227" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="23F-Rc-oPP"/>
+                                    <constraint firstAttribute="width" constant="30" id="3Gq-PF-Yux"/>
+                                </constraints>
+                                <state key="normal" image="closed-eye-30x30"/>
+                                <connections>
+                                    <action selector="showHideRepeatPasswordButton:" destination="zRF-U1-rsL" eventType="touchUpInside" id="EtO-fe-cBF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="eaB-Rz-aFo" firstAttribute="leading" secondItem="pEy-Sc-sdC" secondAttribute="leading" constant="16" id="481-Sg-ho5"/>
                             <constraint firstItem="eSq-gG-OUD" firstAttribute="top" secondItem="P0r-or-Fgz" secondAttribute="bottom" id="77Y-m3-uDl"/>
+                            <constraint firstItem="QD1-mV-ii3" firstAttribute="leading" secondItem="J3B-cq-8QX" secondAttribute="trailing" constant="-41" id="9u4-l6-HYM"/>
                             <constraint firstItem="Llf-sC-iZ9" firstAttribute="top" secondItem="EBN-rR-O72" secondAttribute="bottom" constant="8" id="C6q-hO-8dl"/>
                             <constraint firstItem="pEy-Sc-sdC" firstAttribute="trailing" secondItem="eSq-gG-OUD" secondAttribute="trailing" constant="16" id="DRV-E0-1lr"/>
+                            <constraint firstItem="Vc1-Sp-Agv" firstAttribute="leading" secondItem="EBN-rR-O72" secondAttribute="trailing" constant="-41" id="Eep-UZ-Jh4"/>
                             <constraint firstItem="Llf-sC-iZ9" firstAttribute="leading" secondItem="pEy-Sc-sdC" secondAttribute="leading" constant="16" id="Ibw-0S-nWE"/>
                             <constraint firstItem="pEy-Sc-sdC" firstAttribute="trailing" secondItem="P0r-or-Fgz" secondAttribute="trailing" constant="16" id="Kcl-Ib-Llo"/>
                             <constraint firstItem="EBN-rR-O72" firstAttribute="top" secondItem="J3B-cq-8QX" secondAttribute="bottom" constant="4" id="Qt8-tE-rrd"/>
@@ -608,24 +632,31 @@
                             <constraint firstItem="eaB-Rz-aFo" firstAttribute="top" secondItem="Llf-sC-iZ9" secondAttribute="bottom" constant="58" id="XTQ-Tn-EY8"/>
                             <constraint firstItem="EBN-rR-O72" firstAttribute="leading" secondItem="pEy-Sc-sdC" secondAttribute="leading" constant="16" id="YXo-Zq-zua"/>
                             <constraint firstItem="P0r-or-Fgz" firstAttribute="top" secondItem="pEy-Sc-sdC" secondAttribute="top" constant="72" id="c88-Ea-qEc"/>
+                            <constraint firstItem="QD1-mV-ii3" firstAttribute="top" secondItem="J3B-cq-8QX" secondAttribute="bottom" constant="-36" id="fKL-4h-KWv"/>
                             <constraint firstItem="eSq-gG-OUD" firstAttribute="leading" secondItem="pEy-Sc-sdC" secondAttribute="leading" constant="16" id="hzK-oo-ZyB"/>
                             <constraint firstItem="P0r-or-Fgz" firstAttribute="leading" secondItem="pEy-Sc-sdC" secondAttribute="leading" constant="16" id="i5w-95-cxD"/>
                             <constraint firstItem="J3B-cq-8QX" firstAttribute="top" secondItem="eSq-gG-OUD" secondAttribute="bottom" constant="20" id="kH3-Nb-zFn"/>
                             <constraint firstItem="pEy-Sc-sdC" firstAttribute="trailing" secondItem="eaB-Rz-aFo" secondAttribute="trailing" constant="16" id="mW7-Lg-4ku"/>
                             <constraint firstItem="pEy-Sc-sdC" firstAttribute="trailing" secondItem="J3B-cq-8QX" secondAttribute="trailing" constant="16" id="vCC-cB-BbO"/>
+                            <constraint firstItem="Vc1-Sp-Agv" firstAttribute="top" secondItem="EBN-rR-O72" secondAttribute="bottom" constant="-36" id="y7b-4X-mC1"/>
                             <constraint firstItem="pEy-Sc-sdC" firstAttribute="trailing" secondItem="Llf-sC-iZ9" secondAttribute="trailing" constant="16" id="yDI-or-4tS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pEy-Sc-sdC"/>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="J3B-cq-8QX" id="BkC-Cs-JbQ"/>
+                        <outlet property="repeatPasswordTextField" destination="EBN-rR-O72" id="M1v-pM-eZB"/>
+                        <outlet property="saveButton" destination="eaB-Rz-aFo" id="SAy-YU-bue"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26D-XV-8ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1609" y="204"/>
         </scene>
-        <!--View Controller-->
+        <!--Reset Password View Controller-->
         <scene sceneID="83l-R0-ZQG">
             <objects>
-                <viewController id="7Zo-v6-EJV" sceneMemberID="viewController">
+                <viewController id="7Zo-v6-EJV" customClass="ResetPasswordViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Blx-bF-I2j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -653,7 +684,7 @@
                                     <constraint firstAttribute="height" constant="42" id="vJn-jt-XCK"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -712,6 +743,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WaZ-Ym-xUu"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="oHX-OM-ThT" id="dAs-yH-BJG"/>
+                        <outlet property="sendButton" destination="feU-lw-ZnC" id="Bfc-yc-jWv"/>
+                        <outlet property="someQuestionsLabel" destination="YHy-Dj-BCf" id="nEd-xL-0ph"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7H-UD-jYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1056,6 +1092,7 @@
     <resources>
         <image name="Image-1" width="10" height="10"/>
         <image name="closed-eye-30x30" width="30" height="30"/>
+        <image name="opened-eye-30x30" width="30" height="30"/>
         <image name="unnamed-2" width="15" height="15"/>
         <image name="unnamed-3" width="300" height="300"/>
     </resources>
