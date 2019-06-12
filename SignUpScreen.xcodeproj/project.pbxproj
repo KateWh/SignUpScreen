@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6049CD922AFF7AF009AC6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */; };
 		C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */; };
 		C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */; };
 		C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AE83222AA91FD00FE425F /* SignInViewController.swift */; };
@@ -15,7 +16,6 @@
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
 		C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpViewController.swift */; };
 		C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* Main.storyboard */; };
-		C69CA38922A4F7C000895292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38822A4F7C000895292 /* Assets.xcassets */; };
 		C69CA38C22A4F7C000895292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38A22A4F7C000895292 /* LaunchScreen.storyboard */; };
 		C69CA39C22A5189300895292 /* dax-mediumitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39522A5189300895292 /* dax-mediumitalic.ttf */; };
 		C69CA39D22A5189300895292 /* dax-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39622A5189300895292 /* dax-italic.ttf */; };
@@ -27,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewController.swift; sourceTree = "<group>"; };
 		C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C61AE83222AA91FD00FE425F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		C69CA38122A4F7BE00895292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69CA38322A4F7BE00895292 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C69CA38622A4F7BE00895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C69CA38822A4F7C000895292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C69CA38B22A4F7C000895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C69CA38D22A4F7C000895292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69CA39522A5189300895292 /* dax-mediumitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-mediumitalic.ttf"; sourceTree = "<group>"; };
@@ -141,8 +141,8 @@
 		C6DCC62322A54E74000FCFC6 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */,
 				C69CA38122A4F7BE00895292 /* AppDelegate.swift */,
-				C69CA38822A4F7C000895292 /* Assets.xcassets */,
 				C69CA38D22A4F7C000895292 /* Info.plist */,
 			);
 			path = SupportFiles;
@@ -210,9 +210,9 @@
 				C69CA39E22A5189300895292 /* dax-light.ttf in Resources */,
 				C69CA38C22A4F7C000895292 /* LaunchScreen.storyboard in Resources */,
 				C69CA39C22A5189300895292 /* dax-mediumitalic.ttf in Resources */,
+				C6049CD922AFF7AF009AC6E3 /* Assets.xcassets in Resources */,
 				C69CA39F22A5189300895292 /* dax-bold.ttf in Resources */,
 				C69CA3A222A5189300895292 /* dax-medium.ttf in Resources */,
-				C69CA38922A4F7C000895292 /* Assets.xcassets in Resources */,
 				C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */,
 				C69CA3A022A5189300895292 /* dax-regular.ttf in Resources */,
 				C69CA3A122A5189300895292 /* dax-extrabold.ttf in Resources */,

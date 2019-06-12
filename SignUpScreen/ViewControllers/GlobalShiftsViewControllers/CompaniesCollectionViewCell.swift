@@ -10,10 +10,20 @@ import UIKit
 
 class CompaniesCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var companyImageView: UIImageView!
+    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var tickButton: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func settingCell(company: GlobalShifts) {
+        self.companyName.text = company.name
+        
+        if company.isSelected {
+            companyName.textColor = .orange
+            tickButton.isHidden = false
+        } else {
+            companyName.textColor = .black
+            tickButton.isHidden = true
+        }
     }
-    
   
 }

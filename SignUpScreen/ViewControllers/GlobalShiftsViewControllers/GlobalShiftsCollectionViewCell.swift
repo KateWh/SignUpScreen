@@ -10,7 +10,6 @@ import UIKit
 
 class GlobalShiftsCollectionViewCell: UICollectionViewCell {
     
-    
     @IBOutlet weak var globalShiftTitle: UILabel!
     @IBOutlet weak var tickButton: UIButton!
     

@@ -16,7 +16,8 @@ class GlobalShiftsCollectionViewController: UIViewController {
     
     var arrayGlobalShifts: [GlobalShifts] = [GlobalShifts(name: "Clean \nenergy"), GlobalShifts(name: "Connected \nworld"), GlobalShifts(name: "Data \nowners"), GlobalShifts(name: "Demographic \nchallenges"), GlobalShifts(name: "Industry 4.0"), GlobalShifts(name: "Disruptive \nbusiness \nmodels")]
     var arrayTrends: [GlobalShifts] = [GlobalShifts(name: "Batteries\nrecycling"), GlobalShifts(name: "Clean\natmosphere"), GlobalShifts(name: "Energe\nefficiency"), GlobalShifts(name: "Recicling"), GlobalShifts(name: "Renewable\nenergy"), GlobalShifts(name: "5G"), GlobalShifts(name: "Smart\ncittles"), GlobalShifts(name: "Smart\nhome"), GlobalShifts(name: "Wearables"), GlobalShifts(name: "Big\ndata"), GlobalShifts(name: "Cloud\ncomputing"), GlobalShifts(name: "Soclal\nmedia"), GlobalShifts(name: "Ageland\npopulation"), GlobalShifts(name: "Edicational\ntechnologles"), GlobalShifts(name: "Feeding\n10B people"), GlobalShifts(name: "Obeslty"), GlobalShifts(name: "Urbanisation"), GlobalShifts(name: "Water\nscarclty"), GlobalShifts(name: "Artificlal\nintelligence"), GlobalShifts(name: "Blockchain"), GlobalShifts(name: "Get\nAmazoned")]
-    var arrayIndustries: [GlobalShifts] = [GlobalShifts(name: "Energy"), GlobalShifts(name: "Materials"), GlobalShifts(name: "Indestrials"), GlobalShifts(name: "Consumer\nCyclical"), GlobalShifts(name: "Consumer\nNon-Cyclical"), GlobalShifts(name: "Healthcare"), GlobalShifts(name: "Financlals"), GlobalShifts(name: "Technology"), GlobalShifts(name: "Telecommunications"), GlobalShifts(name: "Utillities")]
+    var arrayIndustries: [GlobalShifts] = [GlobalShifts(name: "Energy"), GlobalShifts(name: "Materials"), GlobalShifts(name: "Indestrials"), GlobalShifts(name: "Consumer\nCyclical"), GlobalShifts(name: "Consumer\nNon-Cyclical"), GlobalShifts(name: "Healthcare"), GlobalShifts(name: "Financlals"), GlobalShifts(name: "Technology"), GlobalShifts(name: "Telecommunications"), GlobalShifts(name: "Utillities"), GlobalShifts(name: "Some"), GlobalShifts(name: "Some"), GlobalShifts(name: "Some"), GlobalShifts(name: "Some"), GlobalShifts(name: "Some")]
+    var arrayCompanies: [GlobalShifts] = [GlobalShifts(name: "Amazon"), GlobalShifts(name: "Apple"), GlobalShifts(name: "Aptiv"), GlobalShifts(name: "Du"), GlobalShifts(name: "Boston Scientific")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,6 @@ class GlobalShiftsCollectionViewController: UIViewController {
         globalShiftsCollectionView.dataSource = self
         
     }
-   
     
     @IBAction func tapNextButton(_ sender: UIButton) {
         switch presentationStyle {
@@ -59,7 +59,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
         case .industries:
             arrayIndustries[indexPath.row].isSelected = !arrayIndustries[indexPath.row].isSelected
         case .companies:
-            break
+            arrayCompanies[indexPath.row].isSelected = !arrayIndustries[indexPath.row].isSelected
         }
         
         collectionView.reloadItems(at: [indexPath])
@@ -85,7 +85,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
         case .industries:
             return arrayIndustries.count
         case .companies:
-            return 7
+            return arrayCompanies.count
         }
     }
 
@@ -105,6 +105,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
             return cell
         } else if presentationStyle == .companies {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompaniesCell", for: indexPath) as! CompaniesCollectionViewCell
+            cell.settingCell(company: arrayCompanies[indexPath.row])
             return cell
         } else {
             return UICollectionViewCell()
@@ -113,35 +114,45 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
     
 }
 
-
-
 extension GlobalShiftsCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectoinViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemWidth: CGFloat = 0
         var itemHeight: CGFloat = 0
         
-        
+        // Create a movable size cell corresponding to a percentage of the view size.
         switch presentationStyle{
         case .globalShift:
-            itemWidth = (globalShiftsCollectionView.frame.size.width * 0.96) / 2
-            itemHeight = itemWidth * 0.65
+            itemWidth = (globalShiftsCollectionView.frame.size.width * Constants.twoItemPercenttWidth) / 2
+            itemHeight = itemWidth * Constants.sixtyPercent
         case .trends:
-            itemWidth = (globalShiftsCollectionView.frame.size.width * 0.93) / 3
-            itemHeight = itemWidth * 0.5
+            itemWidth = (globalShiftsCollectionView.frame.size.width * Constants.threeItemPercentWidth) / 3
+            itemHeight = itemWidth * Constants.fiftyPercent
         case .industries:
-            itemWidth = (globalShiftsCollectionView.frame.size.width * 0.93) / 3
+            itemWidth = (globalShiftsCollectionView.frame.size.width * Constants.threeItemPercentWidth) / 3
             itemHeight = itemWidth
         case .companies:
-            itemWidth = (globalShiftsCollectionView.frame.size.width * 0.93) / 3
-            itemHeight = itemWidth * 1.15
+            itemWidth = (globalShiftsCollectionView.frame.size.width * Constants.threeFotoPercetnWidth) / 3
+            itemHeight = itemWidth * Constants.oneHundredFifteenPercent
         }
         
         return .init(width: itemWidth, height: itemHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        switch presentationStyle {
+        case .globalShift, .companies:
+            return .init(10)
+        case .trends, .industries:
+            return .init(5)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .init(5)
+    }
+    
 }
-
 
 struct GlobalShifts {
     let name: String
@@ -151,14 +162,20 @@ struct GlobalShifts {
     init(name: String) {
         self.name = name
     }
+    
+    init(name: String, image: UIImage){
+        self.name = name
+        self.image = image
+    }
 }
 
 struct Constants {
-    static let twoItemPercenttWidth = 0.96
-    static let threeItemPercentWidth = 0.93
-    static let sextyFivePercent = 0.65
-    static let fiftyPercent = 0.5
-    static let oneHundredFifteenPercent = 1.15
+    static let twoItemPercenttWidth: CGFloat = 0.97
+    static let threeItemPercentWidth: CGFloat = 0.96
+    static let threeFotoPercetnWidth: CGFloat = 0.92
+    static let fiftyPercent: CGFloat = 0.5
+    static let sixtyPercent: CGFloat = 0.6
+    static let oneHundredFifteenPercent: CGFloat = 1.15
     
 }
 
