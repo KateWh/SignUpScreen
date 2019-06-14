@@ -13,7 +13,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var someQuestionsLabel: UILabel!
-    var eyeButtonIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,42 +20,18 @@ class SignInViewController: UIViewController {
         setupSomeQuestionsLabel()
     }
     
-    @IBAction func showHidePassword(_ sender: UIButton) {
-        if !eyeButtonIsOpen {
-            eyeButtonIsOpen = true
-            sender.setImage(UIImage(named: "opened-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            eyeButtonIsOpen = false
-            sender.setImage(UIImage(named: "closed-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = true
-        }
+    @IBAction func changePasswordMode(_ sender: UIButton) {
+        print("PASSWORD BUTTON")
+        passwordTextField.isSecureTextEntry = !sender.isSelected
     }
     
 }
 
 extension SignInViewController: UITextFieldDelegate {
     
-    func settingTextFields() {
-        emailTextField.delegate = self
-        emailTextField.tag = 0
-        emailTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(emailTextField)
-        passwordTextField.delegate = self
-        passwordTextField.tag = 1
-        passwordTextField.returnKeyType = UIReturnKeyType.done
-        setPaddingForTextField(passwordTextField)
-    }
-    
-    func setPaddingForTextField(_ textField: UITextField) {
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField.leftViewMode = UITextField.ViewMode.always
-        textField.leftView = spacerView
-    }
-    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
+        textField.layer.borderWidth = SignInConstans.borderWidth
+        textField.layer.borderColor = SignInConstans.borderColor
         return true
     }
     
@@ -76,16 +51,33 @@ extension SignInViewController: UITextFieldDelegate {
     
 }
 
-extension SignInViewController {
+private extension SignInViewController {
+    
+    func settingTextFields() {
+        func setPaddingForTextField(_ textField: UITextField) {
+            let spacerView = UIView(frame: CGRect(origin: SignInConstans.spacePointForTextFields, size: SignInConstans.spaceSizeForTextFields))
+            textField.leftViewMode = UITextField.ViewMode.always
+            textField.leftView = spacerView
+        }
+        
+        setPaddingForTextField(emailTextField)
+        setPaddingForTextField(passwordTextField)
+    }
     
     func setupSomeQuestionsLabel() {
-        let mainString = "Don't have an account? Sign up"
-        let subStringToColor = "Sign up"
-
-        let range = (mainString as NSString).range(of: subStringToColor)
-        let attributes = NSMutableAttributedString.init(string: mainString)
+        let range = (SignInConstans.mainStringSomeQuestionLabel as NSString).range(of: SignInConstans.signUpText)
+        let attributes = NSMutableAttributedString.init(string: SignInConstans.mainStringSomeQuestionLabel)
         attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
         someQuestionsLabel.attributedText = attributes
     }
     
+}
+
+private struct SignInConstans {
+    static let borderWidth: CGFloat = 2
+    static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
+    static let mainStringSomeQuestionLabel = "Don't have an account? Sign up"
+    static let signUpText = "Sign up"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
 }

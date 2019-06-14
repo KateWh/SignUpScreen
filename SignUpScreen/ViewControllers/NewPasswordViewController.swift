@@ -13,67 +13,33 @@ class NewPasswordViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
     
-    var passwordEyeButtonIsOpen = true
-    var repeatPasswordEyeButtonIsOpen = false
+    @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintView: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
         registerKeyboardNotification()
-        
     }
     
-    @IBAction func hideShowPasswordButton(_ sender: UIButton) {
-        if !passwordEyeButtonIsOpen {
-            passwordEyeButtonIsOpen = true
-            sender.setImage(UIImage(named: "opened-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            passwordEyeButtonIsOpen = false
-            sender.setImage(UIImage(named: "closed-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = true
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @IBAction func showHideRepeatPasswordButton(_ sender: UIButton) {
-        if !repeatPasswordEyeButtonIsOpen {
-            repeatPasswordEyeButtonIsOpen = true
-            sender.setImage(UIImage(named: "opened-eye-30x30.png"), for: .normal)
-            repeatPasswordTextField.isSecureTextEntry = false
-            repeatPasswordTextField.textColor = .black
+    
+    @IBAction func changePasswordMode(_ sender: UIButton) {
+        if sender.tag == 1 {
+            passwordTextField.isSecureTextEntry = !sender.isSelected
         } else {
-            repeatPasswordEyeButtonIsOpen = false
-            sender.setImage(UIImage(named: "closed-eye-30x30.png"), for: .normal)
-            repeatPasswordTextField.isSecureTextEntry = true
-            repeatPasswordTextField.textColor = .orange
+            repeatPasswordTextField.isSecureTextEntry = !sender.isSelected
         }
     }
     
 }
 
 extension NewPasswordViewController: UITextFieldDelegate {
-    
-    func settingTextFields() {
-        passwordTextField.delegate = self
-        passwordTextField.tag = 0
-        passwordTextField.keyboardType = UIKeyboardType.emailAddress
-        passwordTextField.returnKeyType = UIReturnKeyType.go
-        setPaddingForTextField(passwordTextField)
-        repeatPasswordTextField.delegate = self
-        repeatPasswordTextField.tag = 1
-        repeatPasswordTextField.textColor = .orange
-        repeatPasswordTextField.keyboardType = UIKeyboardType.emailAddress
-        repeatPasswordTextField.returnKeyType = UIReturnKeyType.go
-        setPaddingForTextField(repeatPasswordTextField)
-    }
-    
-    func setPaddingForTextField(_ textField: UITextField) {
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField.leftViewMode = UITextField.ViewMode.always
-        textField.leftView = spacerView
-    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
@@ -87,30 +53,60 @@ extension NewPasswordViewController: UITextFieldDelegate {
     
 }
 
-extension NewPasswordViewController {
+private extension NewPasswordViewController {
     
-    func registerKeyboardNotification() {
+    func settingTextFields() {
+        func setPaddingForTextField(_ textField: UITextField) {
+            let spaceView = UIView(frame: CGRect(origin: NewPasswordConstants.spacePointForTextFields, size: NewPasswordConstants.spaceSizeForTextFields))
+            
+            textField.leftViewMode = UITextField.ViewMode.always
+            textField.leftView = spaceView
+        }
+        
+        setPaddingForTextField(passwordTextField)
+        setPaddingForTextField(repeatPasswordTextField)
+    }
+
+    private func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
             UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    
-    func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        let interval = (keyboardFrameSize.minY - 3) - saveButton.frame.maxY
-        if interval < 0 {
+        // Save the distance which you want a use to raise the button.
+        var interval = (keyboardFrameSize.minY - NewPasswordConstants.tenPointers) - saveButton.frame.maxY
+        
+        // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
+        switch (topConstraintSaveButton.constant - NewPasswordConstants.threePointers) + interval {
+        // If the constraint height larger, simply subtract the height of the decrease from it.
+        case 0...:
             topConstraintSaveButton.constant += interval
+            topConstraintView.constant = NewPasswordConstants.topViewConstraint
+        // If the height of the decrease larger, subtract constraint height(without the minimum possible) from it, set minimum possible constraint height and subtract the remaining height of the decrease from the height of the view constraint.
+        case ..<0:
+            interval += topConstraintSaveButton.constant - NewPasswordConstants.threePointers
+            topConstraintSaveButton.constant = NewPasswordConstants.threePointers
+            topConstraintView.constant += interval
+            
+        default:
+            break
         }
     }
     
     @objc func keyboardWillHide() {
-        topConstraintSaveButton.constant = Constants.topSaveButtonConstraint
+        topConstraintSaveButton.constant = NewPasswordConstants.topSaveButtonConstraint
+        topConstraintView.constant = NewPasswordConstants.topViewConstraint
     }
     
 }
 
+private struct NewPasswordConstants {
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let topSaveButtonConstraint: CGFloat = 58
+    static let topViewConstraint: CGFloat = 72
+    static let tenPointers: CGFloat = 10
+    static let threePointers: CGFloat = 3
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+}

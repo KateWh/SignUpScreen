@@ -16,70 +16,24 @@ class SecondSignUpViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var someQuestionsLabel: UILabel!
     @IBOutlet weak var secondSignUpScrollView: UIScrollView!
-    var eyeButtonIsOpen = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        secondSignUpScrollView.delegate = self
         settingTextFields()
         setupSomeQuestionsLabel()
     }
     
-    @IBAction func showHidePassword(_ sender: UIButton) {
-        if !eyeButtonIsOpen {
-            eyeButtonIsOpen = true
-            sender.setImage(UIImage(named: "opened-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = false
-        } else {
-            eyeButtonIsOpen = false
-            sender.setImage(UIImage(named: "closed-eye-30x30.png"), for: .normal)
-            passwordTextField.isSecureTextEntry = true
-        }
+    @IBAction func changePasswordMode(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry = !sender.isSelected
     }
     
-}
-
-extension SecondSignUpViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x != 0 {
-            scrollView.contentOffset.x = 0
-        }
-    }
-
 }
 
 extension SecondSignUpViewController: UITextFieldDelegate {
-    
-    func settingTextFields() {
-        nameTextField.delegate = self
-        nameTextField.tag = 0
-        nameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(nameTextField)
-        usernameTextField.delegate = self
-        usernameTextField.tag = 1
-        usernameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(usernameTextField)
-        emailTextField.delegate = self
-        emailTextField.tag = 2
-        emailTextField.keyboardType = UIKeyboardType.emailAddress
-        emailTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(emailTextField)
-        passwordTextField.delegate = self
-        passwordTextField.tag = 3
-        passwordTextField.returnKeyType = UIReturnKeyType.done
-        setPaddingForTextField(passwordTextField)
-    }
-    
-    func setPaddingForTextField(_ textField: UITextField) {
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField.leftViewMode = UITextField.ViewMode.always
-        textField.leftView = spacerView
-    }
-    
+
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.layer.borderWidth = 2
-        textField.layer.borderColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
+        textField.layer.borderWidth = SecondSignUpConstans.borderWidth
+        textField.layer.borderColor = SecondSignUpConstans.borderColor
         return true
     }
     
@@ -99,16 +53,51 @@ extension SecondSignUpViewController: UITextFieldDelegate {
     
 }
 
-extension SecondSignUpViewController {
+private extension SecondSignUpViewController {
+    
+    func settingTextFields() {
+        func setPaddingForTextField(_ textField: UITextField) {
+            let spacerView = UIView(frame: CGRect(origin: SecondSignUpConstans.spacePointForTextFields, size: SecondSignUpConstans.spaceSizeForTextFields))
+            
+            textField.leftViewMode = UITextField.ViewMode.always
+            textField.leftView = spacerView
+        }
+        
+        setPaddingForTextField(nameTextField)
+        setPaddingForTextField(usernameTextField)
+        setPaddingForTextField(emailTextField)
+        setPaddingForTextField(passwordTextField)
+    }
+    
     
     func setupSomeQuestionsLabel() {
-        let mainString = "Already have an account? Sign in"
-        let subStringToColor = "Sign in"
-        
-        let range = (mainString as NSString).range(of: subStringToColor)
-        let attributes = NSMutableAttributedString.init(string: mainString)
+        let range = (SecondSignUpConstans.mainStringSomeQuestionLabel as NSString).range(of: SecondSignUpConstans.signInText)
+        let attributes = NSMutableAttributedString.init(string: SecondSignUpConstans.mainStringSomeQuestionLabel)
         attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
         someQuestionsLabel.attributedText = attributes
     }
 
 }
+
+private struct SecondSignUpConstans {
+    static let borderWidth: CGFloat = 2
+    static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
+    static let mainStringSomeQuestionLabel = "Already have an account? Sign in"
+    static let signInText = "Sign in"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

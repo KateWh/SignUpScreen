@@ -20,52 +20,17 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
-        signUpScrollView.delegate = self
         registerKeyboardNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        removeKeyboardNotifications()
-    }
-    
-}
-
-extension SignUpViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.x != 0 {
-            scrollView.contentOffset.x = 0
-        }
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    
-    func settingTextFields() {
-        nameTextField.delegate = self
-        nameTextField.tag = 0
-        nameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(nameTextField)
-        usernameTextField.delegate = self
-        usernameTextField.tag = 1
-        usernameTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(usernameTextField)
-        emailTextField.delegate = self
-        emailTextField.tag = 2
-        emailTextField.returnKeyType = UIReturnKeyType.next
-        setPaddingForTextField(emailTextField)
-        passwordTextField.delegate = self
-        passwordTextField.tag = 3
-        passwordTextField.returnKeyType = UIReturnKeyType.done
-        setPaddingForTextField(passwordTextField)
-    }
-    
-    func setPaddingForTextField(_ textField: UITextField) {
-        let spacerView = UIView(frame:CGRect(x:0, y:0, width:10, height:10))
-        textField.leftViewMode = UITextField.ViewMode.always
-        textField.leftView = spacerView
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
@@ -78,16 +43,28 @@ extension SignUpViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        func checkLength(_ string: String?, range: (Int,Int)) -> Bool {
+            if let string = string {
+                switch string.count{
+                case range.0...range.1:
+                    return true
+                default:
+                    break
+                }
+            }
+            return false
+        }
+        
         switch textField.tag {
         case 0:
             if textField.text?.count ?? 0 < 4 {
-                showAlert(title: "Name too short!", massage: "Must enter more than 3 characters.", preferredStyle: .alert, titleAction: "Ok", styleAction: .default, handlerAction: nil)
+                showAlert(title: SignUpConstans.alertNameTitle, massage: SignUpConstans.alertNameMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertNameTitleAction, styleAction: .default, handlerAction: nil)
                 return false
             }
         case 3:
             let text = textField.text ?? ""
-            if !checkLength(textField.text, range: (6,16)) || !text.isAlphanumeric  {
-                showAlert(title: "Wrong input!", massage: "The password must contain only letters and numbers, from 6 to 16 characters.", preferredStyle: .alert, titleAction: "Ok", styleAction: .default, handlerAction: nil)
+            if !checkLength(textField.text, range: SignUpConstans.keyboardRestrictions) || !text.isAlphanumeric  {
+                showAlert(title: SignUpConstans.alertPasswordTitle, massage: SignUpConstans.alertPasswordMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertPasswordTitleAction, styleAction: .default, handlerAction: nil)
                 return false
             }
         default:
@@ -95,22 +72,23 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         return true
     }
-
-    func checkLength(_ string: String?, range: (Int,Int)) -> Bool {
-        if let string = string {
-            switch string.count{
-            case range.0...range.1:
-                return true
-            default:
-                break
-            }
-        }
-        return false
-    }
     
 }
 
-extension SignUpViewController {
+private extension SignUpViewController {
+    
+    func settingTextFields() {
+        func setPaddingForTextField(_ textField: UITextField) {
+            let spacerView = UIView(frame: CGRect(origin: SignUpConstans.spacePointForTextFields, size: SignUpConstans.spaceSizeForTextFields))
+            textField.leftViewMode = UITextField.ViewMode.always
+            textField.leftView = spacerView
+        }
+        
+        setPaddingForTextField(nameTextField)
+        setPaddingForTextField(usernameTextField)
+        setPaddingForTextField(emailTextField)
+        setPaddingForTextField(passwordTextField)
+    }
     
     func showAlert(title: String?, massage: String?, preferredStyle: UIAlertController.Style, titleAction: String?, styleAction: UIAlertAction.Style, handlerAction: ((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title, message: massage, preferredStyle: preferredStyle)
@@ -119,19 +97,10 @@ extension SignUpViewController {
         self.present(alertController, animated: true, completion:  nil)
     }
     
-}
-
-extension SignUpViewController {
-    
     func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
             UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    func removeKeyboardNotifications() {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -152,4 +121,17 @@ extension String {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
     
+}
+
+private struct SignUpConstans {
+    
+    static let alertNameTitle = "Name too short!"
+    static let alertNameMassage = "Must enter more than 3 characters."
+    static let alertNameTitleAction = "Ok"
+    static let alertPasswordTitle = "Wrong input!"
+    static let alertPasswordMassage = "The password must contain only letters and numbers, from 6 to 16 characters."
+    static let alertPasswordTitleAction = "Ok"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+    static let keyboardRestrictions = (6, 16)
 }
