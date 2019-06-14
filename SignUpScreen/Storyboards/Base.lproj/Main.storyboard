@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zRF-U1-rsL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7Zo-v6-EJV">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -917,7 +917,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? Sign in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-MY-zbw">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account? Sign in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mzb-MY-zbw">
                                         <rect key="frame" x="8" y="93" width="366" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="0Yj-Ze-lMM"/>
@@ -1001,6 +1001,7 @@
                         <outlet property="secondSignUpScrollView" destination="WPa-AS-bqJ" id="IFp-MT-oxm"/>
                         <outlet property="someQuestionsLabel" destination="Mzb-MY-zbw" id="hDM-No-oHT"/>
                         <outlet property="usernameTextField" destination="LTU-If-t6d" id="rM4-cF-aXM"/>
+                        <segue destination="QKh-6m-zid" kind="show" identifier="goToSignIn" id="R7i-Sr-6yR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ilr-AF-eze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1027,7 +1028,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owu-G0-VlQ">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account? Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owu-G0-VlQ">
                                         <rect key="frame" x="8" y="90" width="366" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="ujg-Ga-8Mj"/>
@@ -1163,6 +1164,7 @@
                         <outlet property="emailTextField" destination="VDW-hf-PLE" id="GNs-Sk-0TS"/>
                         <outlet property="passwordTextField" destination="wzX-o3-WpY" id="Gxd-X7-fzd"/>
                         <outlet property="someQuestionsLabel" destination="owu-G0-VlQ" id="cdf-b5-HL6"/>
+                        <segue destination="r4c-FM-dSy" kind="show" identifier="goToSignUp" id="Ale-1w-Pbb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkw-ab-YxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1177,4 +1179,7 @@
         <image name="unnamed-2" width="15" height="15"/>
         <image name="unnamed-3" width="300" height="300"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="R7i-Sr-6yR"/>
+    </inferredMetricsTieBreakers>
 </document>

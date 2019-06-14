@@ -71,10 +71,21 @@ private extension SecondSignUpViewController {
     
     
     func setupSomeQuestionsLabel() {
+        someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
+        
         let range = (SecondSignUpConstans.mainStringSomeQuestionLabel as NSString).range(of: SecondSignUpConstans.signInText)
         let attributes = NSMutableAttributedString.init(string: SecondSignUpConstans.mainStringSomeQuestionLabel)
         attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
         someQuestionsLabel.attributedText = attributes
+    }
+    
+    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
+        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
+        
+        if let range = dontHaveText.range(of: NSLocalizedString(SecondSignUpConstans.signInText, comment: "")),
+            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
+            performSegue(withIdentifier: SecondSignUpConstans.goToSignInSegueIdentifire, sender: self)
+        }
     }
 
 }
@@ -84,6 +95,7 @@ private struct SecondSignUpConstans {
     static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
     static let mainStringSomeQuestionLabel = "Already have an account? Sign in"
     static let signInText = "Sign in"
+    static let goToSignInSegueIdentifire = "goToSignIn"
     static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
     static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
 }
