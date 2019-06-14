@@ -31,9 +31,11 @@ class NewPasswordViewController: UIViewController {
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
         if sender.tag == 1 {
-            passwordTextField.isSecureTextEntry = !sender.isSelected
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+                sender.isSelected = !sender.isSelected
         } else {
-            repeatPasswordTextField.isSecureTextEntry = !sender.isSelected
+            repeatPasswordTextField.isSecureTextEntry = !repeatPasswordTextField.isSecureTextEntry
+                sender.isSelected = !sender.isSelected
         }
     }
     

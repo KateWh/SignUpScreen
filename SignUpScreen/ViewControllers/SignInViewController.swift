@@ -21,8 +21,8 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
-        print("PASSWORD BUTTON")
-        passwordTextField.isSecureTextEntry = !sender.isSelected
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        sender.isSelected = !sender.isSelected
     }
     
 }

@@ -24,7 +24,8 @@ class SecondSignUpViewController: UIViewController {
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
-        passwordTextField.isSecureTextEntry = !sender.isSelected
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        sender.isSelected = !sender.isSelected
     }
     
 }
