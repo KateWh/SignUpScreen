@@ -9,16 +9,13 @@
 import UIKit
 
 private struct SignInConstans {
-    static let borderWidth: CGFloat = 2
-    static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
     static let mainStringSomeQuestionLabel = "Don't have an account? Sign up"
     static let signUpText = "Sign up"
     static let goToSignUpSegueIdentifire = "goToSignUp"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
 }
 
-class SignInViewController: UIViewController {
+
+class SignInViewController: BaseTextFieldViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -37,41 +34,11 @@ class SignInViewController: UIViewController {
     
 }
 
-extension SignInViewController: UITextFieldDelegate {
-    
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.layer.borderWidth = SignInConstans.borderWidth
-        textField.layer.borderColor = SignInConstans.borderColor
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-            return true
-        }
-        return false
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderWidth = 0
-    }
-    
-}
-
 private extension SignInViewController {
     
     func settingTextFields() {
-        func setPaddingForTextField(_ textField: UITextField) {
-            let spacerView = UIView(frame: CGRect(origin: SignInConstans.spacePointForTextFields, size: SignInConstans.spaceSizeForTextFields))
-            textField.leftViewMode = UITextField.ViewMode.always
-            textField.leftView = spacerView
-        }
-        
-        setPaddingForTextField(emailTextField)
-        setPaddingForTextField(passwordTextField)
+        super.setPaddingForTextField(emailTextField)
+        super.setPaddingForTextField(passwordTextField)
     }
     
     func setupSomeQuestionsLabel() {

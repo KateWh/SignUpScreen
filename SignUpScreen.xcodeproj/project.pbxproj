@@ -38,6 +38,7 @@
 		C69CA3A022A5189300895292 /* dax-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39922A5189300895292 /* dax-regular.ttf */; };
 		C69CA3A122A5189300895292 /* dax-extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39A22A5189300895292 /* dax-extrabold.ttf */; };
 		C69CA3A222A5189300895292 /* dax-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39B22A5189300895292 /* dax-medium.ttf */; };
+		C6DCEE2922BAD72800F685AF /* BaseTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		C69CA39922A5189300895292 /* dax-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-regular.ttf"; sourceTree = "<group>"; };
 		C69CA39A22A5189300895292 /* dax-extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-extrabold.ttf"; sourceTree = "<group>"; };
 		C69CA39B22A5189300895292 /* dax-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-medium.ttf"; sourceTree = "<group>"; };
+		C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextFieldViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */,
 				C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */,
 				C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */,
+				C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */,
 				C61AE83222AA91FD00FE425F /* SignInViewController.swift */,
 				C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */,
 				C69CA38322A4F7BE00895292 /* SignUpViewController.swift */,
@@ -303,6 +306,7 @@
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
 				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
 				C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */,
+				C6DCEE2922BAD72800F685AF /* BaseTextFieldViewController.swift in Sources */,
 				C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */,
 				C663615F22BA656C00D85362 /* StringExtension.swift in Sources */,
 				C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */,
