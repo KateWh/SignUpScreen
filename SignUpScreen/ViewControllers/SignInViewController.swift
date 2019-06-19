@@ -8,6 +8,16 @@
 
 import UIKit
 
+private struct SignInConstans {
+    static let borderWidth: CGFloat = 2
+    static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
+    static let mainStringSomeQuestionLabel = "Don't have an account? Sign up"
+    static let signUpText = "Sign up"
+    static let goToSignUpSegueIdentifire = "goToSignUp"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+}
+
 class SignInViewController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -16,8 +26,8 @@ class SignInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTextFields()
-        setupSomeQuestionsLabel()
+        self.settingTextFields()
+        self.setupSomeQuestionsLabel()
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
@@ -78,18 +88,8 @@ private extension SignInViewController {
         
         if let range = dontHaveText.range(of: NSLocalizedString(SignInConstans.signUpText, comment: "")),
             recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
-            performSegue(withIdentifier: SignInConstans.goToSignUpSegueIdentifire, sender: self)
+           performSegue(withIdentifier: "unwindSegueToSecondSignUp", sender: self)
         }
     }
     
-}
-
-private struct SignInConstans {
-    static let borderWidth: CGFloat = 2
-    static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
-    static let mainStringSomeQuestionLabel = "Don't have an account? Sign up"
-    static let signUpText = "Sign up"
-    static let goToSignUpSegueIdentifire = "goToSignUp"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
 }

@@ -8,6 +8,19 @@
 
 import UIKit
 
+private struct ResetPasswordConstants {
+    static let signInText = "Sign in"
+    static let mainStringSomeQuestionLabel = "Do you remember your password? Sign in"
+    static let goToSignInSegueIdentifire = "goToSignIn"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+    static let threePointers: CGFloat = 3
+    static let tenPointers: CGFloat = 10
+    static let topViewConstraint: CGFloat = 72
+    static let topSendButtonConstraint: CGFloat = 81
+    static let fiftyPercent: CGFloat = 0.5
+}
+
 class ResetPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -68,7 +81,7 @@ private extension ResetPasswordViewController {
         guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         // Save the distance which you want a use to raise the button.
         var interval = (keyboardFrameSize.minY - ResetPasswordConstants.tenPointers) - sendButton.frame.maxY
-        
+        guard interval < 0 else { return }
         // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
         switch (topConstraintSendButton.constant - ResetPasswordConstants.threePointers) + interval {
         // If the constraint height larger, simply subtract the height of the decrease from it.
@@ -93,45 +106,4 @@ private extension ResetPasswordViewController {
         topConstraintView.constant = ResetPasswordConstants.topViewConstraint
     }
     
-}
-
-extension UITapGestureRecognizer {
-    func didTapAttributedTextInLabel(label: UILabel, inRange targetRange: NSRange) -> Bool {
-        guard let attrString = label.attributedText else {
-            return false
-        }
-        
-        let layoutManager = NSLayoutManager()
-        let textContainer = NSTextContainer(size: .zero)
-        let textStorage = NSTextStorage(attributedString: attrString)
-        
-        layoutManager.addTextContainer(textContainer)
-        textStorage.addLayoutManager(layoutManager)
-        
-        textContainer.lineFragmentPadding = 0
-        textContainer.lineBreakMode = label.lineBreakMode
-        textContainer.maximumNumberOfLines = label.numberOfLines
-        let labelSize = label.bounds.size
-        textContainer.size = labelSize
-        
-        let locationOfTouchInLabel = self.location(in: label)
-        let textBoundingBox = layoutManager.usedRect(for: textContainer)
-        let textContainerOffset = CGPoint(x: (labelSize.width - textBoundingBox.size.width) * ResetPasswordConstants.fiftyPercent - textBoundingBox.origin.x, y: (labelSize.height - textBoundingBox.size.height) * ResetPasswordConstants.fiftyPercent - textBoundingBox.origin.y)
-        let locationOfTouchInTextContainer = CGPoint(x: locationOfTouchInLabel.x - textContainerOffset.x, y: locationOfTouchInLabel.y - textContainerOffset.y)
-        let indexOfCharacter = layoutManager.characterIndex(for: locationOfTouchInTextContainer, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
-        return NSLocationInRange(indexOfCharacter, targetRange)
-    }
-}
-
-private struct ResetPasswordConstants {
-    static let signInText = "Sign in"
-    static let mainStringSomeQuestionLabel = "Do you remember your password? Sign in"
-    static let goToSignInSegueIdentifire = "goToSignIn"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
-    static let threePointers: CGFloat = 3
-    static let tenPointers: CGFloat = 10
-    static let topViewConstraint: CGFloat = 72
-    static let topSendButtonConstraint: CGFloat = 81
-    static let fiftyPercent: CGFloat = 0.5
 }

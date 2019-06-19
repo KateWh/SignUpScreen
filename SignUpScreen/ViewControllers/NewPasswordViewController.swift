@@ -44,12 +44,16 @@ class NewPasswordViewController: UIViewController {
 extension NewPasswordViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
+        print("Внутри textFieldShouldReturn")
+        print("textField.tag", textField.tag)
+        print(textField.superview?.viewWithTag(textField.tag + 1) as? UITextField)
+        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
+            print("resignFirstResponder, true")
             textField.resignFirstResponder()
             return true
         }
+        print("false")
+        nextField.becomeFirstResponder()
         return false
     }
     
@@ -69,7 +73,7 @@ private extension NewPasswordViewController {
         setPaddingForTextField(repeatPasswordTextField)
     }
 
-    private func registerKeyboardNotification() {
+    func registerKeyboardNotification() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
             UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -79,6 +83,7 @@ private extension NewPasswordViewController {
         guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
         // Save the distance which you want a use to raise the button.
         var interval = (keyboardFrameSize.minY - NewPasswordConstants.tenPointers) - saveButton.frame.maxY
+        guard interval < 0 else { return }
         
         // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
         switch (topConstraintSaveButton.constant - NewPasswordConstants.threePointers) + interval {

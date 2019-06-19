@@ -8,6 +8,41 @@
 
 import UIKit
 
+private struct GlobalShiftConstants {
+    static let twoItemPercenttWidth: CGFloat = 0.97
+    static let threeItemPercentWidth: CGFloat = 0.96
+    static let threeFotoPercetnWidth: CGFloat = 0.92
+    static let fiftyPercent: CGFloat = 0.5
+    static let sixtyPercent: CGFloat = 0.6
+    static let oneHundredFifteenPercent: CGFloat = 1.15
+    static let globalShiftCollectionIdentifire = "globalShiftsCollectionCell"
+    static let companiesCollectionIdentifire = "companiesCollectionCell"
+    static let fivePoints: CGFloat = 5
+    static let tenPoints: CGFloat = 10
+}
+
+struct GlobalShifts {
+    let name: String
+    var isSelected = false
+    var image: UIImage? = nil
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    init(name: String, image: UIImage){
+        self.name = name
+        self.image = image
+    }
+}
+
+enum PresentationStyle {
+    case globalShift
+    case trends
+    case industries
+    case companies
+}
+
 class GlobalShiftsCollectionViewController: UIViewController {
 
     @IBOutlet weak var globalShiftsCollectionView: UICollectionView!
@@ -146,39 +181,3 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDelegateFlowLayo
     }
     
 }
-
-struct GlobalShifts {
-    let name: String
-    var isSelected = false
-    var image: UIImage? = nil
-    
-    init(name: String) {
-        self.name = name
-    }
-    
-    init(name: String, image: UIImage){
-        self.name = name
-        self.image = image
-    }
-}
-
-private struct GlobalShiftConstants {
-    static let twoItemPercenttWidth: CGFloat = 0.97
-    static let threeItemPercentWidth: CGFloat = 0.96
-    static let threeFotoPercetnWidth: CGFloat = 0.92
-    static let fiftyPercent: CGFloat = 0.5
-    static let sixtyPercent: CGFloat = 0.6
-    static let oneHundredFifteenPercent: CGFloat = 1.15
-    static let globalShiftCollectionIdentifire = "globalShiftsCollectionCell"
-    static let companiesCollectionIdentifire = "companiesCollectionCell"
-    static let fivePoints: CGFloat = 5
-    static let tenPoints: CGFloat = 10
-}
-
-enum PresentationStyle {
-    case globalShift
-    case trends
-    case industries
-    case companies
-}
-

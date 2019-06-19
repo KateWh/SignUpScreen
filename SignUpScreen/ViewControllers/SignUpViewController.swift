@@ -8,6 +8,19 @@
 
 import UIKit
 
+private struct SignUpConstans {
+    static let alertNameTitle = "Name too short!"
+    static let alertNameMassage = "Must enter more than 3 characters."
+    static let alertNameTitleAction = "Ok"
+    static let alertPasswordTitle = "Wrong input!"
+    static let alertPasswordMassage = "The password must contain only letters and numbers, from 6 to 16 characters."
+    static let alertPasswordTitleAction = "Ok"
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+    static let minPasswordLength = 6
+    static let maxPasswordLength = 16
+}
+
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -33,42 +46,21 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
+        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
             textField.resignFirstResponder()
             return true
         }
+        nextField.becomeFirstResponder()
         return false
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        func checkLength(_ string: String?, range: (Int,Int)) -> Bool {
-            if let string = string {
-                switch string.count{
-                case range.0...range.1:
-                    return true
-                default:
-                    break
-                }
-            }
+        if textField == self.nameTextField && (textField.text == nil || textField.text!.count < 4) {
+            showAlert(title: SignUpConstans.alertNameTitle, massage: SignUpConstans.alertNameMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertNameTitleAction, styleAction: .default, handlerAction: nil)
             return false
-        }
-        
-        switch textField.tag {
-        case 0:
-            if textField.text?.count ?? 0 < 4 {
-                showAlert(title: SignUpConstans.alertNameTitle, massage: SignUpConstans.alertNameMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertNameTitleAction, styleAction: .default, handlerAction: nil)
-                return false
-            }
-        case 3:
-            let text = textField.text ?? ""
-            if !checkLength(textField.text, range: SignUpConstans.keyboardRestrictions) || !text.isAlphanumeric  {
+        } else if textField == self.passwordTextField && (textField.text == nil || textField.text!.count < SignUpConstans.minPasswordLength || textField.text!.count > SignUpConstans.maxPasswordLength || !textField.text!.isAlphanumeric) {
                 showAlert(title: SignUpConstans.alertPasswordTitle, massage: SignUpConstans.alertPasswordMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertPasswordTitleAction, styleAction: .default, handlerAction: nil)
                 return false
-            }
-        default:
-            break
         }
         return true
     }
@@ -105,33 +97,12 @@ private extension SignUpViewController {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        let conternInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrameSize.height, right: 0)
-        signUpScrollView.contentInset = conternInset
+        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrameSize.height, right: 0)
+        signUpScrollView.contentInset = contentInset
     }
     
     @objc func keyboardWillHide() {
         signUpScrollView.contentOffset = CGPoint.zero
     }
     
-}
-
-extension String {
-    
-    var isAlphanumeric: Bool {
-        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
-    }
-    
-}
-
-private struct SignUpConstans {
-    
-    static let alertNameTitle = "Name too short!"
-    static let alertNameMassage = "Must enter more than 3 characters."
-    static let alertNameTitleAction = "Ok"
-    static let alertPasswordTitle = "Wrong input!"
-    static let alertPasswordMassage = "The password must contain only letters and numbers, from 6 to 16 characters."
-    static let alertPasswordTitleAction = "Ok"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
-    static let keyboardRestrictions = (6, 16)
 }
