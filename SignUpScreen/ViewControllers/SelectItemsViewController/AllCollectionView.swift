@@ -10,8 +10,9 @@ import UIKit
 
 private struct AllCollectionConstants {
     static let reusableIdentifire = "cell"
-    static let percentForThreeItem: CGFloat = 0.91
-    static let percentVerticalSpace: CGFloat = 0.045
+    static let percentForThreeItem: CGFloat = 0.97
+    static let percentVerticalSpace: CGFloat = 0.015
+    static let pointsHorizontalSpace: CGFloat = 3
 }
 
 class AllCollectionView: UICollectionView {
@@ -39,7 +40,7 @@ extension AllCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCollectionConstants.reusableIdentifire, for: indexPath)
+        let cell: AllCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: AllCollectionConstants.reusableIdentifire, for: indexPath) as! AllCollectionViewCell 
         return cell
     }
 
@@ -52,6 +53,10 @@ extension AllCollectionView: UICollectionViewDelegateFlowLayout {
         let itemHeight = itemWidth
         
         return .init(width: itemWidth, height: itemHeight)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return .init(AllCollectionConstants.pointsHorizontalSpace)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

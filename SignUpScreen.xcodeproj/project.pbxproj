@@ -21,6 +21,8 @@
 		C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */; };
 		C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256722B9997500E62CB7 /* AllCollectionView.swift */; };
 		C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */; };
+		C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */; };
+		C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */; };
 		C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */; };
 		C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
@@ -51,6 +53,8 @@
 		C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionView.swift; sourceTree = "<group>"; };
 		C61E256722B9997500E62CB7 /* AllCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionView.swift; sourceTree = "<group>"; };
 		C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
+		C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionViewCell.swift; sourceTree = "<group>"; };
+		C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewCell.swift; sourceTree = "<group>"; };
 		C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpViewController.swift; sourceTree = "<group>"; };
 		C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,7 +98,9 @@
 		C61E256422B9878800E62CB7 /* SelectItemsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */,
 				C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */,
+				C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */,
 				C61E256722B9997500E62CB7 /* AllCollectionView.swift */,
 				C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */,
 			);
@@ -273,11 +279,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */,
+				C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */,
 				C60A944322B8D3BF0036FF4F /* SelectPicturesCollectionView.swift in Sources */,
 				C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */,
 				C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */,
 				C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */,
 				C60A943922B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift in Sources */,
+				C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
 				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
 				C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */,

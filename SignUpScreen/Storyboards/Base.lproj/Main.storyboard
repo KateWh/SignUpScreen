@@ -386,7 +386,7 @@
                                                         <constraint firstAttribute="height" constant="25" id="Sta-RH-Nhk"/>
                                                         <constraint firstAttribute="width" constant="25" id="lVu-eH-gGg"/>
                                                     </constraints>
-                                                    <state key="normal" image="unnamed-2"/>
+                                                    <state key="normal" image="check_mark_large"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -417,7 +417,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unnamed-3" translatesAutoresizingMaskIntoConstraints="NO" id="Yfa-iK-keh">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple-300^300" translatesAutoresizingMaskIntoConstraints="NO" id="Yfa-iK-keh">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Yfa-iK-keh" secondAttribute="height" multiplier="1:1" id="Bha-Ef-icZ"/>
@@ -435,7 +435,7 @@
                                                         <constraint firstAttribute="height" constant="15" id="9PX-uc-v4P"/>
                                                         <constraint firstAttribute="width" constant="15" id="UrT-f8-1Qt"/>
                                                     </constraints>
-                                                    <state key="normal" image="Image-1"/>
+                                                    <state key="normal" image="check_mark_middle"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -1334,20 +1334,40 @@
                                 <rect key="frame" x="16" y="131" width="343" height="418"/>
                                 <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cdv-60-V8B">
-                                    <size key="itemSize" width="84" height="84"/>
+                                    <size key="itemSize" width="94" height="94"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="FbK-Pm-UFT">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="FbK-Pm-UFT" customClass="AllCollectionViewCell" customModule="SignUpScreen" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lqf-wh-Z0B">
+                                                    <rect key="frame" x="7" y="7" width="80" height="80"/>
+                                                    <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMj-PY-FDc">
+                                                    <rect key="frame" x="75" y="0.0" width="19" height="19"/>
+                                                    <state key="normal" image="checkbox-30x30"/>
+                                                </button>
+                                            </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.92150729894638062" green="0.92161422967910767" blue="0.92145925760269165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="Lqf-wh-Z0B" secondAttribute="bottom" constant="7" id="Djh-pJ-02s"/>
+                                            <constraint firstItem="Lqf-wh-Z0B" firstAttribute="top" secondItem="rMj-PY-FDc" secondAttribute="bottom" constant="-12" id="R19-WY-Vcq"/>
+                                            <constraint firstItem="rMj-PY-FDc" firstAttribute="leading" secondItem="Lqf-wh-Z0B" secondAttribute="trailing" constant="-12" id="Urw-QB-jKs"/>
+                                            <constraint firstItem="rMj-PY-FDc" firstAttribute="top" secondItem="FbK-Pm-UFT" secondAttribute="top" id="eHg-dF-9go"/>
+                                            <constraint firstItem="Lqf-wh-Z0B" firstAttribute="leading" secondItem="FbK-Pm-UFT" secondAttribute="leading" constant="7" id="i5u-js-2Al"/>
+                                            <constraint firstAttribute="trailing" secondItem="rMj-PY-FDc" secondAttribute="trailing" id="pD9-62-A1k"/>
+                                            <constraint firstItem="Lqf-wh-Z0B" firstAttribute="top" secondItem="FbK-Pm-UFT" secondAttribute="top" constant="7" id="r1h-iZ-yTD"/>
+                                            <constraint firstAttribute="trailing" secondItem="Lqf-wh-Z0B" secondAttribute="trailing" constant="7" id="wO6-Cd-ubk"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="3"/>
@@ -1410,11 +1430,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Image-1" width="10" height="10"/>
+        <image name="apple-300^300" width="300" height="300"/>
+        <image name="check_mark_large" width="15" height="15"/>
+        <image name="check_mark_middle" width="10" height="10"/>
+        <image name="checkbox-30x30" width="30" height="30"/>
         <image name="closed-eye-30x30" width="30" height="30"/>
         <image name="opened-eye-30x30" width="30" height="30"/>
-        <image name="unnamed-2" width="15" height="15"/>
-        <image name="unnamed-3" width="300" height="300"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="R7i-Sr-6yR"/>
