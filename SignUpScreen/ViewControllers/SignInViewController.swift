@@ -13,7 +13,7 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var someQuestionsLabel: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()

@@ -10,12 +10,19 @@
 		C6049CD922AFF7AF009AC6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */; };
 		C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */; };
 		C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */; };
+		C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */; };
+		C60A943922B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */; };
+		C60A943B22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */; };
+		C60A944322B8D3BF0036FF4F /* SelectPicturesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */; };
+		C60A944522B8D42D0036FF4F /* AllPicturesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */; };
 		C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */; };
 		C60F0D5D22B1209D001FF432 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */; };
 		C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AE83222AA91FD00FE425F /* SignInViewController.swift */; };
+		C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */; };
+		C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256722B9997500E62CB7 /* AllCollectionView.swift */; };
+		C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */; };
 		C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */; };
 		C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */; };
-		C676C53822B3E63400D01BF5 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C676C53722B3E63400D01BF5 /* CommonExtensions.swift */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
 		C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpViewController.swift */; };
 		C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* Main.storyboard */; };
@@ -33,12 +40,19 @@
 		C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewController.swift; sourceTree = "<group>"; };
 		C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewCell.swift; sourceTree = "<group>"; };
+		C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionsItemsViewController.swift; sourceTree = "<group>"; };
+		C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPicturesCollectionViewCell.swift; sourceTree = "<group>"; };
+		C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPicturesCollectionView.swift; sourceTree = "<group>"; };
+		C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPicturesCollectionView.swift; sourceTree = "<group>"; };
 		C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
 		C61AE83222AA91FD00FE425F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionView.swift; sourceTree = "<group>"; };
+		C61E256722B9997500E62CB7 /* AllCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionView.swift; sourceTree = "<group>"; };
+		C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpViewController.swift; sourceTree = "<group>"; };
 		C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
-		C676C53722B3E63400D01BF5 /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69CA38122A4F7BE00895292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69CA38322A4F7BE00895292 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +79,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C60A943522B8C6780036FF4F /* SelectCollectionsItemsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */,
+				C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */,
+				C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */,
+				C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */,
+				C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */,
+			);
+			path = SelectCollectionsItemsViewController;
+			sourceTree = "<group>";
+		};
+		C61E256422B9878800E62CB7 /* SelectItemsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */,
+				C61E256722B9997500E62CB7 /* AllCollectionView.swift */,
+				C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */,
+			);
+			path = SelectItemsViewController;
+			sourceTree = "<group>";
+		};
 		C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,14 +109,6 @@
 				C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */,
 			);
 			path = GlobalShiftsViewControllers;
-			sourceTree = "<group>";
-		};
-		C676C53622B3E61900D01BF5 /* CommonExtensions */ = {
-			isa = PBXGroup;
-			children = (
-				C676C53722B3E63400D01BF5 /* CommonExtensions.swift */,
-			);
-			path = CommonExtensions;
 			sourceTree = "<group>";
 		};
 		C69CA37522A4F7BE00895292 = {
@@ -144,7 +172,8 @@
 		C6DCC62222A54E5B000FCFC6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C676C53622B3E61900D01BF5 /* CommonExtensions */,
+				C61E256422B9878800E62CB7 /* SelectItemsViewController */,
+				C60A943522B8C6780036FF4F /* SelectCollectionsItemsViewController */,
 				C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */,
 				C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */,
 				C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */,
@@ -243,14 +272,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C676C53822B3E63400D01BF5 /* CommonExtensions.swift in Sources */,
 				C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */,
+				C60A944322B8D3BF0036FF4F /* SelectPicturesCollectionView.swift in Sources */,
+				C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */,
+				C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */,
+				C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */,
+				C60A943922B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
 				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
+				C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */,
 				C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */,
 				C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */,
 				C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */,
 				C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */,
+				C60A943B22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift in Sources */,
+				C60A944522B8D42D0036FF4F /* AllPicturesCollectionView.swift in Sources */,
 				C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */,
 				C60F0D5D22B1209D001FF432 /* NewPasswordViewController.swift in Sources */,
 			);
