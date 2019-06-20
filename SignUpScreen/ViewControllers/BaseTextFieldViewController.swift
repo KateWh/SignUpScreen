@@ -19,13 +19,13 @@ class BaseTextFieldViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        registerKeyboardNotification()
+        let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(Tap)
        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
 
 }
@@ -61,19 +61,34 @@ extension BaseTextFieldViewController {
         textField.layer.borderColor = BaseConstants.borderColor
     }
     
-    func registerKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    func registerKeyboardNotification() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
+//            UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+//
+//    func removeKeyboardNotification() {
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+//    }
+    
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//       
+//    }
+//    
+//    @objc func keyboardWillHide() {
+//        
+//    }
+    
+    @objc func DismissKeyboard() {
+        view.endEditing(true)
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
-       
+    func showAlert(title: String?, massage: String?, preferredStyle: UIAlertController.Style, titleAction: String?, styleAction: UIAlertAction.Style, handlerAction: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title, message: massage, preferredStyle: preferredStyle)
+        let alertAction = UIAlertAction(title: titleAction, style: styleAction, handler: handlerAction)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion:  nil)
     }
-    
-    @objc func keyboardWillHide() {
-        
-    }
-    
 }
 

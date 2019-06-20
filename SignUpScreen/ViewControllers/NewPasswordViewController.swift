@@ -8,7 +8,15 @@
 
 import UIKit
 
-class NewPasswordViewController: UIViewController {
+private struct NewPasswordConstants {
+    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
+    static let topSaveButtonConstraint: CGFloat = 58
+    static let topViewConstraint: CGFloat = 72
+    static let tenPointers: CGFloat = 10
+    static let threePointers: CGFloat = 3
+}
+
+class NewPasswordViewController: BaseTextFieldViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
@@ -19,8 +27,8 @@ class NewPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTextFields()
-        registerKeyboardNotification()
+        self.settingTextFields()
+        self.registerKeyboardNotification()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,31 +38,8 @@ class NewPasswordViewController: UIViewController {
     
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
-        if sender.tag == 1 {
-            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-                sender.isSelected = !sender.isSelected
-        } else {
-            repeatPasswordTextField.isSecureTextEntry = !repeatPasswordTextField.isSecureTextEntry
-                sender.isSelected = !sender.isSelected
-        }
-    }
-    
-}
-
-extension NewPasswordViewController: UITextFieldDelegate {
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print("Внутри textFieldShouldReturn")
-        print("textField.tag", textField.tag)
-        print(textField.superview?.viewWithTag(textField.tag + 1) as? UITextField)
-        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
-            print("resignFirstResponder, true")
-            textField.resignFirstResponder()
-            return true
-        }
-        print("false")
-        nextField.becomeFirstResponder()
-        return false
+        self.changePasswordView(repeatPasswordTextField)
+        self.changePasswordView(passwordTextField)
     }
     
 }
@@ -62,13 +47,6 @@ extension NewPasswordViewController: UITextFieldDelegate {
 private extension NewPasswordViewController {
     
     func settingTextFields() {
-        func setPaddingForTextField(_ textField: UITextField) {
-            let spaceView = UIView(frame: CGRect(origin: NewPasswordConstants.spacePointForTextFields, size: NewPasswordConstants.spaceSizeForTextFields))
-            
-            textField.leftViewMode = UITextField.ViewMode.always
-            textField.leftView = spaceView
-        }
-        
         setPaddingForTextField(passwordTextField)
         setPaddingForTextField(repeatPasswordTextField)
     }
@@ -107,13 +85,17 @@ private extension NewPasswordViewController {
         topConstraintView.constant = NewPasswordConstants.topViewConstraint
     }
     
+    func changePasswordView(_ textField: UITextField) {
+        textField.isSecureTextEntry = !textField.isSecureTextEntry
+        textField.isSelected = !textField.isSelected
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == repeatPasswordTextField, repeatPasswordTextField.text != nil {
+            
+        }
+        return true
+    }
+    
 }
 
-private struct NewPasswordConstants {
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let topSaveButtonConstraint: CGFloat = 58
-    static let topViewConstraint: CGFloat = 72
-    static let tenPointers: CGFloat = 10
-    static let threePointers: CGFloat = 3
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
-}

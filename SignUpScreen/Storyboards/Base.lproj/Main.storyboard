@@ -1119,7 +1119,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="dcP-QK-cOJ">
             <objects>
-                <viewController id="QKh-6m-zid" customClass="SignInViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QKh-6m-zid" customClass="SignInViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NRc-Fe-NJ1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
