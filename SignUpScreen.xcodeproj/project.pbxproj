@@ -3,20 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC6511F0ACB68158F944EFB8 /* Pods_SignUpScreen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFF6D31A26D2B034660B335 /* Pods_SignUpScreen.framework */; };
 		C6049CD922AFF7AF009AC6E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */; };
 		C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */; };
 		C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */; };
-		C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */; };
-		C60A943922B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */; };
-		C60A943B22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */; };
-		C60A944322B8D3BF0036FF4F /* SelectPicturesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */; };
-		C60A944522B8D42D0036FF4F /* AllPicturesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */; };
 		C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */; };
 		C60F0D5D22B1209D001FF432 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */; };
+		C612841922BCD87400504B36 /* BaseSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */; };
 		C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AE83222AA91FD00FE425F /* SignInViewController.swift */; };
 		C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */; };
 		C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256722B9997500E62CB7 /* AllCollectionView.swift */; };
@@ -42,16 +39,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		658969090B0EBB75CA68F823 /* Pods-SignUpScreen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignUpScreen.debug.xcconfig"; path = "Target Support Files/Pods-SignUpScreen/Pods-SignUpScreen.debug.xcconfig"; sourceTree = "<group>"; };
+		6DFF6D31A26D2B034660B335 /* Pods_SignUpScreen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignUpScreen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B88F31E81E1776ED8C89CFD5 /* Pods-SignUpScreen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignUpScreen.release.xcconfig"; path = "Target Support Files/Pods-SignUpScreen/Pods-SignUpScreen.release.xcconfig"; sourceTree = "<group>"; };
 		C6049CD822AFF7AF009AC6E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C60943EF22AE572900E9B34E /* GlobalShiftsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewController.swift; sourceTree = "<group>"; };
 		C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewCell.swift; sourceTree = "<group>"; };
-		C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCollectionsItemsViewController.swift; sourceTree = "<group>"; };
-		C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPicturesCollectionViewCell.swift; sourceTree = "<group>"; };
-		C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPicturesCollectionViewCell.swift; sourceTree = "<group>"; };
-		C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPicturesCollectionView.swift; sourceTree = "<group>"; };
-		C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPicturesCollectionView.swift; sourceTree = "<group>"; };
 		C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
+		C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		C61AE83222AA91FD00FE425F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionView.swift; sourceTree = "<group>"; };
 		C61E256722B9997500E62CB7 /* AllCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionView.swift; sourceTree = "<group>"; };
@@ -83,27 +79,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC6511F0ACB68158F944EFB8 /* Pods_SignUpScreen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C60A943522B8C6780036FF4F /* SelectCollectionsItemsViewController */ = {
+		54C10E94F94420E45802D9F1 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C60A943822B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift */,
-				C60A944222B8D3BF0036FF4F /* SelectPicturesCollectionView.swift */,
-				C60A943A22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift */,
-				C60A944422B8D42D0036FF4F /* AllPicturesCollectionView.swift */,
-				C60A943622B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift */,
+				658969090B0EBB75CA68F823 /* Pods-SignUpScreen.debug.xcconfig */,
+				B88F31E81E1776ED8C89CFD5 /* Pods-SignUpScreen.release.xcconfig */,
 			);
-			path = SelectCollectionsItemsViewController;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		C61E256422B9878800E62CB7 /* SelectItemsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */,
 				C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */,
 				C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */,
 				C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */,
@@ -137,6 +132,8 @@
 			children = (
 				C69CA38022A4F7BE00895292 /* SignUpScreen */,
 				C69CA37F22A4F7BE00895292 /* Products */,
+				54C10E94F94420E45802D9F1 /* Pods */,
+				F39F44C92B3926D3393825BF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				C61E256422B9878800E62CB7 /* SelectItemsViewController */,
-				C60A943522B8C6780036FF4F /* SelectCollectionsItemsViewController */,
 				C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */,
 				C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */,
 				C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */,
@@ -217,6 +213,14 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
+		F39F44C92B3926D3393825BF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DFF6D31A26D2B034660B335 /* Pods_SignUpScreen.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C69CA39022A4F7C000895292 /* Build configuration list for PBXNativeTarget "SignUpScreen" */;
 			buildPhases = (
+				C48643F9B6E0683BEF9E8B2C /* [CP] Check Pods Manifest.lock */,
 				C69CA37A22A4F7BE00895292 /* Sources */,
 				C69CA37B22A4F7BE00895292 /* Frameworks */,
 				C69CA37C22A4F7BE00895292 /* Resources */,
+				FFCC09B7ED76FFA4ED8FC796 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -290,6 +296,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C48643F9B6E0683BEF9E8B2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SignUpScreen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFCC09B7ED76FFA4ED8FC796 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SignUpScreen/Pods-SignUpScreen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SignUpScreen/Pods-SignUpScreen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SignUpScreen/Pods-SignUpScreen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C69CA37A22A4F7BE00895292 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -297,23 +345,19 @@
 			files = (
 				C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */,
 				C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */,
-				C60A944322B8D3BF0036FF4F /* SelectPicturesCollectionView.swift in Sources */,
 				C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */,
 				C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */,
 				C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */,
-				C60A943922B8C70C0036FF4F /* SelectPicturesCollectionViewCell.swift in Sources */,
 				C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
 				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
-				C60A943722B8C6C90036FF4F /* SelectCollectionsItemsViewController.swift in Sources */,
 				C6DCEE2922BAD72800F685AF /* BaseTextFieldViewController.swift in Sources */,
 				C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */,
 				C663615F22BA656C00D85362 /* StringExtension.swift in Sources */,
+				C612841922BCD87400504B36 /* BaseSelectCollectionViewCell.swift in Sources */,
 				C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */,
 				C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */,
 				C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */,
-				C60A943B22B8C7260036FF4F /* AllPicturesCollectionViewCell.swift in Sources */,
-				C60A944522B8D42D0036FF4F /* AllPicturesCollectionView.swift in Sources */,
 				C663616122BA67C400D85362 /* UITapGestureRecognizerExtension.swift in Sources */,
 				C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */,
 				C60F0D5D22B1209D001FF432 /* NewPasswordViewController.swift in Sources */,
@@ -460,6 +504,7 @@
 		};
 		C69CA39122A4F7C000895292 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658969090B0EBB75CA68F823 /* Pods-SignUpScreen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -479,6 +524,7 @@
 		};
 		C69CA39222A4F7C000895292 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B88F31E81E1776ED8C89CFD5 /* Pods-SignUpScreen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

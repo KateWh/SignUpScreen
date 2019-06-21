@@ -7,7 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
-class SelectedCollectionViewCell: UICollectionViewCell {
-    
+class SelectedCollectionViewCell: BaseSelectCollectionViewCell {
 }

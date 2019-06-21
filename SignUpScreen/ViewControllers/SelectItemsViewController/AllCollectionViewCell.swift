@@ -8,9 +8,13 @@
 
 import UIKit
 
-class AllCollectionViewCell: UICollectionViewCell {
+class AllCollectionViewCell: BaseSelectCollectionViewCell {
     
-    override func awakeFromNib() {
-        print("-------------------cell-----------------------")
+    @IBOutlet weak var checkboxButton: UIButton!
+    
+    func settingsCell(item: ImageModel)
+    {
+        self.checkboxButton.isHidden = !item.isSelected
     }
+    
 }
