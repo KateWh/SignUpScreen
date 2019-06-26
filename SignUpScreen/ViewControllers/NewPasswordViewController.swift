@@ -14,12 +14,16 @@ private struct NewPasswordConstants {
     static let topViewConstraint: CGFloat = 72
     static let tenPointers: CGFloat = 10
     static let threePointers: CGFloat = 3
+    static let saveButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
+    static let saveButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
 class NewPasswordViewController: BaseTextFieldViewController {
 
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
+    
+    @IBOutlet weak var doNotMatchPasswordLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
@@ -42,6 +46,21 @@ class NewPasswordViewController: BaseTextFieldViewController {
         self.changePasswordView(passwordTextField)
     }
     
+    @IBAction func textFieldEditingDidChange(_ sender: Any) {
+        if repeatPasswordTextField != nil {
+            if repeatPasswordTextField.text != passwordTextField.text {
+                self.doNotMatchPasswordLabel.isHidden = false
+            } else {
+                self.saveButton.isEnabled = true
+                self.saveButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
+                self.doNotMatchPasswordLabel.isHidden = true
+            }
+        } else {
+            self.saveButton.isEnabled = false
+            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
+        }
+    }
+    
 }
 
 private extension NewPasswordViewController {
@@ -49,6 +68,8 @@ private extension NewPasswordViewController {
     func settingTextFields() {
         setPaddingForTextField(passwordTextField)
         setPaddingForTextField(repeatPasswordTextField)
+        passwordTextField.addTarget(self, action: #selector(textFieldEditingDidChange(_:)), for: UIControl.Event.editingChanged)
+        repeatPasswordTextField.addTarget(self, action: #selector(textFieldEditingDidChange(_:)), for: UIControl.Event.editingChanged)
     }
 
     func registerKeyboardNotification() {
@@ -56,6 +77,7 @@ private extension NewPasswordViewController {
             UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+  
 
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
@@ -98,4 +120,3 @@ private extension NewPasswordViewController {
     }
     
 }
-

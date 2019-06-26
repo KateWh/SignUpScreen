@@ -36,7 +36,7 @@ extension BaseTextFieldViewController: UITextFieldDelegate {
         textField.layer.borderWidth = BaseConstants.borderWidth
         return true
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
             textField.resignFirstResponder()
