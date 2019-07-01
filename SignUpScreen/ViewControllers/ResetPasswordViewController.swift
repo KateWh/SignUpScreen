@@ -18,6 +18,7 @@ private struct ResetPasswordConstants {
     static let startPlaceholder = "Password"
     static let segueToNewPasswordScreen = "goToNewPassword"
     static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
+    static let criteriaOfPasswordText = "Your new password will be send \nto the specified e-mail address."
     static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
     static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
     static let threePointers: CGFloat = 3
@@ -51,6 +52,7 @@ class ResetPasswordViewController: UIViewController {
         settingTextFields()
         setupSingInText()
         registerKeyboardNotification()
+        self.criteriaOfPassword.text = ResetPasswordConstants.criteriaOfPasswordText
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
@@ -69,11 +71,6 @@ class ResetPasswordViewController: UIViewController {
         }
     }
     
-    
-    @IBAction func textFieldEditingDidChange(_ sender: Any) {
-        print("textFieldrese", emailTextField.text)
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -84,10 +81,15 @@ class ResetPasswordViewController: UIViewController {
 extension ResetPasswordViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if controllerState == ControllerState.setEmail && ResetPasswordConstants.emailPredicate.evaluate(with: textField.text) {
+        guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
+        print("UpdateString", updatedString)
+        if controllerState == ControllerState.setEmail && ResetPasswordConstants.emailPredicate.evaluate(with: updatedString) {
             self.sendButton.isEnabled = true
             self.sendButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
-        } else if controllerState == ControllerState.setPassword && textField.text != nil && textField.text!.count > ResetPasswordConstants.passwordMin && textField.text!.count < ResetPasswordConstants.passwordMax && textField.text!.isAlphanumeric {
+        } else if controllerState == ControllerState.setPassword &&
+            updatedString.count >= ResetPasswordConstants.passwordMin &&
+            updatedString.count <= ResetPasswordConstants.passwordMax &&
+            updatedString.isAlphanumeric {
             self.sendButton.isEnabled = true
             self.sendButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
         } else {

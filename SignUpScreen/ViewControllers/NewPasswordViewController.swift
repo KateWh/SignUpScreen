@@ -14,6 +14,8 @@ private struct NewPasswordConstants {
     static let topViewConstraint: CGFloat = 72
     static let tenPointers: CGFloat = 10
     static let threePointers: CGFloat = 3
+    static let passwordMin = 6
+    static let passwordMax = 16
     static let saveButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
     static let saveButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
@@ -23,11 +25,17 @@ class NewPasswordViewController: BaseTextFieldViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var repeatPasswordTextField: UITextField!
     
+    @IBOutlet weak var showPasswordButton: UIButton!
+    @IBOutlet weak var showRepeatPasswordButton: UIButton!
+    
     @IBOutlet weak var doNotMatchPasswordLabel: UILabel!
     @IBOutlet weak var saveButton: UIButton!
     
     @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintView: NSLayoutConstraint!
+    
+    var currentPassword = ""
+    var repeatPassword = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,24 +48,11 @@ class NewPasswordViewController: BaseTextFieldViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    
     @IBAction func changePasswordMode(_ sender: UIButton) {
-        self.changePasswordView(repeatPasswordTextField)
-        self.changePasswordView(passwordTextField)
-    }
-    
-    @IBAction func textFieldEditingDidChange(_ sender: Any) {
-        if repeatPasswordTextField != nil {
-            if repeatPasswordTextField.text != passwordTextField.text {
-                self.doNotMatchPasswordLabel.isHidden = false
-            } else {
-                self.saveButton.isEnabled = true
-                self.saveButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
-                self.doNotMatchPasswordLabel.isHidden = true
-            }
+        if sender.tag == 0 {
+            self.changePasswordView(passwordTextField, button: sender)
         } else {
-            self.saveButton.isEnabled = false
-            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
+            self.changePasswordView(repeatPasswordTextField, button: sender)
         }
     }
     
@@ -68,8 +63,6 @@ private extension NewPasswordViewController {
     func settingTextFields() {
         setPaddingForTextField(passwordTextField)
         setPaddingForTextField(repeatPasswordTextField)
-        passwordTextField.addTarget(self, action: #selector(textFieldEditingDidChange(_:)), for: UIControl.Event.editingChanged)
-        repeatPasswordTextField.addTarget(self, action: #selector(textFieldEditingDidChange(_:)), for: UIControl.Event.editingChanged)
     }
 
     func registerKeyboardNotification() {
@@ -107,9 +100,37 @@ private extension NewPasswordViewController {
         topConstraintView.constant = NewPasswordConstants.topViewConstraint
     }
     
-    func changePasswordView(_ textField: UITextField) {
+    func changePasswordView(_ textField: UITextField, button: UIButton) {
         textField.isSecureTextEntry = !textField.isSecureTextEntry
-        textField.isSelected = !textField.isSelected
+        button.isSelected = !button.isSelected
+    }
+    
+    func  textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
+        
+        if updatedString.count >= NewPasswordConstants.passwordMin &&
+            updatedString.count <= NewPasswordConstants.passwordMax &&
+            (textField == passwordTextField &&
+                updatedString == self.repeatPassword ||
+                textField == repeatPasswordTextField &&
+                updatedString == self.currentPassword) {
+            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
+            self.saveButton.isEnabled = true
+            self.doNotMatchPasswordLabel.isHidden = true
+            
+        } else {
+            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
+            self.saveButton.isEnabled = false
+            self.doNotMatchPasswordLabel.isHidden = false
+        }
+        
+        if textField == passwordTextField {
+            self.currentPassword = updatedString
+        } else if textField == repeatPasswordTextField {
+            self.repeatPassword = updatedString
+        }
+        
+        return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
