@@ -1,68 +1,99 @@
 //
-//  ViewController.swift
+//  SecondSignUpScreenViewController.swift
 //  SignUpScreen
 //
-//  Created by ket on 6/3/19.
+//  Created by ket on 6/7/19.
 //  Copyright © 2019 ket. All rights reserved.
 //
 
 import UIKit
 
 private struct SignUpConstans {
-    static let alertNameTitle = "Name too short!"
-    static let alertNameMassage = "Must enter more than 3 characters."
-    static let alertNameTitleAction = "Ok"
-    static let alertPasswordTitle = "Wrong input!"
-    static let alertPasswordMassage = "The password must contain only letters and numbers, from 6 to 16 characters."
-    static let alertPasswordTitleAction = "Ok"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
-    static let minPasswordLength = 6
-    static let maxPasswordLength = 16
+    static let mainStringSomeQuestionLabel = "Already have an account? "
+    static let subStringSomeQuestionLabel = "Sign in"
+    static let unwindSegueIdentifire = "unwindSegueToSignIn"
+    static let passwordMin = 6
+    static let passwordMax = 16
+    static let startButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
+    static let startButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
-class SignUpViewController: UIViewController {
 
+class SignUpViewController: BaseViewController {
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var signUpScrollView: UIScrollView!
-    @IBOutlet weak var scrollBottomConstaint: NSLayoutConstraint!
-
+    
+    @IBOutlet weak var someQuestionsLabel: UILabel!
+    @IBOutlet weak var passwordRulesLabel: UILabel!
+    @IBOutlet weak var showPasswordButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var secondSignUpScrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTextFields()
-        registerKeyboardNotification()
+        self.settingTextFields()
+        self.setupSomeQuestionsLabel()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    @IBAction func changePasswordMode(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        sender.isSelected = !sender.isSelected
     }
     
 }
 
 extension SignUpViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
-            textField.resignFirstResponder()
-            return true
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
+        
+        if textField == passwordTextField {
+            if updatedString.count >= 0 {
+                self.showPasswordButton.isHidden = false
+                self.showPasswordButton.isEnabled = true
+            } else {
+                self.showPasswordButton.isHidden = true
+                self.showPasswordButton.isEnabled = false
+            }
+            if updatedString.count >= SignUpConstans.passwordMin && updatedString.count <= SignUpConstans.passwordMax {
+                self.passwordRulesLabel.isHidden = true
+                if nameTextField.text != nil && usernameTextField.text != nil && emailTextField.text != nil {
+                    self.passwordTextField.layer.borderWidth = 0
+                    self.startButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
+                    self.startButton.isEnabled = true
+                }
+            } else {
+                passwordRulesLabel.isHidden = false
+                
+            }
+        } else {
+            if nameTextField.text != nil && usernameTextField.text != nil && emailTextField.text != nil && passwordTextField.text?.count ?? 0 >= SignUpConstans.passwordMin && passwordTextField.text?.count ?? 0 <= SignUpConstans.passwordMax {
+                self.startButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
+                self.startButton.isEnabled = true
+                
+            } else {
+                self.startButton.backgroundColor = SignUpConstans.startButtonDisableBackgroundColor
+                self.startButton.isEnabled = false
+            }
         }
-        nextField.becomeFirstResponder()
-        return false
+        
+        return true
     }
     
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if textField == self.nameTextField && (textField.text == nil || textField.text!.count < 4) {
-            showAlert(title: SignUpConstans.alertNameTitle, massage: SignUpConstans.alertNameMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertNameTitleAction, styleAction: .default, handlerAction: nil)
-            return false
-        } else if textField == self.passwordTextField && (textField.text == nil || textField.text!.count < SignUpConstans.minPasswordLength || textField.text!.count > SignUpConstans.maxPasswordLength || !textField.text!.isAlphanumeric) {
-                showAlert(title: SignUpConstans.alertPasswordTitle, massage: SignUpConstans.alertPasswordMassage, preferredStyle: .alert, titleAction: SignUpConstans.alertPasswordTitleAction, styleAction: .default, handlerAction: nil)
-                return false
-        }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        super.makeGreyBorder(textField: textField)
         return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return super.goToTheNext(textField: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        super.hideBorder(textField: textField)
     }
     
 }
@@ -70,39 +101,25 @@ extension SignUpViewController: UITextFieldDelegate {
 private extension SignUpViewController {
     
     func settingTextFields() {
-        func setPaddingForTextField(_ textField: UITextField) {
-            let spacerView = UIView(frame: CGRect(origin: SignUpConstans.spacePointForTextFields, size: SignUpConstans.spaceSizeForTextFields))
-            textField.leftViewMode = UITextField.ViewMode.always
-            textField.leftView = spacerView
-        }
+        super.setPaddingForTextField(nameTextField)
+        super.setPaddingForTextField(usernameTextField)
+        super.setPaddingForTextField(emailTextField)
+        super.setPaddingForTextField(passwordTextField)
+    }
+    
+    
+    func setupSomeQuestionsLabel() {
+        super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: SignUpConstans.mainStringSomeQuestionLabel, subStringForColoring: SignUpConstans.subStringSomeQuestionLabel)
+        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
+    }
+    
+    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
+        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
         
-        setPaddingForTextField(nameTextField)
-        setPaddingForTextField(usernameTextField)
-        setPaddingForTextField(emailTextField)
-        setPaddingForTextField(passwordTextField)
-    }
-    
-    func showAlert(title: String?, massage: String?, preferredStyle: UIAlertController.Style, titleAction: String?, styleAction: UIAlertAction.Style, handlerAction: ((UIAlertAction) -> Void)?) {
-        let alertController = UIAlertController(title: title, message: massage, preferredStyle: preferredStyle)
-        let alertAction = UIAlertAction(title: titleAction, style: styleAction, handler: handlerAction)
-        alertController.addAction(alertAction)
-        self.present(alertController, animated: true, completion:  nil)
-    }
-    
-    func registerKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardFrameSize.height, right: 0)
-        signUpScrollView.contentInset = contentInset
-    }
-    
-    @objc func keyboardWillHide() {
-        signUpScrollView.contentOffset = CGPoint.zero
+        if let range = dontHaveText.range(of: NSLocalizedString(SignUpConstans.subStringSomeQuestionLabel, comment: "")),
+            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
+            self.performSegue(withIdentifier: SignUpConstans.unwindSegueIdentifire, sender: self)
+        }
     }
     
 }

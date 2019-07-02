@@ -20,12 +20,12 @@
 		C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */; };
 		C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */; };
 		C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */; };
-		C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */; };
+		C65F93AF22AA4E6B001FE789 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SignUpViewController.swift */; };
 		C663615F22BA656C00D85362 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663615E22BA656C00D85362 /* StringExtension.swift */; };
 		C663616122BA67C400D85362 /* UITapGestureRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */; };
 		C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
-		C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpViewController.swift */; };
+		C69CA38422A4F7BE00895292 /* SignUpTheSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */; };
 		C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* Main.storyboard */; };
 		C69CA38C22A4F7C000895292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38A22A4F7C000895292 /* LaunchScreen.storyboard */; };
 		C69CA39C22A5189300895292 /* dax-mediumitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39522A5189300895292 /* dax-mediumitalic.ttf */; };
@@ -35,7 +35,7 @@
 		C69CA3A022A5189300895292 /* dax-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39922A5189300895292 /* dax-regular.ttf */; };
 		C69CA3A122A5189300895292 /* dax-extrabold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39A22A5189300895292 /* dax-extrabold.ttf */; };
 		C69CA3A222A5189300895292 /* dax-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39B22A5189300895292 /* dax-medium.ttf */; };
-		C6DCEE2922BAD72800F685AF /* BaseTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */; };
+		C6DCEE2922BAD72800F685AF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6DCEE2822BAD72800F685AF /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,13 +54,13 @@
 		C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionViewCell.swift; sourceTree = "<group>"; };
 		C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewCell.swift; sourceTree = "<group>"; };
-		C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpViewController.swift; sourceTree = "<group>"; };
+		C65F93AE22AA4E6B001FE789 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C663615E22BA656C00D85362 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerExtension.swift; sourceTree = "<group>"; };
 		C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69CA38122A4F7BE00895292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C69CA38322A4F7BE00895292 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTheSpeechViewController.swift; sourceTree = "<group>"; };
 		C69CA38622A4F7BE00895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C69CA38B22A4F7C000895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C69CA38D22A4F7C000895292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		C69CA39922A5189300895292 /* dax-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-regular.ttf"; sourceTree = "<group>"; };
 		C69CA39A22A5189300895292 /* dax-extrabold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-extrabold.ttf"; sourceTree = "<group>"; };
 		C69CA39B22A5189300895292 /* dax-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-medium.ttf"; sourceTree = "<group>"; };
-		C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextFieldViewController.swift; sourceTree = "<group>"; };
+		C6DCEE2822BAD72800F685AF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,10 +195,10 @@
 				C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */,
 				C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */,
 				C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */,
-				C6DCEE2822BAD72800F685AF /* BaseTextFieldViewController.swift */,
 				C61AE83222AA91FD00FE425F /* SignInViewController.swift */,
-				C65F93AE22AA4E6B001FE789 /* SecondSignUpViewController.swift */,
-				C69CA38322A4F7BE00895292 /* SignUpViewController.swift */,
+				C65F93AE22AA4E6B001FE789 /* SignUpViewController.swift */,
+				C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */,
+				C6DCEE2822BAD72800F685AF /* BaseViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -351,12 +351,12 @@
 				C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
 				C60943F022AE572900E9B34E /* GlobalShiftsCollectionViewController.swift in Sources */,
-				C6DCEE2922BAD72800F685AF /* BaseTextFieldViewController.swift in Sources */,
+				C6DCEE2922BAD72800F685AF /* BaseViewController.swift in Sources */,
 				C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */,
 				C663615F22BA656C00D85362 /* StringExtension.swift in Sources */,
 				C612841922BCD87400504B36 /* BaseSelectCollectionViewCell.swift in Sources */,
-				C65F93AF22AA4E6B001FE789 /* SecondSignUpViewController.swift in Sources */,
-				C69CA38422A4F7BE00895292 /* SignUpViewController.swift in Sources */,
+				C65F93AF22AA4E6B001FE789 /* SignUpViewController.swift in Sources */,
+				C69CA38422A4F7BE00895292 /* SignUpTheSpeechViewController.swift in Sources */,
 				C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */,
 				C663616122BA67C400D85362 /* UITapGestureRecognizerExtension.swift in Sources */,
 				C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */,

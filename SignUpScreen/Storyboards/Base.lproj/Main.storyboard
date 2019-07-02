@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p5h-nx-0FJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y9G-gX-8sk">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,10 +24,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Sign Up View Controller-->
+        <!--Sign Up The Speech View Controller-->
         <scene sceneID="U1T-Mx-Y2k">
             <objects>
-                <viewController id="I3y-VP-Cf7" customClass="SignUpViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="I3y-VP-Cf7" customClass="SignUpTheSpeechViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GUi-xw-KE9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdB-1l-HGQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="2085"/>
+            <point key="canvasLocation" x="-42" y="2000"/>
         </scene>
         <!--Global Shifts View Controller-->
         <scene sceneID="ZOh-2q-rPR">
@@ -564,6 +564,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J3B-cq-8QX">
                                         <rect key="frame" x="0.0" y="83" width="343" height="42"/>
                                         <color key="backgroundColor" red="0.99993377923965454" green="1" blue="0.99988192319869995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.92874050139999997" green="0.44864594940000002" blue="0.010824762280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="JE6-CZ-qkd"/>
                                         </constraints>
@@ -579,7 +580,7 @@
                                             <outlet property="delegate" destination="zRF-U1-rsL" id="Fyl-9L-ujv"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QD1-mV-ii3">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QD1-mV-ii3">
                                         <rect key="frame" x="302" y="89" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="24z-Jy-ZaX"/>
@@ -595,6 +596,7 @@
                                     <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Same new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EBN-rR-O72">
                                         <rect key="frame" x="0.0" y="129" width="343" height="42"/>
                                         <color key="backgroundColor" red="0.99993377923965454" green="1" blue="0.99988192319869995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.92874050139999997" green="0.44864594940000002" blue="0.010824762280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="sBn-h4-uy0"/>
                                         </constraints>
@@ -637,7 +639,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc1-Sp-Agv">
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc1-Sp-Agv">
                                         <rect key="frame" x="302" y="135" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Drm-No-B9E"/>
@@ -735,6 +737,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oHX-OM-ThT">
                                         <rect key="frame" x="0.0" y="82" width="343" height="42"/>
                                         <color key="backgroundColor" red="0.99993377923965454" green="1" blue="0.99988192319869995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" red="0.92874050139999997" green="0.44864594940000002" blue="0.010824762280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="kbA-ND-Sew"/>
                                         </constraints>
@@ -823,10 +826,10 @@
             </objects>
             <point key="canvasLocation" x="-42" y="-261"/>
         </scene>
-        <!--Second Sign Up View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="mZC-iO-HDo">
             <objects>
-                <viewController id="r4c-FM-dSy" customClass="SecondSignUpViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r4c-FM-dSy" customClass="SignUpViewController" customModule="SignUpScreen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PXd-aG-IUi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

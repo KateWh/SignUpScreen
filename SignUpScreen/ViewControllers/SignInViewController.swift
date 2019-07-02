@@ -9,7 +9,7 @@
 import UIKit
 
 private struct SignInConstans {
-    static let mainStringSomeQuestionLabel = "Don't have an account? Sign up"
+    static let mainStringSomeQuestionLabel = "Don't have an account? "
     static let orangeStringSomeQuestionLabel = "Sign up"
     static let mainStringForgotYourPasswordLabel = "Forgot your password? "
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
@@ -22,7 +22,7 @@ private struct SignInConstans {
 }
 
 
-class SignInViewController: BaseTextFieldViewController {
+class SignInViewController: BaseViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -43,7 +43,6 @@ class SignInViewController: BaseTextFieldViewController {
     }
     
     @IBAction func tapStartButton(_ sender: UIButton) {
-        //performSegue(withIdentifier: SignInConstans.goToSignUpSegueIdentifire, sender: self)
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
@@ -55,7 +54,7 @@ class SignInViewController: BaseTextFieldViewController {
     
 }
 
-extension SignInViewController {
+extension SignInViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
@@ -102,6 +101,19 @@ extension SignInViewController {
         return true
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        super.makeGreyBorder(textField: textField)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return super.goToTheNext(textField: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        super.hideBorder(textField: textField)
+    }
+    
 }
 
 private extension SignInViewController {
@@ -112,25 +124,12 @@ private extension SignInViewController {
     }
     
     func setupForgotYourPasswordLabel() {
-        
-        let attributes = [NSAttributedString.Key.font : UIFont(name: "Dax-Light", size: 15)]
-        let orangeAttributes = [NSAttributedString.Key.font : UIFont(name: "Dax-Medium", size: 15)]
-        
-        let attributesString = NSMutableAttributedString(string: SignInConstans.mainStringForgotYourPasswordLabel, attributes: attributes as [NSAttributedString.Key : Any])
-        let orangeAttributeString = NSMutableAttributedString(string: SignInConstans.orangeStringForgotYourPasswordLabel, attributes: orangeAttributes as [NSAttributedString.Key : Any])
-        orangeAttributeString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 0, length: SignInConstans.orangeStringForgotYourPasswordLabel.count))
-        attributesString.append(orangeAttributeString)
-        self.forgotYourPasswordLabel.attributedText = attributesString
-
+        super.makeTheSubstringOrange(label: self.forgotYourPasswordLabel, mainString: SignInConstans.mainStringForgotYourPasswordLabel, subStringForColoring: SignInConstans.orangeStringForgotYourPasswordLabel)
     }
     
     func setupSomeQuestionsLabel() {
-        someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
-        
-        let range = (SignInConstans.mainStringSomeQuestionLabel as NSString).range(of: SignInConstans.orangeStringSomeQuestionLabel)
-        let attributes = NSMutableAttributedString.init(string: SignInConstans.mainStringSomeQuestionLabel)
-        attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
-        someQuestionsLabel.attributedText = attributes
+       super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: SignInConstans.mainStringSomeQuestionLabel, subStringForColoring: SignInConstans.orangeStringSomeQuestionLabel)
+        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
     }
     
     @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {

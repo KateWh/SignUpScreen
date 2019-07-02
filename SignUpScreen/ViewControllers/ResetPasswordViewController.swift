@@ -9,8 +9,8 @@
 import UIKit
 
 private struct ResetPasswordConstants {
-    static let signInText = "Sign in"
-    static let mainStringSomeQuestionLabel = "Do you remember your password? Sign in"
+    static let subStringSomeQuestionLabel = "Sign in"
+    static let mainStringSomeQuestionLabel = "Do you remember your password? "
     static let goToSignInSegueIdentifire = "goToSignIn"
     static let sendButtonTitle = "SEND"
     static let startButtonTitle = "START"
@@ -37,7 +37,7 @@ enum ControllerState {
     case setPassword
 }
 
-class ResetPasswordViewController: UIViewController {
+class ResetPasswordViewController: BaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
@@ -50,25 +50,15 @@ class ResetPasswordViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         settingTextFields()
-        setupSingInText()
+        super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: ResetPasswordConstants.mainStringSomeQuestionLabel, subStringForColoring: ResetPasswordConstants.subStringSomeQuestionLabel)
+        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
+
         registerKeyboardNotification()
         self.criteriaOfPassword.text = ResetPasswordConstants.criteriaOfPasswordText
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
-        if controllerState == ControllerState.setEmail {
-            self.sendButton.isEnabled = false
-                self.sendButton.backgroundColor = ResetPasswordConstants.sendButtonDisableBackgroundColor
-            self.someQuestionsLabel.text = ResetPasswordConstants.startStringSomeQuestionLabel
-            self.emailTextField.placeholder = ResetPasswordConstants.startPlaceholder
-            self.emailTextField.text?.removeAll()
-            self.emailTextField.endFloatingCursor()
-            self.criteriaOfPassword.isHidden = true
-            self.sendButton.setTitle(ResetPasswordConstants.startButtonTitle, for: .normal)
-            self.controllerState = ControllerState.setPassword
-        } else if controllerState == ControllerState.setPassword {
-            performSegue(withIdentifier: ResetPasswordConstants.segueToNewPasswordScreen, sender: self)
-        }
+        self.goNext()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +68,7 @@ class ResetPasswordViewController: UIViewController {
     
 }
 
-extension ResetPasswordViewController: UITextFieldDelegate {
+extension ResetPasswordViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
@@ -98,30 +88,41 @@ extension ResetPasswordViewController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let isReturn = super.goToTheNext(textField: textField)
+        if isReturn && self.sendButton.isEnabled {
+           self.goNext()
+        }
+        return isReturn
+    }
 }
 
 private extension ResetPasswordViewController {
     
-   func settingTextFields() {
-    let spaceView = UIView(frame: CGRect(origin: ResetPasswordConstants.spacePointForTextFields, size: ResetPasswordConstants.spaceSizeForTextFields))
-    
-        emailTextField.leftViewMode = UITextField.ViewMode.always
-        emailTextField.leftView = spaceView
+    func goNext() {
+        if controllerState == ControllerState.setEmail {
+            self.sendButton.isEnabled = false
+            self.sendButton.backgroundColor = ResetPasswordConstants.sendButtonDisableBackgroundColor
+            self.someQuestionsLabel.text = ResetPasswordConstants.startStringSomeQuestionLabel
+            self.emailTextField.placeholder = ResetPasswordConstants.startPlaceholder
+            self.emailTextField.text?.removeAll()
+            self.emailTextField.endFloatingCursor()
+            self.criteriaOfPassword.isHidden = true
+            self.sendButton.setTitle(ResetPasswordConstants.startButtonTitle, for: .normal)
+            self.controllerState = ControllerState.setPassword
+        } else if controllerState == ControllerState.setPassword {
+            performSegue(withIdentifier: ResetPasswordConstants.segueToNewPasswordScreen, sender: self)
+        }
     }
     
-   func setupSingInText() {
-    someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
-    
-        let range = (ResetPasswordConstants.mainStringSomeQuestionLabel as NSString).range(of: ResetPasswordConstants.signInText)
-        let attributes = NSMutableAttributedString.init(string: ResetPasswordConstants.mainStringSomeQuestionLabel)
-        attributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: range)
-        someQuestionsLabel.attributedText = attributes
-    }
+    func settingTextFields() {
+        setPaddingForTextField(emailTextField)
+        }
     
     @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
         guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
         
-        if let range = dontHaveText.range(of: NSLocalizedString(ResetPasswordConstants.signInText, comment: "")),
+        if let range = dontHaveText.range(of: NSLocalizedString(ResetPasswordConstants.subStringSomeQuestionLabel, comment: "")),
             recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
             performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
         }

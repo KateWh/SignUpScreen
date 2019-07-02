@@ -13,15 +13,17 @@ struct BaseConstants {
     static let borderColor: CGColor = #colorLiteral(red: 0.499868989, green: 0.5142127275, blue: 0.5874249935, alpha: 1).cgColor
     static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
     static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
+    
+    static let mainStringFont: UIFont? = UIFont(name: "Dax-Light", size: 15)
+    static let subStringFont: UIFont? = UIFont(name: "Dax-Medium", size: 15)
 }
 
-class BaseTextFieldViewController: UIViewController {
+class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
         view.addGestureRecognizer(Tap)
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -30,29 +32,25 @@ class BaseTextFieldViewController: UIViewController {
 
 }
 
-extension BaseTextFieldViewController: UITextFieldDelegate {
+extension BaseViewController {
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+    func makeGreyBorder(textField: UITextField) {
         textField.layer.borderWidth = BaseConstants.borderWidth
-        return true
+        textField.layer.borderColor = BaseConstants.borderColor
     }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else {
-            textField.resignFirstResponder()
+    
+    func hideBorder(textField: UITextField) {
+        textField.layer.borderWidth = 0
+    }
+    
+    func goToTheNext(textField: UITextField) -> Bool {
+        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else { textField.resignFirstResponder()
             return true
         }
         nextField.becomeFirstResponder()
         return false
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.layer.borderWidth = 0
-    }
-    
-}
 
-extension BaseTextFieldViewController {
     
     func setPaddingForTextField(_ textField: UITextField) {
         let spacerView = UIView(frame: CGRect(origin: BaseConstants.spacePointForTextFields, size: BaseConstants.spaceSizeForTextFields))
@@ -61,24 +59,6 @@ extension BaseTextFieldViewController {
         textField.layer.borderColor = BaseConstants.borderColor
     }
     
-//    func registerKeyboardNotification() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
-//            UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-//
-//    func removeKeyboardNotification() {
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-//    }
-    
-//    @objc func keyboardWillShow(_ notification: Notification) {
-//       
-//    }
-//    
-//    @objc func keyboardWillHide() {
-//        
-//    }
     
     @objc func DismissKeyboard() {
         view.endEditing(true)
@@ -90,5 +70,25 @@ extension BaseTextFieldViewController {
         alertController.addAction(alertAction)
         self.present(alertController, animated: true, completion:  nil)
     }
+    
+    func makeTheSubstringOrange(label: UILabel, mainString: String, subStringForColoring: String, mainStringFont: UIFont? = BaseConstants.mainStringFont, subStringFont: UIFont? = BaseConstants.subStringFont ) {
+        
+        let mainAttributes = [NSAttributedString.Key.font : mainStringFont]
+        let subAttributes = [NSAttributedString.Key.font : subStringFont]
+        
+        let stringAttributes = NSMutableAttributedString(string: mainString, attributes: mainAttributes as [NSAttributedString.Key : Any])
+        let subStringAttributes = NSMutableAttributedString(string: subStringForColoring, attributes: subAttributes as [NSAttributedString.Key : Any])
+        
+        subStringAttributes.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orange, range: NSRange(location: 0, length: subStringForColoring.count))
+        stringAttributes.append(subStringAttributes)
+       label.attributedText = stringAttributes
+        
+    }
+    
+    func changePasswordView(_ textField: UITextField, button: UIButton) {
+        textField.isSecureTextEntry = !textField.isSecureTextEntry
+        button.isSelected = !button.isSelected
+    }
+    
 }
 
