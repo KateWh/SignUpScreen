@@ -19,6 +19,13 @@ private struct GlobalShiftConstants {
     static let companiesCollectionIdentifire = "companiesCollectionCell"
     static let fivePoints: CGFloat = 5
     static let tenPoints: CGFloat = 10
+    static let trendsName = "GLOBAL TRENDS"
+    static let industriesName = "INDUSTRIES"
+    static let companiesName = "COMPANIES"
+    static let alertTitle = "Graphicone Would Like to Send You Notifications"
+    static let alertMessage = "Notifications may include alerts, sounds and icon badges. These can be configured in Settings."
+    static let alertNoActionTitle = "No"
+    static let alertYesActionTitle = "Yes"
 }
 
 struct GlobalShifts {
@@ -43,10 +50,12 @@ enum PresentationStyle {
     case companies
 }
 
-class GlobalShiftsCollectionViewController: UIViewController {
+class GlobalShiftsViewController: UIViewController {
 
     @IBOutlet weak var globalShiftsCollectionView: UICollectionView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var windowNameLabel: UILabel!
+    
     var presentationStyle = PresentationStyle.globalShift
     
     var arrayGlobalShifts: [GlobalShifts] = [GlobalShifts(name: "Clean \nenergy"), GlobalShifts(name: "Connected \nworld"), GlobalShifts(name: "Data \nowners"), GlobalShifts(name: "Demographic \nchallenges"), GlobalShifts(name: "Industry 4.0"), GlobalShifts(name: "Disruptive \nbusiness \nmodels")]
@@ -58,10 +67,20 @@ class GlobalShiftsCollectionViewController: UIViewController {
         switch presentationStyle {
             case .globalShift:
                 presentationStyle = .trends
+                self.windowNameLabel.text = GlobalShiftConstants.trendsName
             case .trends:
                 presentationStyle = .industries
+                self.windowNameLabel.text = GlobalShiftConstants.industriesName
+                let alertController = UIAlertController(title: GlobalShiftConstants.alertTitle, message: GlobalShiftConstants.alertMessage, preferredStyle: .alert)
+                let alertNoAction = UIAlertAction(title: GlobalShiftConstants.alertNoActionTitle, style: .cancel
+                    , handler: nil)
+                let alertYesAction = UIAlertAction(title: GlobalShiftConstants.alertYesActionTitle, style: .default, handler: nil)
+                alertController.addAction(alertNoAction)
+                alertController.addAction(alertYesAction)
+                self.present(alertController, animated: true, completion:  nil)
             case .industries:
                 presentationStyle = .companies
+                self.windowNameLabel.text = GlobalShiftConstants.companiesName
             case .companies:
                 break
         }
@@ -72,7 +91,7 @@ class GlobalShiftsCollectionViewController: UIViewController {
     
 }
 
-extension GlobalShiftsCollectionViewController: UICollectionViewDelegate{
+extension GlobalShiftsViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch presentationStyle {
@@ -102,7 +121,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDelegate{
     
 }
 
-extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
+extension GlobalShiftsViewController: UICollectionViewDataSource {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch presentationStyle {
@@ -142,7 +161,7 @@ extension GlobalShiftsCollectionViewController: UICollectionViewDataSource {
     
 }
 
-extension GlobalShiftsCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension GlobalShiftsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectoinViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var itemWidth: CGFloat = 0
