@@ -82,7 +82,6 @@ extension ResetPasswordViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        print("UpdateString", updatedString)
         if controllerState == ControllerState.setEmail && ResetPasswordConstants.emailPredicate.evaluate(with: updatedString) {
             self.sendButton.isEnabled = true
             self.sendButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
