@@ -24,9 +24,7 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var someQuestionsLabel: UILabel!
+
     @IBOutlet weak var passwordRulesLabel: UILabel!
     @IBOutlet weak var showPasswordButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
@@ -34,8 +32,18 @@ class SignUpViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingTextFields()
         self.setupSomeQuestionsLabel()
+    }
+    
+    override func performToSegue() {
+        self.performSegue(withIdentifier: SignUpConstans.unwindSegueIdentifire, sender: self)
+    }
+    
+    override func settingTextFields() {
+        super.setPaddingForTextField(nameTextField)
+        super.setPaddingForTextField(usernameTextField)
+        super.setPaddingForTextField(emailTextField)
+        super.setPaddingForTextField(passwordTextField)
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
@@ -99,27 +107,10 @@ extension SignUpViewController: UITextFieldDelegate {
 }
 
 private extension SignUpViewController {
-    
-    func settingTextFields() {
-        super.setPaddingForTextField(nameTextField)
-        super.setPaddingForTextField(usernameTextField)
-        super.setPaddingForTextField(emailTextField)
-        super.setPaddingForTextField(passwordTextField)
-    }
-    
-    
+
     func setupSomeQuestionsLabel() {
-        super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: SignUpConstans.mainStringSomeQuestionLabel, subStringForColoring: SignUpConstans.subStringSomeQuestionLabel)
-        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
-    }
-    
-    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
-        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
-        
-        if let range = dontHaveText.range(of: NSLocalizedString(SignUpConstans.subStringSomeQuestionLabel, comment: "")),
-            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
-            self.performSegue(withIdentifier: SignUpConstans.unwindSegueIdentifire, sender: self)
-        }
+        super.makeTheSubstringOrange(label: super.someQuestionsLabel, mainString: SignUpConstans.mainStringSomeQuestionLabel, subStringForColoring: SignUpConstans.subStringSomeQuestionLabel)
+        super.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
     }
     
 }

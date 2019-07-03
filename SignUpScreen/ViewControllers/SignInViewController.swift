@@ -25,9 +25,6 @@ private struct SignInConstans {
 class SignInViewController: BaseViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    
-    @IBOutlet weak var someQuestionsLabel: UILabel!
     @IBOutlet weak var forgotYourPasswordLabel: UILabel!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
     
@@ -37,9 +34,17 @@ class SignInViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.settingTextFields()
         self.setupSomeQuestionsLabel()
         self.setupForgotYourPasswordLabel()
+    }
+    
+    override func performToSegue() {
+        performSegue(withIdentifier: SignInConstans.goToSignUpSegueIdentifire, sender: self)
+    }
+    
+    override func settingTextFields() {
+        super.setPaddingForTextField(emailTextField)
+        super.setPaddingForTextField(passwordTextField)
     }
     
     @IBAction func tapStartButton(_ sender: UIButton) {
@@ -118,11 +123,6 @@ extension SignInViewController: UITextFieldDelegate {
 
 private extension SignInViewController {
     
-    func settingTextFields() {
-        super.setPaddingForTextField(emailTextField)
-        super.setPaddingForTextField(passwordTextField)
-    }
-    
     func setupForgotYourPasswordLabel() {
         super.makeTheSubstringOrange(label: self.forgotYourPasswordLabel, mainString: SignInConstans.mainStringForgotYourPasswordLabel, subStringForColoring: SignInConstans.orangeStringForgotYourPasswordLabel)
     }
@@ -132,13 +132,5 @@ private extension SignInViewController {
         self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
     }
     
-    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
-        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
-        
-        if let range = dontHaveText.range(of: NSLocalizedString(SignInConstans.orangeStringSomeQuestionLabel, comment: "")),
-            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
-           performSegue(withIdentifier: SignInConstans.goToSignUpSegueIdentifire, sender: self)
-        }
-    }
-    
 }
+

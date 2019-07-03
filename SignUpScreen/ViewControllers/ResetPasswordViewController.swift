@@ -41,7 +41,6 @@ class ResetPasswordViewController: BaseViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
-    @IBOutlet weak var someQuestionsLabel: UILabel!
     @IBOutlet weak var criteriaOfPassword: UILabel!
     @IBOutlet weak var topConstraintSendButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintView: NSLayoutConstraint!
@@ -49,21 +48,49 @@ class ResetPasswordViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingTextFields()
-        super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: ResetPasswordConstants.mainStringSomeQuestionLabel, subStringForColoring: ResetPasswordConstants.subStringSomeQuestionLabel)
-        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
-
-        registerKeyboardNotification()
+        super.makeTheSubstringOrange(label: super.someQuestionsLabel, mainString: ResetPasswordConstants.mainStringSomeQuestionLabel, subStringForColoring: ResetPasswordConstants.subStringSomeQuestionLabel)
+        super.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
+        
         self.criteriaOfPassword.text = ResetPasswordConstants.criteriaOfPasswordText
+    }
+    
+    override func performToSegue() {
+         performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
+    }
+    
+    
+    override func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        // Save the distance which you want a use to raise the button.
+        var interval = (keyboardFrameSize.minY - ResetPasswordConstants.tenPointers) - sendButton.frame.maxY
+        guard interval < 0 else { return }
+        // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
+        switch (topConstraintSendButton.constant - ResetPasswordConstants.threePointers) + interval {
+        // If the constraint height larger, simply subtract the height of the decrease from it.
+        case 0...:
+            topConstraintSendButton.constant += interval
+            topConstraintView.constant = ResetPasswordConstants.topViewConstraint
+        // If the height of the decrease larger, subtract constraint height(without the minimum possible) from it, set minimum possible constraint height and subtract the remaining height of the decrease from the height of the view constraint.
+        case ..<0:
+            interval += topConstraintSendButton.constant - ResetPasswordConstants.threePointers
+            topConstraintSendButton.constant = ResetPasswordConstants.threePointers
+            topConstraintView.constant += interval
+        default:
+            break
+        }
+    }
+    
+    override func keyboardWillHide() {
+        topConstraintSendButton.constant = ResetPasswordConstants.topSendButtonConstraint
+        topConstraintView.constant = ResetPasswordConstants.topViewConstraint
+    }
+    
+    override func settingTextFields() {
+        setPaddingForTextField(emailTextField)
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
         self.goNext()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
 }
@@ -113,51 +140,6 @@ private extension ResetPasswordViewController {
         } else if controllerState == ControllerState.setPassword {
             performSegue(withIdentifier: ResetPasswordConstants.segueToNewPasswordScreen, sender: self)
         }
-    }
-    
-    func settingTextFields() {
-        setPaddingForTextField(emailTextField)
-        }
-    
-    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
-        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
-        
-        if let range = dontHaveText.range(of: NSLocalizedString(ResetPasswordConstants.subStringSomeQuestionLabel, comment: "")),
-            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
-            performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
-        }
-    }
-    
-    func registerKeyboardNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
-            UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        // Save the distance which you want a use to raise the button.
-        var interval = (keyboardFrameSize.minY - ResetPasswordConstants.tenPointers) - sendButton.frame.maxY
-        guard interval < 0 else { return }
-        // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
-        switch (topConstraintSendButton.constant - ResetPasswordConstants.threePointers) + interval {
-        // If the constraint height larger, simply subtract the height of the decrease from it.
-        case 0...:
-            topConstraintSendButton.constant += interval
-            topConstraintView.constant = ResetPasswordConstants.topViewConstraint
-        // If the height of the decrease larger, subtract constraint height(without the minimum possible) from it, set minimum possible constraint height and subtract the remaining height of the decrease from the height of the view constraint.
-        case ..<0:
-            interval += topConstraintSendButton.constant - ResetPasswordConstants.threePointers
-            topConstraintSendButton.constant = ResetPasswordConstants.threePointers
-            topConstraintView.constant += interval
-        default:
-            break
-        }
-    }
-    
-    @objc func keyboardWillHide() {
-        topConstraintSendButton.constant = ResetPasswordConstants.topSendButtonConstraint
-        topConstraintView.constant = ResetPasswordConstants.topViewConstraint
     }
     
 }

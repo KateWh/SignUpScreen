@@ -16,23 +16,28 @@ struct BaseConstants {
     
     static let mainStringFont: UIFont? = UIFont(name: "Dax-Light", size: 15)
     static let subStringFont: UIFont? = UIFont(name: "Dax-Medium", size: 15)
+    
+    static let signUpText = "Sign up"
+    static let signInText = "Sign in"
 }
 
 class BaseViewController: UIViewController {
-
+    
+   @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var someQuestionsLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
-        view.addGestureRecognizer(Tap)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        self.registerKeyboardNotification()
+        self.settingTextFields()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
-}
-
-extension BaseViewController {
     
     func makeGreyBorder(textField: UITextField) {
         textField.layer.borderWidth = BaseConstants.borderWidth
@@ -60,7 +65,7 @@ extension BaseViewController {
     }
     
     
-    @objc func DismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -88,6 +93,37 @@ extension BaseViewController {
     func changePasswordView(_ textField: UITextField, button: UIButton) {
         textField.isSecureTextEntry = !textField.isSecureTextEntry
         button.isSelected = !button.isSelected
+    }
+    
+    @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
+        guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
+        
+        var text = BaseConstants.signInText
+        if self is SignInViewController {
+            text = BaseConstants.signUpText
+        }
+        if let range = dontHaveText.range(of: NSLocalizedString(text, comment: "")),
+            recognizer.didTapAttributedTextInLabel(label: someQuestionsLabel, inRange: NSRange(range, in: dontHaveText)) {
+            self.performToSegue()
+        }
+    }
+    
+    func performToSegue() {
+    }
+    
+    func registerKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:
+            UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+    }
+    
+    @objc func keyboardWillHide() {
+    }
+    
+    func settingTextFields() {
     }
     
 }
