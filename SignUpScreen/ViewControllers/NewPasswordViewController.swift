@@ -69,7 +69,6 @@ extension NewPasswordViewController: UITextFieldDelegate {
             self.showRepeatPasswordButton.isEnabled = false
         }
         
-        
         if updatedString.count >= NewPasswordConstants.passwordMin &&
             updatedString.count <= NewPasswordConstants.passwordMax &&
             (textField == passwordTextField &&
@@ -99,6 +98,3 @@ extension NewPasswordViewController: UITextFieldDelegate {
     }
     
 }
-
-
-

@@ -37,6 +37,16 @@ struct BaseConstants {
     
     static let resetPasswordScreenMainStringSomeQuestionLabel = "Do you remember your password? "
     static let resetPasswordScreenSignInText = "Sign in"
+    
+    static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{6,168}")
+}
+
+enum BaseState {
+    case newScreen(BaseConstants)
+    case resetScreen(BaseConstants)
+    case signInScreen(BaseConstants)
+    case signUpScreen(BaseConstants)
+    case none
 }
 
 class BaseViewController: UIViewController {
@@ -49,6 +59,8 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var topConstraintNextButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintSubview: NSLayoutConstraint!
     
+    var baseState = BaseState.none
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -56,6 +68,16 @@ class BaseViewController: UIViewController {
         self.registerKeyboardNotification()
         self.settingTextFields()
         self.setupSomeQuestionsLabel()
+        
+        if self is NewPasswordViewController {
+            self.baseState = .newScreen(BaseConstants())
+        } else if self is ResetPasswordViewController {
+            self.baseState = .resetScreen(BaseConstants())
+        } else if self is SignInViewController {
+            self.baseState = .signInScreen(BaseConstants())
+        } else if self is SignUpViewController {
+            self.baseState = .signUpScreen(BaseConstants())
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,7 +101,6 @@ class BaseViewController: UIViewController {
         nextField.becomeFirstResponder()
         return false
     }
-
     
     func setPaddingForTextField(_ textField: UITextField) {
         let spacerView = UIView(frame: CGRect(origin: BaseConstants.spacePointForTextFields, size: BaseConstants.spaceSizeForTextFields))
@@ -87,7 +108,6 @@ class BaseViewController: UIViewController {
         textField.leftView = spacerView
         textField.layer.borderColor = BaseConstants.borderColor
     }
-    
     
     @objc func dismissKeyboard() {
         view.endEditing(true)

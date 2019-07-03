@@ -9,7 +9,6 @@
 import UIKit
 
 private struct SignUpConstans {
-    
     static let unwindSegueIdentifire = "unwindSegueToSignIn"
     static let passwordMin = 6
     static let passwordMax = 16
@@ -26,7 +25,6 @@ class SignUpViewController: BaseViewController {
 
     @IBOutlet weak var passwordRulesLabel: UILabel!
     @IBOutlet weak var showPasswordButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var secondSignUpScrollView: UIScrollView!
     
     override func performToSegue() {
@@ -64,8 +62,8 @@ extension SignUpViewController: UITextFieldDelegate {
                 self.passwordRulesLabel.isHidden = true
                 if nameTextField.text != nil && usernameTextField.text != nil && emailTextField.text != nil {
                     self.passwordTextField.layer.borderWidth = 0
-                    self.startButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
-                    self.startButton.isEnabled = true
+                    self.nextButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
+                    self.nextButton.isEnabled = true
                 }
             } else {
                 passwordRulesLabel.isHidden = false
@@ -73,12 +71,12 @@ extension SignUpViewController: UITextFieldDelegate {
             }
         } else {
             if nameTextField.text != nil && usernameTextField.text != nil && emailTextField.text != nil && passwordTextField.text?.count ?? 0 >= SignUpConstans.passwordMin && passwordTextField.text?.count ?? 0 <= SignUpConstans.passwordMax {
-                self.startButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
-                self.startButton.isEnabled = true
+                self.nextButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
+                self.nextButton.isEnabled = true
                 
             } else {
-                self.startButton.backgroundColor = SignUpConstans.startButtonDisableBackgroundColor
-                self.startButton.isEnabled = false
+                self.nextButton.backgroundColor = SignUpConstans.startButtonDisableBackgroundColor
+                self.nextButton.isEnabled = false
             }
         }
         
@@ -99,4 +97,3 @@ extension SignUpViewController: UITextFieldDelegate {
     }
     
 }
-

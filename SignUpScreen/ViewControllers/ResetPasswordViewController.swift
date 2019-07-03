@@ -15,7 +15,6 @@ private struct ResetPasswordConstants {
     static let startStringSomeQuestionLabel = "Please, enter the password from the letter."
     static let startPlaceholder = "Password"
     static let segueToNewPasswordScreen = "goToNewPassword"
-    static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
     static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
     static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
     static let threePointers: CGFloat = 3
@@ -58,7 +57,7 @@ extension ResetPasswordViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        if controllerState == ControllerState.setEmail && ResetPasswordConstants.emailPredicate.evaluate(with: updatedString) {
+        if controllerState == ControllerState.setEmail && BaseConstants.emailPredicate.evaluate(with: updatedString) {
             self.nextButton.isEnabled = true
             self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
         } else if controllerState == ControllerState.setPassword &&

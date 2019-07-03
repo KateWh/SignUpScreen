@@ -1014,12 +1014,12 @@
                     <connections>
                         <outlet property="emailTextField" destination="05t-De-2Ae" id="smG-wr-BQz"/>
                         <outlet property="nameTextField" destination="Ubr-ds-Pbf" id="g0M-pM-rHb"/>
+                        <outlet property="nextButton" destination="Ihd-E7-N0R" id="LxO-pZ-gMN"/>
                         <outlet property="passwordRulesLabel" destination="5gT-zz-RoY" id="Lcf-e2-9rU"/>
                         <outlet property="passwordTextField" destination="Sro-ED-nqr" id="dSh-2z-S7w"/>
                         <outlet property="secondSignUpScrollView" destination="WPa-AS-bqJ" id="IFp-MT-oxm"/>
                         <outlet property="showPasswordButton" destination="EWj-ql-Yff" id="EUb-e7-NLN"/>
                         <outlet property="someQuestionsLabel" destination="Mzb-MY-zbw" id="hDM-No-oHT"/>
-                        <outlet property="startButton" destination="Ihd-E7-N0R" id="LxO-pZ-gMN"/>
                         <outlet property="usernameTextField" destination="LTU-If-t6d" id="rM4-cF-aXM"/>
                         <segue destination="ORn-VD-daH" kind="unwind" identifier="unwindSegueToSignIn" unwindAction="unwindToSignInSegue:" id="tJU-Up-QyV"/>
                     </connections>
@@ -1231,10 +1231,10 @@
                         <outlet property="emailTextField" destination="VDW-hf-PLE" id="GNs-Sk-0TS"/>
                         <outlet property="forgotYourPasswordLabel" destination="RFL-2m-tgF" id="oYh-V8-gro"/>
                         <outlet property="incorrectPasswordLabel" destination="Qqy-Fa-w67" id="yW5-zg-YK1"/>
+                        <outlet property="nextButton" destination="KtK-EG-y28" id="vTW-AC-MCD"/>
                         <outlet property="passwordTextField" destination="wzX-o3-WpY" id="Gxd-X7-fzd"/>
                         <outlet property="showPasswordButton" destination="Aza-Xk-Ir2" id="OwI-3e-N9g"/>
                         <outlet property="someQuestionsLabel" destination="owu-G0-VlQ" id="cdf-b5-HL6"/>
-                        <outlet property="startButton" destination="KtK-EG-y28" id="vTW-AC-MCD"/>
                         <segue destination="r4c-FM-dSy" kind="show" identifier="goToSignUp" id="gQo-2F-Z9k"/>
                     </connections>
                 </viewController>

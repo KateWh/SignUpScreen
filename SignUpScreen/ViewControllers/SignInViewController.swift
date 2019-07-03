@@ -12,7 +12,6 @@ private struct SignInConstans {
     static let mainStringForgotYourPasswordLabel = "Forgot your password? "
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
     static let goToSignUpSegueIdentifire = "goToSignUp"
-    static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}")
     static let passwordMin = 6
     static let passwordMax = 16
     static let startButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
@@ -25,9 +24,6 @@ class SignInViewController: BaseViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var forgotYourPasswordLabel: UILabel!
     @IBOutlet weak var incorrectPasswordLabel: UILabel!
-    
-    
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var showPasswordButton: UIButton!
     
     override func viewDidLoad() {
@@ -63,30 +59,30 @@ extension SignInViewController: UITextFieldDelegate {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
         
         if textField == emailTextField {
-            if SignInConstans.emailPredicate.evaluate(with: updatedString) && passwordTextField.text?.count ?? 0 >= SignInConstans.passwordMin && passwordTextField.text?.count ?? 0 <= SignInConstans.passwordMax {
-                self.startButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
-                self.startButton.isEnabled = true
+            if BaseConstants.emailPredicate.evaluate(with: updatedString) && passwordTextField.text?.count ?? 0 >= SignInConstans.passwordMin && passwordTextField.text?.count ?? 0 <= SignInConstans.passwordMax {
+                self.nextButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
+                self.nextButton.isEnabled = true
             } else {
-                self.startButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
-                self.startButton.isEnabled = false
+                self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                self.nextButton.isEnabled = false
             }
             
         } else if textField == passwordTextField {
             if updatedString.count >= SignInConstans.passwordMin && updatedString.count <= SignInConstans.passwordMax {
                 self.incorrectPasswordLabel.isHidden = true
                 self.passwordTextField.layer.borderWidth = 0
-                if SignInConstans.emailPredicate.evaluate(with: emailTextField.text) {
-                    self.startButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
-                    self.startButton.isEnabled = true
+                if BaseConstants.emailPredicate.evaluate(with: emailTextField.text) {
+                    self.nextButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
+                    self.nextButton.isEnabled = true
                 } else {
-                    self.startButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
-                    self.startButton.isEnabled = false
+                    self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                    self.nextButton.isEnabled = false
                 }
                 
             } else {
                 self.incorrectPasswordLabel.isHidden = false
-                self.startButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
-                self.startButton.isEnabled = false
+                self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                self.nextButton.isEnabled = false
             }
         }
         
