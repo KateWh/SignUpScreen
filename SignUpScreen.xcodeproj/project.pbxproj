@@ -108,13 +108,13 @@
 			path = SelectItemsViewController;
 			sourceTree = "<group>";
 		};
-		C663615D22BA64E000D85362 /* CommonExtensions */ = {
+		C663615D22BA64E000D85362 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				C663615E22BA656C00D85362 /* StringExtension.swift */,
 				C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */,
 			);
-			path = CommonExtensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C664620F22AFCAD7008A3EE5 /* GlobalShiftsViewControllers */ = {
@@ -150,7 +150,7 @@
 			children = (
 				C6DCC62122A54E3B000FCFC6 /* Storyboards */,
 				C6DCC62222A54E5B000FCFC6 /* ViewControllers */,
-				C663615D22BA64E000D85362 /* CommonExtensions */,
+				C663615D22BA64E000D85362 /* Extensions */,
 				C69CA39322A5164500895292 /* Fonts */,
 				C6DCC62322A54E74000FCFC6 /* SupportFiles */,
 			);
