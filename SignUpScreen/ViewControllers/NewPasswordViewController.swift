@@ -10,8 +10,6 @@ import UIKit
 
 private struct NewPasswordConstants {
     static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let topSaveButtonConstraint: CGFloat = 58
-    static let topViewConstraint: CGFloat = 72
     static let tenPointers: CGFloat = 10
     static let threePointers: CGFloat = 3
     static let passwordMin = 6
@@ -29,44 +27,12 @@ class NewPasswordViewController: BaseViewController {
     @IBOutlet weak var showRepeatPasswordButton: UIButton!
     
     @IBOutlet weak var doNotMatchPasswordLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
-    
-    @IBOutlet weak var topConstraintSaveButton: NSLayoutConstraint!
-    @IBOutlet weak var topConstraintView: NSLayoutConstraint!
     
     var currentPassword = ""
     var repeatPassword = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        // Save the distance which you want a use to raise the button.
-        var interval = (keyboardFrameSize.minY - NewPasswordConstants.tenPointers) - saveButton.frame.maxY
-        guard interval < 0 else { return }
-        
-        // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
-        switch (topConstraintSaveButton.constant - NewPasswordConstants.threePointers) + interval {
-        // If the constraint height larger, simply subtract the height of the decrease from it.
-        case 0...:
-            topConstraintSaveButton.constant += interval
-            topConstraintView.constant = NewPasswordConstants.topViewConstraint
-        // If the height of the decrease larger, subtract constraint height(without the minimum possible) from it, set minimum possible constraint height and subtract the remaining height of the decrease from the height of the view constraint.
-        case ..<0:
-            interval += topConstraintSaveButton.constant - NewPasswordConstants.threePointers
-            topConstraintSaveButton.constant = NewPasswordConstants.threePointers
-            topConstraintView.constant += interval
-            
-        default:
-            break
-        }
-    }
-    
-    override func keyboardWillHide() {
-        topConstraintSaveButton.constant = NewPasswordConstants.topSaveButtonConstraint
-        topConstraintView.constant = NewPasswordConstants.topViewConstraint
     }
     
     override func settingTextFields() {
@@ -110,13 +76,12 @@ extension NewPasswordViewController: UITextFieldDelegate {
                 updatedString == self.repeatPassword ||
                 textField == repeatPasswordTextField &&
                 updatedString == self.currentPassword) {
-            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
-            self.saveButton.isEnabled = true
+            self.nextButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
+            self.nextButton.isEnabled = true
             self.doNotMatchPasswordLabel.isHidden = true
             
         } else {
-            self.saveButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
-            self.saveButton.isEnabled = false
+            self.nextButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
             self.doNotMatchPasswordLabel.isHidden = false
         }
         

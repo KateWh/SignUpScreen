@@ -691,13 +691,13 @@
                     </view>
                     <connections>
                         <outlet property="doNotMatchPasswordLabel" destination="Llf-sC-iZ9" id="Qc4-qH-i2l"/>
+                        <outlet property="nextButton" destination="eaB-Rz-aFo" id="6jP-j5-pLX"/>
                         <outlet property="passwordTextField" destination="J3B-cq-8QX" id="u4e-vO-Yt7"/>
                         <outlet property="repeatPasswordTextField" destination="EBN-rR-O72" id="clW-Hk-WPf"/>
-                        <outlet property="saveButton" destination="eaB-Rz-aFo" id="6jP-j5-pLX"/>
                         <outlet property="showPasswordButton" destination="QD1-mV-ii3" id="bIv-Zj-ldi"/>
                         <outlet property="showRepeatPasswordButton" destination="Vc1-Sp-Agv" id="hkl-sr-tn1"/>
-                        <outlet property="topConstraintSaveButton" destination="nnH-SE-nTL" id="SC3-sC-pNc"/>
-                        <outlet property="topConstraintView" destination="u4T-0G-XB3" id="sH5-gk-MBE"/>
+                        <outlet property="topConstraintNextButton" destination="nnH-SE-nTL" id="SC3-sC-pNc"/>
+                        <outlet property="topConstraintSubview" destination="u4T-0G-XB3" id="sH5-gk-MBE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26D-XV-8ag" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,7 +762,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your new password will be send to the specified e-mail address." textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbb-1Y-pCZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your new password will be send to the specified e-mail address." lineBreakMode="middleTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbb-1Y-pCZ">
                                         <rect key="frame" x="0.0" y="132" width="343" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="ijv-1H-azy"/>
@@ -814,17 +814,17 @@
                     <connections>
                         <outlet property="criteriaOfPassword" destination="Kbb-1Y-pCZ" id="75x-dq-tIh"/>
                         <outlet property="emailTextField" destination="oHX-OM-ThT" id="dAs-yH-BJG"/>
-                        <outlet property="sendButton" destination="feU-lw-ZnC" id="Bfc-yc-jWv"/>
+                        <outlet property="nextButton" destination="feU-lw-ZnC" id="Bfc-yc-jWv"/>
                         <outlet property="someQuestionsLabel" destination="YHy-Dj-BCf" id="nEd-xL-0ph"/>
-                        <outlet property="topConstraintSendButton" destination="gYQ-gE-2un" id="6Gb-5o-ZvT"/>
-                        <outlet property="topConstraintView" destination="iNx-eF-c1W" id="hIF-2h-Tmg"/>
+                        <outlet property="topConstraintNextButton" destination="gYQ-gE-2un" id="6Gb-5o-ZvT"/>
+                        <outlet property="topConstraintSubview" destination="iNx-eF-c1W" id="hIF-2h-Tmg"/>
                         <segue destination="zRF-U1-rsL" kind="show" identifier="goToNewPassword" id="in3-zZ-k5I"/>
                         <segue destination="QKh-6m-zid" kind="show" identifier="goToSignIn" id="Awc-w5-PRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G7H-UD-jYf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-42" y="-261"/>
+            <point key="canvasLocation" x="-42.399999999999999" y="-261.31934032983509"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="mZC-iO-HDo">

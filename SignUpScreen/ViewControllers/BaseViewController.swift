@@ -19,12 +19,35 @@ struct BaseConstants {
     
     static let signUpText = "Sign up"
     static let signInText = "Sign in"
+    
+    static let tenPointers: CGFloat = 10
+    static let threePointers: CGFloat = 3
+    
+    static let newPasswordScreenNextButtonTopConstraint: CGFloat = 58
+    static let newPasswordScreenSubviewTopConstraint: CGFloat = 72
+    
+    static let resetPasswordScreenNextButtonTopConstraint: CGFloat = 81
+    static let resetPasswordScreenSubviewTopConstraint: CGFloat = 72
+    
+    static let signInScreenMainStringSomeQuestionLabel = "Don't have an account? "
+    static let signInScreenSignUpText = "Sign up"
+    
+    static let signUpScreenMainStringSomeQuestionLabel = "Already have an account? "
+    static let signUpScreenSignInText = "Sign in"
+    
+    static let resetPasswordScreenMainStringSomeQuestionLabel = "Do you remember your password? "
+    static let resetPasswordScreenSignInText = "Sign in"
 }
 
 class BaseViewController: UIViewController {
     
-   @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var someQuestionsLabel: UILabel!
+    
+    @IBOutlet weak var nextButton: UIButton!
+    
+    @IBOutlet weak var topConstraintNextButton: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintSubview: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +55,7 @@ class BaseViewController: UIViewController {
         view.addGestureRecognizer(tap)
         self.registerKeyboardNotification()
         self.settingTextFields()
+        self.setupSomeQuestionsLabel()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,6 +119,28 @@ class BaseViewController: UIViewController {
         button.isSelected = !button.isSelected
     }
     
+    func setupSomeQuestionsLabel() {
+        
+        var mainString = ""
+        var subString = ""
+        
+        if self is ResetPasswordViewController {
+            mainString = BaseConstants.resetPasswordScreenMainStringSomeQuestionLabel
+            subString = BaseConstants.resetPasswordScreenSignInText
+        } else if self is SignInViewController {
+            mainString = BaseConstants.signInScreenMainStringSomeQuestionLabel
+            subString = BaseConstants.signInScreenSignUpText
+        } else if self is SignUpViewController {
+            mainString = BaseConstants.signUpScreenMainStringSomeQuestionLabel
+            subString = BaseConstants.signUpScreenSignInText
+        } else {
+            return
+        }
+        
+        self.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: mainString, subStringForColoring: subString)
+        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
+    }
+    
     @objc func handleTapOnLabel(_ recognizer: UITapGestureRecognizer) {
         guard let dontHaveText = someQuestionsLabel.attributedText?.string else { return }
         
@@ -118,9 +164,52 @@ class BaseViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
+        var subviewTopConstraint: CGFloat = 0
+        
+        if self is NewPasswordViewController {
+            subviewTopConstraint = BaseConstants.newPasswordScreenSubviewTopConstraint
+        } else if self is ResetPasswordViewController {
+            subviewTopConstraint = BaseConstants.newPasswordScreenSubviewTopConstraint
+        } else {
+            return
+        }
+        
+        guard let userInfo = notification.userInfo, let keyboardFrameSize = (userInfo [UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+    
+        var interval = (keyboardFrameSize.minY - BaseConstants.tenPointers) - nextButton.frame.maxY
+        guard interval < 0 else { return }
+        // Check the ratio of the height of the button constraint to the height at which you want to raise the button.
+        switch (topConstraintNextButton.constant - BaseConstants.threePointers) + interval {
+        // If the constraint height larger, simply subtract the height of the decrease from it.
+        case 0...:
+            topConstraintNextButton.constant += interval
+            topConstraintSubview.constant = subviewTopConstraint
+        // If the height of the decrease larger, subtract constraint height(without the minimum possible) from it, set minimum possible constraint height and subtract the remaining height of the decrease from the height of the view constraint.
+        case ..<0:
+            interval += topConstraintNextButton.constant - BaseConstants.threePointers
+            topConstraintNextButton.constant = BaseConstants.threePointers
+            topConstraintSubview.constant += interval
+        default:
+            break
+        }
     }
     
     @objc func keyboardWillHide() {
+        var nextButtonTopConstraint: CGFloat = 0
+        var subviewTopConstraint: CGFloat = 0
+        
+        if self is NewPasswordViewController {
+            nextButtonTopConstraint = BaseConstants.newPasswordScreenNextButtonTopConstraint
+            subviewTopConstraint = BaseConstants.newPasswordScreenSubviewTopConstraint
+        } else if self is ResetPasswordViewController {
+            nextButtonTopConstraint = BaseConstants.resetPasswordScreenNextButtonTopConstraint
+            subviewTopConstraint = BaseConstants.newPasswordScreenSubviewTopConstraint
+        } else {
+            return
+        }
+        
+        topConstraintNextButton.constant = nextButtonTopConstraint
+        topConstraintSubview.constant = subviewTopConstraint
     }
     
     func settingTextFields() {

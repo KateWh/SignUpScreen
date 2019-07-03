@@ -9,8 +9,6 @@
 import UIKit
 
 private struct SignInConstans {
-    static let mainStringSomeQuestionLabel = "Don't have an account? "
-    static let orangeStringSomeQuestionLabel = "Sign up"
     static let mainStringForgotYourPasswordLabel = "Forgot your password? "
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
     static let goToSignUpSegueIdentifire = "goToSignUp"
@@ -34,7 +32,6 @@ class SignInViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupSomeQuestionsLabel()
         self.setupForgotYourPasswordLabel()
     }
     
@@ -125,11 +122,6 @@ private extension SignInViewController {
     
     func setupForgotYourPasswordLabel() {
         super.makeTheSubstringOrange(label: self.forgotYourPasswordLabel, mainString: SignInConstans.mainStringForgotYourPasswordLabel, subStringForColoring: SignInConstans.orangeStringForgotYourPasswordLabel)
-    }
-    
-    func setupSomeQuestionsLabel() {
-       super.makeTheSubstringOrange(label: self.someQuestionsLabel, mainString: SignInConstans.mainStringSomeQuestionLabel, subStringForColoring: SignInConstans.orangeStringSomeQuestionLabel)
-        self.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
     }
     
 }

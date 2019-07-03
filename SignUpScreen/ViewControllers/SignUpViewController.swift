@@ -9,8 +9,7 @@
 import UIKit
 
 private struct SignUpConstans {
-    static let mainStringSomeQuestionLabel = "Already have an account? "
-    static let subStringSomeQuestionLabel = "Sign in"
+    
     static let unwindSegueIdentifire = "unwindSegueToSignIn"
     static let passwordMin = 6
     static let passwordMax = 16
@@ -29,11 +28,6 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak var showPasswordButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var secondSignUpScrollView: UIScrollView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setupSomeQuestionsLabel()
-    }
     
     override func performToSegue() {
         self.performSegue(withIdentifier: SignUpConstans.unwindSegueIdentifire, sender: self)
@@ -106,11 +100,3 @@ extension SignUpViewController: UITextFieldDelegate {
     
 }
 
-private extension SignUpViewController {
-
-    func setupSomeQuestionsLabel() {
-        super.makeTheSubstringOrange(label: super.someQuestionsLabel, mainString: SignUpConstans.mainStringSomeQuestionLabel, subStringForColoring: SignUpConstans.subStringSomeQuestionLabel)
-        super.someQuestionsLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnLabel)))
-    }
-    
-}
