@@ -12,12 +12,10 @@ private struct SignInConstans {
     static let mainStringForgotYourPasswordLabel = "Forgot your password? "
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
     static let goToSignUpSegueIdentifire = "goToSignUp"
-    static let passwordMin = 6
-    static let passwordMax = 16
-    static let startButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
-    static let startButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
+    static let goToResetSegueIdentifire = "goToReset"
+    static let orange = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
+    static let lightOrage = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
-
 
 class SignInViewController: BaseViewController {
     
@@ -40,7 +38,9 @@ class SignInViewController: BaseViewController {
         super.setPaddingForTextField(passwordTextField)
     }
     
-    @IBAction func tapStartButton(_ sender: UIButton) {
+    override func viewDidDisappear(_ animated: Bool) {
+        self.emailTextField.text?.removeAll()
+        super.passwordTextField.text?.removeAll()
     }
     
     @IBAction func changePasswordMode(_ sender: UIButton) {
@@ -48,7 +48,8 @@ class SignInViewController: BaseViewController {
         sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {}
+    @IBAction func unwindToSignIn(segue: UIStoryboardSegue) {
+    }
     
 }
 
@@ -59,33 +60,32 @@ extension SignInViewController: UITextFieldDelegate {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
         
         if textField == emailTextField {
-            if BaseConstants.emailPredicate.evaluate(with: updatedString) && passwordTextField.text?.count ?? 0 >= SignInConstans.passwordMin && passwordTextField.text?.count ?? 0 <= SignInConstans.passwordMax {
-                self.nextButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
+            if BaseConstants.emailPredicate.evaluate(with: updatedString) && BaseConstants.passwordPredicate.evaluate(with: passwordTextField.text ?? "") {
+                self.nextButton.backgroundColor = SignInConstans.orange
                 self.nextButton.isEnabled = true
             } else {
-                self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                self.nextButton.backgroundColor = SignInConstans.lightOrage
                 self.nextButton.isEnabled = false
             }
             
         } else if textField == passwordTextField {
-            if updatedString.count >= SignInConstans.passwordMin && updatedString.count <= SignInConstans.passwordMax {
+            if BaseConstants.passwordPredicate.evaluate(with: updatedString) {
                 self.incorrectPasswordLabel.isHidden = true
                 self.passwordTextField.layer.borderWidth = 0
                 if BaseConstants.emailPredicate.evaluate(with: emailTextField.text) {
-                    self.nextButton.backgroundColor = SignInConstans.startButtonEnableBackgroundColor
+                    self.nextButton.backgroundColor = SignInConstans.orange
                     self.nextButton.isEnabled = true
                 } else {
-                    self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                    self.nextButton.backgroundColor = SignInConstans.lightOrage
                     self.nextButton.isEnabled = false
                 }
                 
             } else {
                 self.incorrectPasswordLabel.isHidden = false
-                self.nextButton.backgroundColor = SignInConstans.startButtonDisableBackgroundColor
+                self.nextButton.backgroundColor = SignInConstans.lightOrage
                 self.nextButton.isEnabled = false
             }
         }
-        
         
         if updatedString.count > 0 {
             self.showPasswordButton.isHidden = false
@@ -118,7 +118,17 @@ private extension SignInViewController {
     
     func setupForgotYourPasswordLabel() {
         super.makeTheSubstringOrange(label: self.forgotYourPasswordLabel, mainString: SignInConstans.mainStringForgotYourPasswordLabel, subStringForColoring: SignInConstans.orangeStringForgotYourPasswordLabel)
+        
+        self.forgotYourPasswordLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapOnFogotLabel)))
+    }
+    
+    @objc func handleTapOnFogotLabel(_ recognizer: UITapGestureRecognizer) {
+        guard let dontHaveText = forgotYourPasswordLabel.attributedText?.string else { return }
+        
+        if let range = dontHaveText.range(of: NSLocalizedString(SignInConstans.orangeStringForgotYourPasswordLabel, comment: "")),
+            recognizer.didTapAttributedTextInLabel(label: self.forgotYourPasswordLabel, inRange: NSRange(range, in: SignInConstans.mainStringForgotYourPasswordLabel)) {
+            performSegue(withIdentifier: SignInConstans.goToResetSegueIdentifire, sender: self)
+        }
     }
     
 }
-

@@ -9,7 +9,7 @@
 import UIKit
 
 private struct ResetPasswordConstants {
-    static let goToSignInSegueIdentifire = "goToSignIn"
+    static let unwindToSignInSegueIdentifire = "unwindToSignIn"
     static let startButtonTitle = "START"
     static let startStringSomeQuestionLabel = "Please, enter the password from the letter."
     static let startPlaceholder = "Password"
@@ -31,7 +31,7 @@ class ResetPasswordViewController: BaseViewController {
     var controllerState = ControllerState.setEmail
     
     override func performToSegue() {
-         self.performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
+         self.performSegue(withIdentifier: ResetPasswordConstants.unwindToSignInSegueIdentifire, sender: self)
     }
     
     override func settingTextFields() {

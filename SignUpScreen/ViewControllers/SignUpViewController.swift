@@ -16,7 +16,6 @@ private struct SignUpConstans {
     static let startButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
-
 class SignUpViewController: BaseViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -81,7 +80,7 @@ extension SignUpViewController: UITextFieldDelegate {
                 self.showPasswordButton.isHidden = true
                 self.showPasswordButton.isEnabled = false
             }
-            if updatedString.count >= SignUpConstans.usernameMin && updatedString.count <= SignUpConstans.usernameMax {
+            if BaseConstants.passwordPredicate.evaluate(with: updatedString) {
                 self.passwordCheckButton.isHidden = false
                 self.passwordRulesLabel.isHidden = true
             } else {

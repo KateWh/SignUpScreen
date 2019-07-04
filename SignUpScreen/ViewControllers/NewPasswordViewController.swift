@@ -46,6 +46,17 @@ class NewPasswordViewController: BaseViewController {
 
 extension NewPasswordViewController: UITextFieldDelegate {
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == passwordTextField {
+            self.passwordRuleLabel.text = NewPasswordConstants.passwordHint
+            self.passwordRuleLabel.textColor = NewPasswordConstants.black
+        } else if textField == repeatPasswordTextField {
+            self.passwordRuleLabel.text = NewPasswordConstants.passwordNotMatch
+            self.passwordRuleLabel.textColor = NewPasswordConstants.lightOrange
+        }
+        return true
+    }
+    
     func  textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
 

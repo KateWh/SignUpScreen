@@ -42,14 +42,6 @@ struct BaseConstants {
     static let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,20}$")
 }
 
-enum BaseState {
-    case newScreen(BaseConstants)
-    case resetScreen(BaseConstants)
-    case signInScreen(BaseConstants)
-    case signUpScreen(BaseConstants)
-    case none
-}
-
 class BaseViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -60,8 +52,6 @@ class BaseViewController: UIViewController {
     @IBOutlet weak var topConstraintNextButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintSubview: NSLayoutConstraint!
     
-    var baseState = BaseState.none
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -69,16 +59,6 @@ class BaseViewController: UIViewController {
         self.registerKeyboardNotification()
         self.settingTextFields()
         self.setupSomeQuestionsLabel()
-        
-        if self is NewPasswordViewController {
-            self.baseState = .newScreen(BaseConstants())
-        } else if self is ResetPasswordViewController {
-            self.baseState = .resetScreen(BaseConstants())
-        } else if self is SignInViewController {
-            self.baseState = .signInScreen(BaseConstants())
-        } else if self is SignUpViewController {
-            self.baseState = .signUpScreen(BaseConstants())
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -237,4 +217,3 @@ class BaseViewController: UIViewController {
     }
     
 }
-
