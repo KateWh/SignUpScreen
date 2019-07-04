@@ -9,31 +9,19 @@
 import UIKit
 
 private struct NewPasswordConstants {
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let tenPointers: CGFloat = 10
-    static let threePointers: CGFloat = 3
-    static let passwordMin = 6
-    static let passwordMax = 16
-    static let saveButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
-    static let saveButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
+    static let black = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    static let orange = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
+    static let lightOrange = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
+    static let passwordHint = "The password should be 6 to 20 characters long, must contain at least 1 uppercase and 1 number (0-9)"
+    static let passwordNotMatch = "Passwords do not match. Try again."
 }
 
 class NewPasswordViewController: BaseViewController {
 
-
     @IBOutlet weak var repeatPasswordTextField: UITextField!
-    
     @IBOutlet weak var showPasswordButton: UIButton!
     @IBOutlet weak var showRepeatPasswordButton: UIButton!
-    
-    @IBOutlet weak var doNotMatchPasswordLabel: UILabel!
-    
-    var currentPassword = ""
-    var repeatPassword = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    @IBOutlet weak var passwordRuleLabel: UILabel!
     
     override func settingTextFields() {
         setPaddingForTextField(passwordTextField)
@@ -45,56 +33,63 @@ class NewPasswordViewController: BaseViewController {
             super.changePasswordView(passwordTextField, button: sender)
         } else {
             super.changePasswordView(repeatPasswordTextField, button: sender)
+            
+            if self.repeatPasswordTextField.isSecureTextEntry {
+               self.repeatPasswordTextField.textColor = NewPasswordConstants.lightOrange
+            } else {
+                self.repeatPasswordTextField.textColor = NewPasswordConstants.black
+            }
         }
     }
     
 }
 
 extension NewPasswordViewController: UITextFieldDelegate {
+    
     func  textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        
-        if updatedString.count > 0 {
+
             if textField == passwordTextField {
-                self.showPasswordButton.isEnabled = true
-                self.showPasswordButton.isHidden = false
-            } else if textField == repeatPasswordTextField {
-                self.showRepeatPasswordButton.isHidden = false
-                self.showRepeatPasswordButton.isEnabled = true
+                if updatedString.count > 0 {
+                    self.showPasswordButton.isEnabled = true
+                    self.showPasswordButton.isHidden = false
+                } else {
+                    self.showPasswordButton.isEnabled = false
+                    self.showPasswordButton.isHidden = true
+                }
+                self.passwordRuleLabel.text = NewPasswordConstants.passwordHint
+                self.passwordRuleLabel.textColor = NewPasswordConstants.black
+            } else if textField == self.repeatPasswordTextField {
+                if updatedString.count > 0 {
+                    self.showRepeatPasswordButton.isHidden = false
+                    self.showRepeatPasswordButton.isEnabled = true
+                } else {
+                    self.showRepeatPasswordButton.isHidden = true
+                    self.showRepeatPasswordButton.isEnabled = false
+                }
+                self.passwordRuleLabel.text = NewPasswordConstants.passwordNotMatch
+                self.passwordRuleLabel.textColor = NewPasswordConstants.lightOrange
             }
-        } else {
-            self.showPasswordButton.isEnabled = false
-            self.showPasswordButton.isHidden = true
-            self.showRepeatPasswordButton.isHidden = true
-            self.showRepeatPasswordButton.isEnabled = false
-        }
         
-        if updatedString.count >= NewPasswordConstants.passwordMin &&
-            updatedString.count <= NewPasswordConstants.passwordMax &&
-            (textField == passwordTextField &&
-                updatedString == self.repeatPassword ||
-                textField == repeatPasswordTextField &&
-                updatedString == self.currentPassword) {
-            self.nextButton.backgroundColor = NewPasswordConstants.saveButtonEnableBackgroundColor
-            self.nextButton.isEnabled = true
-            self.doNotMatchPasswordLabel.isHidden = true
-            
+        if textField == self.passwordTextField && BaseConstants.passwordPredicate.evaluate(with: updatedString) && self.repeatPasswordTextField.text == updatedString {
+                self.nextButton.backgroundColor = NewPasswordConstants.orange
+                self.nextButton.isEnabled = true
+                self.passwordRuleLabel.isHidden = true
+        } else if textField == self.repeatPasswordTextField && BaseConstants.passwordPredicate.evaluate(with: self.passwordTextField.text ?? "") && self.passwordTextField.text == updatedString {
+                self.nextButton.backgroundColor = NewPasswordConstants.orange
+                self.nextButton.isEnabled = true
+                self.passwordRuleLabel.isHidden = true
         } else {
-            self.nextButton.backgroundColor = NewPasswordConstants.saveButtonDisableBackgroundColor
-            self.doNotMatchPasswordLabel.isHidden = false
-        }
-        
-        if textField == passwordTextField {
-            self.currentPassword = updatedString
-        } else if textField == repeatPasswordTextField {
-            self.repeatPassword = updatedString
+            self.passwordRuleLabel.isHidden = false
+            self.nextButton.backgroundColor = NewPasswordConstants.lightOrange
+            self.nextButton.isEnabled = false
         }
         
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        return goToTheNext(textField: textField)
+        return super.goToTheNext(textField: textField)
     }
     
 }

@@ -38,7 +38,8 @@ struct BaseConstants {
     static let resetPasswordScreenMainStringSomeQuestionLabel = "Do you remember your password? "
     static let resetPasswordScreenSignInText = "Sign in"
     
-    static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{6,168}")
+    static let emailPredicate = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,168}")
+    static let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{6,20}$")
 }
 
 enum BaseState {

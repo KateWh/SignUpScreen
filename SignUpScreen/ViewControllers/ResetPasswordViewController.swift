@@ -10,19 +10,10 @@ import UIKit
 
 private struct ResetPasswordConstants {
     static let goToSignInSegueIdentifire = "goToSignIn"
-    static let sendButtonTitle = "SEND"
     static let startButtonTitle = "START"
     static let startStringSomeQuestionLabel = "Please, enter the password from the letter."
     static let startPlaceholder = "Password"
     static let segueToNewPasswordScreen = "goToNewPassword"
-    static let spaceSizeForTextFields: CGSize = CGSize(width: 10, height: 10)
-    static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
-    static let threePointers: CGFloat = 3
-    static let tenPointers: CGFloat = 10
-    
-    static let fiftyPercent: CGFloat = 0.5
-    static let passwordMin = 6
-    static let passwordMax = 16
     static let sendButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
     static let sendButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
@@ -40,11 +31,11 @@ class ResetPasswordViewController: BaseViewController {
     var controllerState = ControllerState.setEmail
     
     override func performToSegue() {
-         performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
+         self.performSegue(withIdentifier: ResetPasswordConstants.goToSignInSegueIdentifire, sender: self)
     }
     
     override func settingTextFields() {
-        setPaddingForTextField(emailTextField)
+        super.setPaddingForTextField(emailTextField)
     }
     
     @IBAction func tapSendButton(_ sender: UIButton) {
@@ -60,9 +51,7 @@ extension ResetPasswordViewController: UITextFieldDelegate{
         if controllerState == ControllerState.setEmail && BaseConstants.emailPredicate.evaluate(with: updatedString) {
             self.nextButton.isEnabled = true
             self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
-        } else if controllerState == ControllerState.setPassword &&
-            updatedString.count >= ResetPasswordConstants.passwordMin &&
-            updatedString.count <= ResetPasswordConstants.passwordMax &&
+        } else if controllerState == ControllerState.setPassword && BaseConstants.passwordPredicate.evaluate(with: updatedString) &&
             updatedString.isAlphanumeric {
             self.nextButton.isEnabled = true
             self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
