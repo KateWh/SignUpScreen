@@ -14,8 +14,6 @@ private struct ResetPasswordConstants {
     static let startStringSomeQuestionLabel = "Please, enter the password from the letter."
     static let startPlaceholder = "Password"
     static let segueToNewPasswordScreen = "goToNewPassword"
-    static let sendButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
-    static let sendButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
 enum ControllerState {
@@ -48,16 +46,16 @@ extension ResetPasswordViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        if controllerState == ControllerState.setEmail && BaseConstants.emailPredicate.evaluate(with: updatedString) {
+        
+        if controllerState == ControllerState.setEmail && updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.oneHundredSixtyEightInt && BaseConstants.emailPredicate.evaluate(with: updatedString) {
             self.nextButton.isEnabled = true
-            self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
-        } else if controllerState == ControllerState.setPassword && BaseConstants.passwordPredicate.evaluate(with: updatedString) &&
-            updatedString.isAlphanumeric {
+            self.nextButton.backgroundColor = BaseConstants.orange
+        } else if controllerState == ControllerState.setPassword && updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) {
             self.nextButton.isEnabled = true
-            self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonEnableBackgroundColor
+            self.nextButton.backgroundColor = BaseConstants.orange
         } else {
             self.nextButton.isEnabled = false
-            self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonDisableBackgroundColor
+            self.nextButton.backgroundColor = BaseConstants.lightOrange
         }
         return true
     }
@@ -76,7 +74,7 @@ private extension ResetPasswordViewController {
     func goNext() {
         if controllerState == ControllerState.setEmail {
             self.nextButton.isEnabled = false
-            self.nextButton.backgroundColor = ResetPasswordConstants.sendButtonDisableBackgroundColor
+            self.nextButton.backgroundColor = BaseConstants.lightOrange
             self.someQuestionsLabel.text = ResetPasswordConstants.startStringSomeQuestionLabel
             self.emailTextField.placeholder = ResetPasswordConstants.startPlaceholder
             self.emailTextField.text?.removeAll()

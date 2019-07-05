@@ -13,8 +13,6 @@ private struct SignInConstans {
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
     static let goToSignUpSegueIdentifire = "goToSignUp"
     static let goToResetSegueIdentifire = "goToReset"
-    static let orange = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
-    static let lightOrage = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
 class SignInViewController: BaseViewController {
@@ -60,29 +58,29 @@ extension SignInViewController: UITextFieldDelegate {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
         
         if textField == emailTextField {
-            if BaseConstants.emailPredicate.evaluate(with: updatedString) && BaseConstants.passwordPredicate.evaluate(with: passwordTextField.text ?? "") {
-                self.nextButton.backgroundColor = SignInConstans.orange
+            if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.oneHundredSixtyEightInt && BaseConstants.emailPredicate.evaluate(with: updatedString) && BaseConstants.passwordPredicate.evaluate(with: passwordTextField.text ?? "") {
+                self.nextButton.backgroundColor = BaseConstants.orange
                 self.nextButton.isEnabled = true
             } else {
-                self.nextButton.backgroundColor = SignInConstans.lightOrage
+                self.nextButton.backgroundColor = BaseConstants.lightOrange
                 self.nextButton.isEnabled = false
             }
             
         } else if textField == passwordTextField {
-            if BaseConstants.passwordPredicate.evaluate(with: updatedString) {
+            if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) {
                 self.incorrectPasswordLabel.isHidden = true
                 self.passwordTextField.layer.borderWidth = 0
                 if BaseConstants.emailPredicate.evaluate(with: emailTextField.text) {
-                    self.nextButton.backgroundColor = SignInConstans.orange
+                    self.nextButton.backgroundColor = BaseConstants.orange
                     self.nextButton.isEnabled = true
                 } else {
-                    self.nextButton.backgroundColor = SignInConstans.lightOrage
+                    self.nextButton.backgroundColor = BaseConstants.lightOrange
                     self.nextButton.isEnabled = false
                 }
                 
             } else {
                 self.incorrectPasswordLabel.isHidden = false
-                self.nextButton.backgroundColor = SignInConstans.lightOrage
+                self.nextButton.backgroundColor = BaseConstants.lightOrange
                 self.nextButton.isEnabled = false
             }
         }

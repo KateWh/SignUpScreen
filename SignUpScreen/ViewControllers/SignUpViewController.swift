@@ -10,10 +10,6 @@ import UIKit
 
 private struct SignUpConstans {
     static let unwindSegueIdentifire = "unwindSegueToSignIn"
-    static let usernameMin = 2
-    static let usernameMax = 50
-    static let startButtonEnableBackgroundColor = #colorLiteral(red: 0.9287405014, green: 0.4486459494, blue: 0.01082476228, alpha: 1)
-    static let startButtonDisableBackgroundColor = #colorLiteral(red: 0.9385811687, green: 0.6928147078, blue: 0.4736688733, alpha: 1)
 }
 
 class SignUpViewController: BaseViewController {
@@ -55,19 +51,19 @@ extension SignUpViewController: UITextFieldDelegate {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
         
         if textField == nameTextField {
-            if updatedString.count >= SignUpConstans.usernameMin && updatedString.count <= SignUpConstans.usernameMax {
+            if updatedString.count >= BaseConstants.twoInt && updatedString.count <= BaseConstants.fiftyInt {
                 self.nameCheckButton.isHidden = false
             } else {
                 self.nameCheckButton.isHidden = true
             }
         } else if textField == usernameTextField {
-            if updatedString.count >= SignUpConstans.usernameMin && updatedString.count <= SignUpConstans.usernameMax {
+            if updatedString.count >= BaseConstants.twoInt && updatedString.count <= BaseConstants.fiftyInt {
                 self.usernameCheckButton.isHidden = false
             } else {
                 self.usernameCheckButton.isHidden = true
             }
         } else if textField == emailTextField {
-            if BaseConstants.emailPredicate.evaluate(with: updatedString) {
+            if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.oneHundredSixtyEightInt && BaseConstants.emailPredicate.evaluate(with: updatedString) {
                 self.emailCheckButton.isHidden = false
             } else {
                 self.emailCheckButton.isHidden = true
@@ -80,7 +76,7 @@ extension SignUpViewController: UITextFieldDelegate {
                 self.showPasswordButton.isHidden = true
                 self.showPasswordButton.isEnabled = false
             }
-            if BaseConstants.passwordPredicate.evaluate(with: updatedString) {
+            if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) {
                 self.passwordCheckButton.isHidden = false
                 self.passwordRulesLabel.isHidden = true
             } else {
@@ -90,10 +86,10 @@ extension SignUpViewController: UITextFieldDelegate {
         }
         
         if !nameCheckButton.isHidden && !usernameCheckButton.isHidden && !emailCheckButton.isHidden && !passwordCheckButton.isHidden {
-            self.nextButton.backgroundColor = SignUpConstans.startButtonEnableBackgroundColor
+            self.nextButton.backgroundColor = BaseConstants.orange
             self.nextButton.isEnabled = true
         } else {
-            self.nextButton.backgroundColor = SignUpConstans.startButtonDisableBackgroundColor
+            self.nextButton.backgroundColor = BaseConstants.lightOrange
             self.nextButton.isEnabled = false
         }
         
