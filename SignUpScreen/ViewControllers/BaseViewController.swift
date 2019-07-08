@@ -20,6 +20,7 @@ struct BaseConstants {
     static let spacePointForTextFields: CGPoint = CGPoint(x: 0, y: 0)
     static let tenPointers: CGFloat = 10
     static let threePointers: CGFloat = 3
+    static let twoPointers: CGFloat = 2
     
     static let mainStringFont: UIFont? = UIFont(name: "Dax-Light", size: 15)
     static let subStringFont: UIFont? = UIFont(name: "Dax-Medium", size: 15)
@@ -63,6 +64,7 @@ class BaseViewController: UIViewController {
         self.registerKeyboardNotification()
         self.settingTextFields()
         self.setupSomeQuestionsLabel()
+        self.setupNextButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,6 +106,10 @@ class BaseViewController: UIViewController {
     func changePasswordView(_ textField: UITextField, button: UIButton) {
         textField.isSecureTextEntry = !textField.isSecureTextEntry
         button.isSelected = !button.isSelected
+    }
+    
+    func setupNextButton() {
+        self.nextButton.layer.cornerRadius = self.nextButton.frame.height / BaseConstants.twoPointers
     }
     
     func setupSomeQuestionsLabel() {
