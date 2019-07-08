@@ -47,9 +47,8 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="twitter_logo_50x55"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s81-iJ-ZDV">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="SIGN IN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s81-iJ-ZDV">
                                                 <rect key="frame" x="24" y="50" width="327" height="37"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" name="Dax-Light" family="Dax" pointSize="28"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -143,9 +142,14 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="s81-iJ-ZDV" firstAttribute="leading" secondItem="lv3-Ru-CR9" secondAttribute="leading" constant="24" id="VNE-cJ-0Ok"/>
+                                            <constraint firstItem="s81-iJ-ZDV" firstAttribute="top" secondItem="lv3-Ru-CR9" secondAttribute="top" constant="50" id="skK-36-Qub"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="lv3-Ru-CR9" firstAttribute="leading" secondItem="LIW-Ry-Cf3" secondAttribute="leading" id="E6o-wq-UHG"/>
                                     <constraint firstItem="lv3-Ru-CR9" firstAttribute="top" secondItem="LIW-Ry-Cf3" secondAttribute="top" id="OYa-5d-mFy"/>
                                     <constraint firstAttribute="bottom" secondItem="lv3-Ru-CR9" secondAttribute="bottom" id="P43-Wu-ARf"/>
                                     <constraint firstAttribute="trailing" secondItem="lv3-Ru-CR9" secondAttribute="trailing" id="S5Q-mJ-JNr"/>
@@ -156,9 +160,11 @@
                         <color key="backgroundColor" red="0.95679932832717896" green="0.95691007375717163" blue="0.95674949884414673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LIW-Ry-Cf3" firstAttribute="leading" secondItem="hat-Hp-MbE" secondAttribute="leading" id="DHg-aM-IsO"/>
+                            <constraint firstItem="LIW-Ry-Cf3" firstAttribute="centerX" secondItem="hat-Hp-MbE" secondAttribute="centerX" id="ZuQ-kd-9Al"/>
                             <constraint firstItem="LIW-Ry-Cf3" firstAttribute="top" secondItem="hat-Hp-MbE" secondAttribute="top" id="tIw-2a-wxQ"/>
                             <constraint firstItem="LIW-Ry-Cf3" firstAttribute="bottom" secondItem="hat-Hp-MbE" secondAttribute="bottom" id="whP-wz-gMV"/>
                             <constraint firstItem="LIW-Ry-Cf3" firstAttribute="trailing" secondItem="hat-Hp-MbE" secondAttribute="trailing" id="xEv-7d-N27"/>
+                            <constraint firstItem="LIW-Ry-Cf3" firstAttribute="centerY" secondItem="hat-Hp-MbE" secondAttribute="centerY" id="xXX-TP-B3d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hat-Hp-MbE"/>
                     </view>
@@ -208,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4b-gv-RSl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1126" y="439"/>
+            <point key="canvasLocation" x="-1297" y="439"/>
         </scene>
     </scenes>
     <resources>

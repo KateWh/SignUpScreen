@@ -763,7 +763,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="CxP-ue-MIo" kind="relationship" relationship="rootViewController" id="oj4-iK-3Gu"/>
+                        <segue destination="vLf-ZL-4Or" kind="relationship" relationship="rootViewController" id="XCA-ru-v6t"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwK-Jo-F7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -778,7 +778,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTv-Qb-ids" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-409" y="440"/>
+            <point key="canvasLocation" x="-349" y="407"/>
+        </scene>
+        <!--SignUpViewController-->
+        <scene sceneID="Vrx-AD-fyH">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SignUpViewController" storyboardName="SignUp" referencedIdentifier="SignUpViewController" id="vLf-ZL-4Or" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zts-Oj-HuO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YeT-g5-0uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-345" y="490"/>
         </scene>
     </scenes>
     <resources>
