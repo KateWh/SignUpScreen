@@ -11,6 +11,7 @@ import UIKit
 private struct SignInConstans {
     static let mainStringForgotYourPasswordLabel = "Forgot your password? "
     static let orangeStringForgotYourPasswordLabel = "Tap to reset"
+    static let incorrectPasswordText = "Incorrect password. Try again."
     static let goToSignUpSegueIdentifire = "goToSignUp"
     static let goToResetSegueIdentifire = "goToReset"
 }
@@ -65,10 +66,9 @@ extension SignInViewController: UITextFieldDelegate {
                 self.nextButton.backgroundColor = BaseConstants.lightOrange
                 self.nextButton.isEnabled = false
             }
-            
         } else if textField == passwordTextField {
             if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) {
-                self.incorrectPasswordLabel.isHidden = true
+                self.incorrectPasswordLabel.text = BaseConstants.emptyString
                 self.passwordTextField.layer.borderWidth = 0
                 if BaseConstants.emailPredicate.evaluate(with: emailTextField.text) {
                     self.nextButton.backgroundColor = BaseConstants.orange
@@ -77,22 +77,24 @@ extension SignInViewController: UITextFieldDelegate {
                     self.nextButton.backgroundColor = BaseConstants.lightOrange
                     self.nextButton.isEnabled = false
                 }
-                
             } else {
-                self.incorrectPasswordLabel.isHidden = false
+                self.incorrectPasswordLabel.text = SignInConstans.incorrectPasswordText
                 self.nextButton.backgroundColor = BaseConstants.lightOrange
                 self.nextButton.isEnabled = false
             }
         }
         
-        if updatedString.count > 0 {
-            self.showPasswordButton.isHidden = false
-            self.showPasswordButton.isEnabled = true
-        } else {
-            self.showPasswordButton.isHidden = true
-            self.showPasswordButton.isEnabled = false
-            self.passwordTextField.isSecureTextEntry = true
-            self.incorrectPasswordLabel.isHidden = true
+        if textField == passwordTextField {
+            if updatedString.count > 0 {
+                self.showPasswordButton.isHidden = false
+                self.showPasswordButton.isEnabled = true
+            } else {
+                self.showPasswordButton.isHidden = true
+                self.showPasswordButton.isEnabled = false
+                self.showPasswordButton.isSelected = false 
+                self.passwordTextField.isSecureTextEntry = true
+                self.incorrectPasswordLabel.text = BaseConstants.emptyString
+            }
         }
         return true
     }

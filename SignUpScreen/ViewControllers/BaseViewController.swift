@@ -37,6 +37,7 @@ struct BaseConstants {
     static let resetPasswordScreenNextButtonTopConstraint: CGFloat = 81
     static let resetPasswordScreenSubviewTopConstraint: CGFloat = 72
     
+    static let emptyString = " "
     static let signInScreenMainStringSomeQuestionLabel = "Don't have an account? "
     static let signUpScreenMainStringSomeQuestionLabel = "Already have an account? "
     static let resetPasswordScreenMainStringSomeQuestionLabel = "Do you remember your password? "
