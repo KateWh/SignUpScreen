@@ -24,9 +24,9 @@
 		C663615F22BA656C00D85362 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663615E22BA656C00D85362 /* StringExtension.swift */; };
 		C663616122BA67C400D85362 /* UITapGestureRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */; };
 		C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */; };
-		C66AD02A22CF2385008D8358 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66AD02922CF2385008D8358 /* SignIn.storyboard */; };
 		C66AD02C22CF23B4008D8358 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66AD02B22CF23B4008D8358 /* SignUp.storyboard */; };
 		C66AD02E22CF23E0008D8358 /* ResetPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66AD02D22CF23E0008D8358 /* ResetPassword.storyboard */; };
+		C67F340722D478E90056E170 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67F340622D478E90056E170 /* SignIn.storyboard */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
 		C69CA38422A4F7BE00895292 /* SignUpTheSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */; };
 		C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* Main.storyboard */; };
@@ -61,9 +61,9 @@
 		C663615E22BA656C00D85362 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerExtension.swift; sourceTree = "<group>"; };
 		C664620D22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesCollectionViewCell.swift; sourceTree = "<group>"; };
-		C66AD02922CF2385008D8358 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		C66AD02B22CF23B4008D8358 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C66AD02D22CF23E0008D8358 /* ResetPassword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ResetPassword.storyboard; sourceTree = "<group>"; };
+		C67F340622D478E90056E170 /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69CA38122A4F7BE00895292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTheSpeechViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		C6DCC62122A54E3B000FCFC6 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				C66AD02922CF2385008D8358 /* SignIn.storyboard */,
+				C67F340622D478E90056E170 /* SignIn.storyboard */,
 				C66AD02D22CF23E0008D8358 /* ResetPassword.storyboard */,
 				C66AD02B22CF23B4008D8358 /* SignUp.storyboard */,
 				C69CA38522A4F7BE00895292 /* Main.storyboard */,
@@ -298,8 +298,8 @@
 				C69CA39C22A5189300895292 /* dax-mediumitalic.ttf in Resources */,
 				C6049CD922AFF7AF009AC6E3 /* Assets.xcassets in Resources */,
 				C69CA39F22A5189300895292 /* dax-bold.ttf in Resources */,
-				C66AD02A22CF2385008D8358 /* SignIn.storyboard in Resources */,
 				C69CA3A222A5189300895292 /* dax-medium.ttf in Resources */,
+				C67F340722D478E90056E170 /* SignIn.storyboard in Resources */,
 				C69CA38722A4F7BE00895292 /* Main.storyboard in Resources */,
 				C69CA3A022A5189300895292 /* dax-regular.ttf in Resources */,
 				C69CA3A122A5189300895292 /* dax-extrabold.ttf in Resources */,

@@ -9,7 +9,7 @@
 import UIKit
 
 private struct SignUpConstans {
-    static let unwindSegueIdentifire = "unwindSegueToSignIn"
+    static let unwindSegueIdentifire = "unwindToSignIn"
 }
 
 class SignUpViewController: BaseViewController {

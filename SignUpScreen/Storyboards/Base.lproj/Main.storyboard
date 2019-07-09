@@ -763,12 +763,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vLf-ZL-4Or" kind="relationship" relationship="rootViewController" id="XCA-ru-v6t"/>
+                        <segue destination="CxP-ue-MIo" kind="relationship" relationship="rootViewController" id="5JS-Sh-tX5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IwK-Jo-F7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1230" y="440"/>
+            <point key="canvasLocation" x="-1231" y="447"/>
         </scene>
         <!--SignInViewController-->
         <scene sceneID="MBU-NO-TXR">
