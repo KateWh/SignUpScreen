@@ -83,7 +83,7 @@ class BaseViewController: UIViewController {
     }
     
     func goToTheNext(textField: UITextField) -> Bool {
-        guard let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField else { textField.resignFirstResponder()
+        guard let nextField = self.view.viewWithTag(textField.tag + 1) as? UITextField else { textField.resignFirstResponder()
             return true
         }
         nextField.becomeFirstResponder()

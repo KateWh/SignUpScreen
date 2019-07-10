@@ -10,6 +10,7 @@ import UIKit
 
 private struct SignUpConstans {
     static let unwindSegueIdentifire = "unwindToSignIn"
+    static let passwordRulesText = "The password should be 6 to 20 characters long, must contain at least 1 uppercase and 1 number (0-9)"
 }
 
 class SignUpViewController: BaseViewController {
@@ -20,8 +21,6 @@ class SignUpViewController: BaseViewController {
 
     @IBOutlet weak var passwordRulesLabel: UILabel!
     @IBOutlet weak var showPasswordButton: UIButton!
-    @IBOutlet weak var secondSignUpScrollView: UIScrollView!
-    
     @IBOutlet weak var nameCheckButton: UIButton!
     @IBOutlet weak var usernameCheckButton: UIButton!
     @IBOutlet weak var emailCheckButton: UIButton!
@@ -78,9 +77,9 @@ extension SignUpViewController: UITextFieldDelegate {
             }
             if updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) {
                 self.passwordCheckButton.isHidden = false
-                self.passwordRulesLabel.isHidden = true
+                self.passwordRulesLabel.text = BaseConstants.emptyString
             } else {
-                passwordRulesLabel.isHidden = false
+                passwordRulesLabel.text = SignUpConstans.passwordRulesText
                 self.passwordCheckButton.isHidden = true
             }
         }
