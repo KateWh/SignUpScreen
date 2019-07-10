@@ -778,17 +778,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTv-Qb-ids" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-349" y="407"/>
-        </scene>
-        <!--SignUpViewController-->
-        <scene sceneID="Vrx-AD-fyH">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SignUpViewController" storyboardName="SignUp" referencedIdentifier="SignUpViewController" id="vLf-ZL-4Or" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="zts-Oj-HuO"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YeT-g5-0uj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-345" y="490"/>
+            <point key="canvasLocation" x="-416" y="446"/>
         </scene>
     </scenes>
     <resources>
