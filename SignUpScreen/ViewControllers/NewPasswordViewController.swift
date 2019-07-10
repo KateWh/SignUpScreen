@@ -45,8 +45,7 @@ extension NewPasswordViewController: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == super.passwordTextField {
-            self.passwordRuleLabel.text = NewPasswordConstants.passwordHint
-            self.passwordRuleLabel.textColor = BaseConstants.black
+            self.passwordRuleLabel.text = BaseConstants.emptyString
         } else if textField == self.repeatPasswordTextField {
             self.passwordRuleLabel.text = NewPasswordConstants.passwordNotMatch
             self.passwordRuleLabel.textColor = BaseConstants.lightOrange
@@ -61,34 +60,35 @@ extension NewPasswordViewController: UITextFieldDelegate {
                 if updatedString.count > 0 {
                     self.showPasswordButton.isEnabled = true
                     self.showPasswordButton.isHidden = false
+                    self.passwordRuleLabel.text = NewPasswordConstants.passwordHint
+                    self.passwordRuleLabel.textColor = BaseConstants.black
                 } else {
                     self.showPasswordButton.isEnabled = false
                     self.showPasswordButton.isHidden = true
+                    self.passwordRuleLabel.text = BaseConstants.emptyString
                 }
-                self.passwordRuleLabel.text = NewPasswordConstants.passwordHint
-                self.passwordRuleLabel.textColor = BaseConstants.black
             } else if textField == self.repeatPasswordTextField {
                 if updatedString.count > 0 {
                     self.showRepeatPasswordButton.isHidden = false
                     self.showRepeatPasswordButton.isEnabled = true
+                    self.passwordRuleLabel.text = NewPasswordConstants.passwordNotMatch
+                    self.passwordRuleLabel.textColor = BaseConstants.lightOrange
                 } else {
                     self.showRepeatPasswordButton.isHidden = true
                     self.showRepeatPasswordButton.isEnabled = false
+                    self.passwordRuleLabel.text = BaseConstants.emptyString
                 }
-                self.passwordRuleLabel.text = NewPasswordConstants.passwordNotMatch
-                self.passwordRuleLabel.textColor = BaseConstants.lightOrange
             }
         
         if textField == self.passwordTextField && updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) && self.repeatPasswordTextField.text == updatedString {
                 self.nextButton.backgroundColor = BaseConstants.orange
                 self.nextButton.isEnabled = true
-                self.passwordRuleLabel.isHidden = true
+               self.passwordRuleLabel.text = BaseConstants.emptyString
         } else if textField == self.repeatPasswordTextField && updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.twentyInt && BaseConstants.passwordPredicate.evaluate(with: updatedString) && self.passwordTextField.text == updatedString {
                 self.nextButton.backgroundColor = BaseConstants.orange
                 self.nextButton.isEnabled = true
-                self.passwordRuleLabel.isHidden = true
+                self.passwordRuleLabel.text = BaseConstants.emptyString
         } else {
-            self.passwordRuleLabel.isHidden = false
             self.nextButton.backgroundColor = BaseConstants.lightOrange
             self.nextButton.isEnabled = false
         }

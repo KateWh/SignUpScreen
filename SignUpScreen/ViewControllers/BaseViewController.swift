@@ -55,8 +55,8 @@ class BaseViewController: UIViewController {
     
     @IBOutlet weak var nextButton: UIButton!
     
-    @IBOutlet weak var topConstraintNextButton: NSLayoutConstraint!
     @IBOutlet weak var topConstraintSubview: NSLayoutConstraint!
+    @IBOutlet weak var topConstraintNextButton: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()

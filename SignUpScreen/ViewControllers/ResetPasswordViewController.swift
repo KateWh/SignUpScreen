@@ -46,7 +46,6 @@ extension ResetPasswordViewController: UITextFieldDelegate{
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        
         if controllerState == ControllerState.setEmail && updatedString.count >= BaseConstants.sixInt && updatedString.count <= BaseConstants.oneHundredSixtyEightInt && BaseConstants.emailPredicate.evaluate(with: updatedString) {
             self.nextButton.isEnabled = true
             self.nextButton.backgroundColor = BaseConstants.orange
@@ -79,7 +78,7 @@ private extension ResetPasswordViewController {
             self.emailTextField.placeholder = ResetPasswordConstants.startPlaceholder
             self.emailTextField.text?.removeAll()
             self.emailTextField.endFloatingCursor()
-            self.criteriaOfPassword.isHidden = true
+            self.criteriaOfPassword.text = BaseConstants.emptyString
             self.nextButton.setTitle(ResetPasswordConstants.startButtonTitle, for: .normal)
             self.controllerState = ControllerState.setPassword
         } else if controllerState == ControllerState.setPassword {
