@@ -209,13 +209,11 @@
                         <outlet property="passwordTextField" destination="wzX-o3-WpY" id="Gxd-X7-fzd"/>
                         <outlet property="showPasswordButton" destination="Aza-Xk-Ir2" id="OwI-3e-N9g"/>
                         <outlet property="someQuestionsLabel" destination="owu-G0-VlQ" id="cdf-b5-HL6"/>
-                        <segue destination="xP3-cI-ybn" kind="show" identifier="goToSignUp" id="gQo-2F-Z9k"/>
-                        <segue destination="0N5-R9-bZR" kind="show" identifier="goToReset" id="YrV-LD-A4l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jkw-ab-YxV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="348" y="366"/>
+            <point key="canvasLocation" x="-510" y="386"/>
         </scene>
         <!--SignUp-->
         <scene sceneID="jaT-h8-HIj">
@@ -228,7 +226,7 @@
         <!--ResetPassword-->
         <scene sceneID="Zc9-yr-wIN">
             <objects>
-                <viewControllerPlaceholder storyboardName="ResetPassword" id="0N5-R9-bZR" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="ResetPasswordViewController" storyboardName="ResetPassword" referencedIdentifier="ResetPassword" id="0N5-R9-bZR" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8T4-si-EWU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1114" y="330"/>
@@ -446,11 +444,13 @@
                         <outlet property="passwordTextField" destination="Odk-pw-okT" id="9yH-fl-wr2"/>
                         <outlet property="showPasswordButton" destination="Aza-Xk-Ir2" id="lnN-bn-6aX"/>
                         <outlet property="someQuestionsLabel" destination="6Yj-dL-8H2" id="lf5-2W-bEL"/>
+                        <segue destination="0N5-R9-bZR" kind="show" identifier="goToReset" id="SzC-Cm-ufj"/>
+                        <segue destination="xP3-cI-ybn" kind="show" identifier="goToSignUp" id="dO0-Rp-i1c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4T-J2-6Gw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-279.19999999999999" y="365.66716641679164"/>
+            <point key="canvasLocation" x="446" y="392"/>
         </scene>
     </scenes>
     <resources>
