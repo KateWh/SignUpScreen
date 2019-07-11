@@ -13,13 +13,10 @@
 		C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */; };
 		C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */; };
 		C60F0D5D22B1209D001FF432 /* NewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */; };
-		C612841922BCD87400504B36 /* BaseSelectCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */; };
 		C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61AE83222AA91FD00FE425F /* SignInViewController.swift */; };
-		C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */; };
 		C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61E256722B9997500E62CB7 /* AllCollectionView.swift */; };
 		C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */; };
 		C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */; };
-		C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */; };
 		C65F93AF22AA4E6B001FE789 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65F93AE22AA4E6B001FE789 /* SignUpViewController.swift */; };
 		C663615F22BA656C00D85362 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663615E22BA656C00D85362 /* StringExtension.swift */; };
 		C663616122BA67C400D85362 /* UITapGestureRecognizerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */; };
@@ -50,13 +47,10 @@
 		C60943F322AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalShiftsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C60F0D5A22B12084001FF432 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		C60F0D5C22B1209D001FF432 /* NewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPasswordViewController.swift; sourceTree = "<group>"; };
-		C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSelectCollectionViewCell.swift; sourceTree = "<group>"; };
 		C61AE83222AA91FD00FE425F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionView.swift; sourceTree = "<group>"; };
 		C61E256722B9997500E62CB7 /* AllCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionView.swift; sourceTree = "<group>"; };
 		C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCollectionViewCell.swift; sourceTree = "<group>"; };
-		C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCollectionViewCell.swift; sourceTree = "<group>"; };
 		C65F93AE22AA4E6B001FE789 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C663615E22BA656C00D85362 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		C663616022BA67C400D85362 /* UITapGestureRecognizerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizerExtension.swift; sourceTree = "<group>"; };
@@ -104,9 +98,6 @@
 		C61E256422B9878800E62CB7 /* SelectItemsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C612841822BCD87400504B36 /* BaseSelectCollectionViewCell.swift */,
-				C62DAF5422B9BC5100786BAB /* SelectedCollectionViewCell.swift */,
-				C61E256522B9995B00E62CB7 /* SelectedCollectionView.swift */,
 				C62DAF5222B9BC2A00786BAB /* AllCollectionViewCell.swift */,
 				C61E256722B9997500E62CB7 /* AllCollectionView.swift */,
 				C62DAF5022B9A2CE00786BAB /* SelectImageViewController.swift */,
@@ -356,9 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C60943F422AE8C1B00E9B34E /* GlobalShiftsCollectionViewCell.swift in Sources */,
-				C62DAF5522B9BC5100786BAB /* SelectedCollectionViewCell.swift in Sources */,
 				C61E256822B9997500E62CB7 /* AllCollectionView.swift in Sources */,
-				C61E256622B9995B00E62CB7 /* SelectedCollectionView.swift in Sources */,
 				C62DAF5122B9A2CE00786BAB /* SelectImageViewController.swift in Sources */,
 				C62DAF5322B9BC2A00786BAB /* AllCollectionViewCell.swift in Sources */,
 				C61AE83322AA91FD00FE425F /* SignInViewController.swift in Sources */,
@@ -366,7 +355,6 @@
 				C6DCEE2922BAD72800F685AF /* BaseViewController.swift in Sources */,
 				C60F0D5B22B12084001FF432 /* ResetPasswordViewController.swift in Sources */,
 				C663615F22BA656C00D85362 /* StringExtension.swift in Sources */,
-				C612841922BCD87400504B36 /* BaseSelectCollectionViewCell.swift in Sources */,
 				C65F93AF22AA4E6B001FE789 /* SignUpViewController.swift in Sources */,
 				C69CA38422A4F7BE00895292 /* SignUpTheSpeechViewController.swift in Sources */,
 				C664620E22AFCAB9008A3EE5 /* CompaniesCollectionViewCell.swift in Sources */,

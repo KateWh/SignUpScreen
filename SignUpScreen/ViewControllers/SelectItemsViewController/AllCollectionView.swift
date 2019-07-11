@@ -13,20 +13,19 @@ private struct AllCollectionConstants {
     static let percentForThreeItem: CGFloat = 0.97
     static let percentVerticalSpace: CGFloat = 0.015
     static let pointsHorizontalSpace: CGFloat = 3
+    static let increment = 1
+    static let decrement = -1
 }
 
-protocol OutputProtocol: class {
-    func setItem(item: ImageModel, selectAll: Bool)
-    func deleteItem(byId: Int)
-}
-
-protocol GiveAllItems: class {
-    func giveItems() -> [ImageModel]
+protocol SelectAllItems: class {
+    func selectAll()
 }
 
 class AllCollectionView: UICollectionView {
 
-    weak var outputDelegate: OutputProtocol?
+    var getStaceAllItems: GetStateAllItems?
+    var changeSelectLabel: ChangeSelectLabel?
+    
     var arrayOfItems: [ImageModel] = [ImageModel(image: URL(string: "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"), id: 1), ImageModel(image: URL(string: "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"), id: 2), ImageModel(image: URL(string: "https://www.planetware.com/photos-large/F/france-paris-eiffel-tower.jpg"), id: 3), ImageModel(image: URL(string: "https://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg"), id: 4), ImageModel(image: URL(string: "https://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg"), id: 5), ImageModel(image: URL(string: "https://www.jpl.nasa.gov/images/cassini/20090202/pia03883-full.jpg"), id: 6) ]
     
     override func awakeFromNib() {
@@ -37,21 +36,20 @@ class AllCollectionView: UICollectionView {
     
 }
 
-extension AllCollectionView: GiveAllItems {
+extension AllCollectionView: SelectAllItems {
 
-    func giveItems() -> [ImageModel] {
-        if arrayOfItems.contains(where: { $0.isSelected == false }) {
-            for index in 0..<arrayOfItems.count {
-                arrayOfItems[index].isSelected = true
+    func selectAll() {
+        if self.arrayOfItems.contains(where: { $0.isSelected == false }) {
+            for index in 0..<self.arrayOfItems.count {
+                self.arrayOfItems[index].isSelected = true
             }
+            self.changeSelectLabel?.changeQuantity(to: self.arrayOfItems.count)
             self.reloadData()
-            return arrayOfItems
         } else {
-            for index in 0..<arrayOfItems.count {
-                arrayOfItems[index].isSelected = false
+            for index in 0..<self.arrayOfItems.count {
+                self.arrayOfItems[index].isSelected = false
             }
             self.reloadData()
-            return []
         }
     }
     
@@ -60,13 +58,20 @@ extension AllCollectionView: GiveAllItems {
 extension AllCollectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if arrayOfItems[indexPath.row].isSelected {
+        if self.arrayOfItems[indexPath.row].isSelected {
             self.arrayOfItems[indexPath.row].isSelected = false
-            self.outputDelegate?.deleteItem(byId: arrayOfItems[indexPath.row].id)
+            self.changeSelectLabel?.changeQuantity(to: AllCollectionConstants.decrement)
         } else {
             self.arrayOfItems[indexPath.row].isSelected = true
-            self.outputDelegate?.setItem(item: arrayOfItems[indexPath.row], selectAll: !arrayOfItems.contains(where: { $0.isSelected == false }))
+            self.changeSelectLabel?.changeQuantity(to: AllCollectionConstants.increment)
         }
+        
+        if self.arrayOfItems.contains(where: { $0.isSelected == false }) {
+           self.getStaceAllItems?.getState(isSelectedAll: false)
+        } else {
+           self.getStaceAllItems?.getState(isSelectedAll: true)
+        }
+        
         self.reloadItems(at: [indexPath])
     }
     
@@ -87,7 +92,7 @@ extension AllCollectionView: UICollectionViewDataSource {
 
 }
 
-extension AllCollectionView: UICollectionViewDelegateFlowLayout {
+extension AllCollectionView: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth = collectionView.frame.width * AllCollectionConstants.percentForThreeItem / 3
