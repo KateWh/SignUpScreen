@@ -55,12 +55,17 @@
                                                     <constraint firstAttribute="width" secondItem="Lvj-jN-bHi" secondAttribute="height" multiplier="1:1" id="fAZ-nX-tJq"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="-"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKw-nl-cm4">
                                                 <rect key="frame" x="11" y="59" width="94" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.16414660215377808" green="0.18147832155227661" blue="0.29834169149398804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nD3-X2-rCM">
+                                                <rect key="frame" x="47.5" y="10.5" width="22.5" height="22.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -70,13 +75,17 @@
                                             <constraint firstAttribute="trailing" secondItem="sKw-nl-cm4" secondAttribute="trailing" constant="12.5" id="6pO-24-gAO"/>
                                             <constraint firstItem="sKw-nl-cm4" firstAttribute="centerY" secondItem="9S9-l5-4wM" secondAttribute="centerY" id="AsI-be-kaQ"/>
                                             <constraint firstAttribute="width" secondItem="zQ9-fq-Qe7" secondAttribute="height" multiplier="1:1" id="CMP-dK-80A"/>
+                                            <constraint firstItem="nD3-X2-rCM" firstAttribute="leading" secondItem="Lvj-jN-bHi" secondAttribute="leading" id="Oy0-IO-uOf"/>
                                             <constraint firstAttribute="trailing" secondItem="zQ9-fq-Qe7" secondAttribute="trailing" id="fND-n3-x52"/>
                                             <constraint firstAttribute="bottom" secondItem="zQ9-fq-Qe7" secondAttribute="bottom" id="grj-Q7-rp5"/>
                                             <constraint firstItem="zQ9-fq-Qe7" firstAttribute="leading" secondItem="9S9-l5-4wM" secondAttribute="leading" id="h5k-Kq-1lr"/>
+                                            <constraint firstItem="nD3-X2-rCM" firstAttribute="top" secondItem="Lvj-jN-bHi" secondAttribute="top" id="hqH-nh-Jht"/>
                                             <constraint firstItem="zQ9-fq-Qe7" firstAttribute="top" secondItem="Lvj-jN-bHi" secondAttribute="bottom" priority="750" constant="-33" id="idg-Bh-pe2"/>
                                             <constraint firstItem="Lvj-jN-bHi" firstAttribute="height" secondItem="zQ9-fq-Qe7" secondAttribute="height" multiplier="25/130" id="iof-1V-n5V"/>
                                             <constraint firstItem="Lvj-jN-bHi" firstAttribute="centerX" secondItem="zQ9-fq-Qe7" secondAttribute="centerX" id="lS3-zI-Nh3"/>
                                             <constraint firstItem="sKw-nl-cm4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lvj-jN-bHi" secondAttribute="bottom" constant="3" id="nMf-xQ-TW8"/>
+                                            <constraint firstItem="nD3-X2-rCM" firstAttribute="trailing" secondItem="Lvj-jN-bHi" secondAttribute="trailing" id="nkm-fa-9JQ"/>
+                                            <constraint firstItem="nD3-X2-rCM" firstAttribute="bottom" secondItem="Lvj-jN-bHi" secondAttribute="bottom" id="sG8-uw-o9O"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzc-CW-KDn" userLabel="agreeView">
@@ -108,12 +117,17 @@
                                                     <constraint firstAttribute="width" secondItem="CEq-56-IiY" secondAttribute="height" multiplier="1:1" id="gaO-6R-lzj"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                <state key="normal" title="+"/>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-Ss-cd6">
                                                 <rect key="frame" x="12" y="59" width="93.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.92868870496749878" green="0.44490629434585571" blue="0.012380564585328102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFE-T2-PnH">
+                                                <rect key="frame" x="47.5" y="10.5" width="22.5" height="22.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -124,11 +138,15 @@
                                             <constraint firstItem="gBs-Ss-cd6" firstAttribute="centerY" secondItem="Hzc-CW-KDn" secondAttribute="centerY" id="Er2-Ht-RlE"/>
                                             <constraint firstItem="gBs-Ss-cd6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CEq-56-IiY" secondAttribute="bottom" constant="3" id="I4C-3h-JLb"/>
                                             <constraint firstItem="fFa-GP-1PR" firstAttribute="leading" secondItem="Hzc-CW-KDn" secondAttribute="leading" id="ItZ-Zu-Y5c"/>
+                                            <constraint firstItem="PFE-T2-PnH" firstAttribute="trailing" secondItem="CEq-56-IiY" secondAttribute="trailing" id="JaY-WT-E8d"/>
                                             <constraint firstAttribute="bottom" secondItem="fFa-GP-1PR" secondAttribute="bottom" id="OBH-7v-gqi"/>
                                             <constraint firstItem="fFa-GP-1PR" firstAttribute="top" secondItem="Hzc-CW-KDn" secondAttribute="top" id="Qmt-cg-SBV"/>
                                             <constraint firstItem="CEq-56-IiY" firstAttribute="centerX" secondItem="fFa-GP-1PR" secondAttribute="centerX" id="Zrn-bB-cMO"/>
                                             <constraint firstAttribute="trailing" secondItem="fFa-GP-1PR" secondAttribute="trailing" id="eXp-MD-jwE"/>
+                                            <constraint firstItem="PFE-T2-PnH" firstAttribute="bottom" secondItem="CEq-56-IiY" secondAttribute="bottom" id="lzh-OS-dBh"/>
                                             <constraint firstAttribute="trailing" secondItem="gBs-Ss-cd6" secondAttribute="trailing" constant="12" id="w0s-5L-NiY"/>
+                                            <constraint firstItem="PFE-T2-PnH" firstAttribute="top" secondItem="CEq-56-IiY" secondAttribute="top" id="wfw-93-8rb"/>
+                                            <constraint firstItem="PFE-T2-PnH" firstAttribute="leading" secondItem="CEq-56-IiY" secondAttribute="leading" id="xiv-6g-BeM"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -156,7 +174,9 @@
                         <outlet property="disagreeButton" destination="zQ9-fq-Qe7" id="3UT-vG-GXN"/>
                         <outlet property="disagreeLabel" destination="sKw-nl-cm4" id="xlk-5o-hfU"/>
                         <outlet property="minusButton" destination="Lvj-jN-bHi" id="q7H-Dp-axr"/>
+                        <outlet property="minusLabel" destination="nD3-X2-rCM" id="flN-PF-vVm"/>
                         <outlet property="plusButton" destination="CEq-56-IiY" id="2Jh-3z-dNf"/>
+                        <outlet property="plusLabel" destination="PFE-T2-PnH" id="xGQ-bJ-fbP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NqS-IR-fa8" userLabel="First Responder" sceneMemberID="firstResponder"/>

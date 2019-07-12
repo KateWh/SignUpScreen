@@ -24,52 +24,60 @@ class ConsAndProsViewController: UIViewController {
     @IBOutlet weak var agreeLabel: UILabel!
     @IBOutlet weak var disagreeButton: UIButton!
     @IBOutlet weak var agreeButton: UIButton!
+    
+    @IBOutlet weak var minusLabel: UILabel!
+    @IBOutlet weak var plusLabel: UILabel!
     @IBOutlet weak var minusButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-       self.setupButton()
+    override func viewWillAppear(_ animated: Bool) {
+        self.view.layoutIfNeeded()
+        self.setupButton()
     }
-    
     
     @IBAction func tapDisagreeButton(_ sender: UIButton) {
         self.disagreeButton.isEnabled = false
         self.disagreeButton.setTitle(BaseConstants.emptyString, for: .normal)
         self.disagreeButton.backgroundColor = ConsAndProsConstans.violet
-        self.disagreeLabel.textColor = ConsAndProsConstans.white
-        self.disagreeLabel.text = ConsAndProsConstans.disagreeButtonText
-        self.minusButton.backgroundColor = ConsAndProsConstans.white
-        self.minusButton.setTitleColor(ConsAndProsConstans.violet, for: .normal)
-        self.minusButton.isHidden = false
         
         self.agreeButton.isEnabled = false
         self.agreeButton.setTitle(BaseConstants.emptyString, for: .normal)
         self.agreeLabel.text = ConsAndProsConstans.agreeButtonText
+        
+        self.disagreeLabel.textColor = ConsAndProsConstans.white
+        self.disagreeLabel.text = ConsAndProsConstans.disagreeButtonText
+        self.minusButton.backgroundColor = ConsAndProsConstans.white
+        self.minusLabel.textColor = ConsAndProsConstans.violet
+        self.minusButton.isHidden = false
+        self.minusLabel.isHidden = false
+        
         self.plusButton.backgroundColor = ConsAndProsConstans.orange
-        self.plusButton.setTitleColor(ConsAndProsConstans.white, for: .normal)
+        self.plusLabel.textColor = ConsAndProsConstans.white
         self.plusButton.isHidden = false
+        self.plusLabel.isHidden = false
     }
     
     @IBAction func tapAgreeButton(_ sender: UIButton) {
         self.disagreeButton.isEnabled = false
         self.disagreeButton.setTitle(BaseConstants.emptyString, for: .normal)
         self.disagreeLabel.text = ConsAndProsConstans.disagreeButtonText
-        self.minusButton.backgroundColor = ConsAndProsConstans.violet
-        self.minusButton.setTitleColor(ConsAndProsConstans.white, for: .normal)
-        self.minusButton.isHidden = false
         
         self.agreeButton.isEnabled = false
         self.agreeButton.setTitle(BaseConstants.emptyString, for: .normal)
+        self.agreeLabel.text = ConsAndProsConstans.agreeButtonText
+        
+        self.minusButton.backgroundColor = ConsAndProsConstans.violet
+        self.minusLabel.textColor = ConsAndProsConstans.white
+        self.minusButton.isHidden = false
+        self.minusLabel.isHidden = false
+        
         self.agreeButton.backgroundColor = ConsAndProsConstans.orange
         self.agreeLabel.textColor = ConsAndProsConstans.white
-        self.agreeLabel.text = ConsAndProsConstans.agreeButtonText
-        self.plusButton.setTitleColor(ConsAndProsConstans.orange, for: .normal)
+        self.plusLabel.textColor = ConsAndProsConstans.orange
         self.plusButton.isHidden = false
+        self.plusLabel.isHidden = false 
     }
-    
 
     func setupButton() {
         self.disagreeButton.layer.cornerRadius = self.disagreeButton.frame.height / ConsAndProsConstans.twoPointers
@@ -80,6 +88,5 @@ class ConsAndProsViewController: UIViewController {
         self.agreeButton.layer.borderColor = ConsAndProsConstans.orange.cgColor
         self.plusButton.layer.cornerRadius = self.plusButton.frame.height / ConsAndProsConstans.twoPointers
     }
-    
     
 }

@@ -26,7 +26,7 @@
 		C67F340722D478E90056E170 /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C67F340622D478E90056E170 /* SignIn.storyboard */; };
 		C69CA38222A4F7BE00895292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38122A4F7BE00895292 /* AppDelegate.swift */; };
 		C69CA38422A4F7BE00895292 /* SignUpTheSpeechViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */; };
-		C69CA38722A4F7BE00895292 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* main.storyboard */; };
+		C69CA38722A4F7BE00895292 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38522A4F7BE00895292 /* Other.storyboard */; };
 		C69CA38C22A4F7C000895292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C69CA38A22A4F7C000895292 /* LaunchScreen.storyboard */; };
 		C69CA39C22A5189300895292 /* dax-mediumitalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39522A5189300895292 /* dax-mediumitalic.ttf */; };
 		C69CA39D22A5189300895292 /* dax-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C69CA39622A5189300895292 /* dax-italic.ttf */; };
@@ -63,7 +63,7 @@
 		C69CA37E22A4F7BE00895292 /* SignUpScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignUpScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C69CA38122A4F7BE00895292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C69CA38322A4F7BE00895292 /* SignUpTheSpeechViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTheSpeechViewController.swift; sourceTree = "<group>"; };
-		C69CA38622A4F7BE00895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/main.storyboard; sourceTree = "<group>"; };
+		C69CA38622A4F7BE00895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Other.storyboard; sourceTree = "<group>"; };
 		C69CA38B22A4F7C000895292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C69CA38D22A4F7C000895292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C69CA39522A5189300895292 /* dax-mediumitalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "dax-mediumitalic.ttf"; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				C67F340622D478E90056E170 /* SignIn.storyboard */,
 				C66AD02D22CF23E0008D8358 /* ResetPassword.storyboard */,
 				C66AD02B22CF23B4008D8358 /* SignUp.storyboard */,
-				C69CA38522A4F7BE00895292 /* main.storyboard */,
+				C69CA38522A4F7BE00895292 /* Other.storyboard */,
 				C6BB0CEB22D7781A00402A94 /* Main.storyboard */,
 				C69CA38A22A4F7C000895292 /* LaunchScreen.storyboard */,
 			);
@@ -306,7 +306,7 @@
 				C69CA3A222A5189300895292 /* dax-medium.ttf in Resources */,
 				C6BB0CEC22D7781A00402A94 /* Main.storyboard in Resources */,
 				C67F340722D478E90056E170 /* SignIn.storyboard in Resources */,
-				C69CA38722A4F7BE00895292 /* main.storyboard in Resources */,
+				C69CA38722A4F7BE00895292 /* Other.storyboard in Resources */,
 				C69CA3A022A5189300895292 /* dax-regular.ttf in Resources */,
 				C69CA3A122A5189300895292 /* dax-extrabold.ttf in Resources */,
 			);
@@ -383,12 +383,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C69CA38522A4F7BE00895292 /* main.storyboard */ = {
+		C69CA38522A4F7BE00895292 /* Other.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C69CA38622A4F7BE00895292 /* Base */,
 			);
-			name = main.storyboard;
+			name = Other.storyboard;
 			sourceTree = "<group>";
 		};
 		C69CA38A22A4F7C000895292 /* LaunchScreen.storyboard */ = {
