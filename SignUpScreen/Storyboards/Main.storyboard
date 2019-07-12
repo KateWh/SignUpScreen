@@ -37,7 +37,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="117.5" height="117.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Disagree">
                                                     <color key="titleColor" red="0.0" green="0.0024695296306163073" blue="0.17298665642738342" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -57,8 +57,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="-"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disagree" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKw-nl-cm4">
-                                                <rect key="frame" x="11" y="48.5" width="94" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKw-nl-cm4">
+                                                <rect key="frame" x="11" y="59" width="94" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.16414660215377808" green="0.18147832155227661" blue="0.29834169149398804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -73,9 +73,10 @@
                                             <constraint firstAttribute="trailing" secondItem="zQ9-fq-Qe7" secondAttribute="trailing" id="fND-n3-x52"/>
                                             <constraint firstAttribute="bottom" secondItem="zQ9-fq-Qe7" secondAttribute="bottom" id="grj-Q7-rp5"/>
                                             <constraint firstItem="zQ9-fq-Qe7" firstAttribute="leading" secondItem="9S9-l5-4wM" secondAttribute="leading" id="h5k-Kq-1lr"/>
-                                            <constraint firstItem="zQ9-fq-Qe7" firstAttribute="top" secondItem="Lvj-jN-bHi" secondAttribute="bottom" constant="-33" id="idg-Bh-pe2"/>
+                                            <constraint firstItem="zQ9-fq-Qe7" firstAttribute="top" secondItem="Lvj-jN-bHi" secondAttribute="bottom" priority="750" constant="-33" id="idg-Bh-pe2"/>
                                             <constraint firstItem="Lvj-jN-bHi" firstAttribute="height" secondItem="zQ9-fq-Qe7" secondAttribute="height" multiplier="25/130" id="iof-1V-n5V"/>
                                             <constraint firstItem="Lvj-jN-bHi" firstAttribute="centerX" secondItem="zQ9-fq-Qe7" secondAttribute="centerX" id="lS3-zI-Nh3"/>
+                                            <constraint firstItem="sKw-nl-cm4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Lvj-jN-bHi" secondAttribute="bottom" constant="3" id="nMf-xQ-TW8"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hzc-CW-KDn" userLabel="agreeView">
@@ -88,7 +89,7 @@
                                                     <constraint firstAttribute="width" secondItem="fFa-GP-1PR" secondAttribute="height" multiplier="1:1" id="fm8-HU-BFC"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                <state key="normal">
+                                                <state key="normal" title="Agree">
                                                     <color key="titleColor" red="0.92421936988830566" green="0.3851810097694397" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -109,18 +110,19 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                 <state key="normal" title="+"/>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agree" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-Ss-cd6">
-                                                <rect key="frame" x="12" y="48.5" width="93.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gBs-Ss-cd6">
+                                                <rect key="frame" x="12" y="59" width="93.5" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" red="0.92868870496749878" green="0.44490629434585571" blue="0.012380564585328102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="fFa-GP-1PR" firstAttribute="top" secondItem="CEq-56-IiY" secondAttribute="bottom" constant="-33" id="0yG-7r-XL2"/>
+                                            <constraint firstItem="fFa-GP-1PR" firstAttribute="top" secondItem="CEq-56-IiY" secondAttribute="bottom" priority="750" constant="-33" id="0yG-7r-XL2"/>
                                             <constraint firstItem="gBs-Ss-cd6" firstAttribute="leading" secondItem="Hzc-CW-KDn" secondAttribute="leading" constant="12" id="4cx-st-ktm"/>
                                             <constraint firstItem="CEq-56-IiY" firstAttribute="height" secondItem="fFa-GP-1PR" secondAttribute="height" multiplier="25/130" id="A7B-yt-qwZ"/>
                                             <constraint firstItem="gBs-Ss-cd6" firstAttribute="centerY" secondItem="Hzc-CW-KDn" secondAttribute="centerY" id="Er2-Ht-RlE"/>
+                                            <constraint firstItem="gBs-Ss-cd6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="CEq-56-IiY" secondAttribute="bottom" constant="3" id="I4C-3h-JLb"/>
                                             <constraint firstItem="fFa-GP-1PR" firstAttribute="leading" secondItem="Hzc-CW-KDn" secondAttribute="leading" id="ItZ-Zu-Y5c"/>
                                             <constraint firstAttribute="bottom" secondItem="fFa-GP-1PR" secondAttribute="bottom" id="OBH-7v-gqi"/>
                                             <constraint firstItem="fFa-GP-1PR" firstAttribute="top" secondItem="Hzc-CW-KDn" secondAttribute="top" id="Qmt-cg-SBV"/>
@@ -132,7 +134,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.95679932832717896" green="0.95691007375717163" blue="0.95674949884414673" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="od1-1G-co6" firstAttribute="trailing" secondItem="KRp-dX-NsC" secondAttribute="trailing" constant="65" id="KV7-2U-14u"/>
                             <constraint firstItem="KRp-dX-NsC" firstAttribute="top" secondItem="Car-6Y-bwA" secondAttribute="bottom" constant="20" id="Mtn-R7-LvH"/>
